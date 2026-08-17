@@ -7,6 +7,9 @@ from groq import Groq
 import requests
 import json
 import urllib.request
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ─────────────────────────────────────────
 # STEP 1: Get structured facts from Wikidata
@@ -188,7 +191,8 @@ if __name__ == "__main__":
     print("\nNow running grounded assessment...\n")
     
     # Step 3: Run assessment 3 times
-    for i in range(1, 4):
+    for i in range(1, 11):
+
         assess_with_grounding(i, facts)
     
     print("\n=== SYSTEM B COMPLETE ===")

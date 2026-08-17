@@ -78,7 +78,8 @@ if __name__ == "__main__":
     print("=== SYSTEM A: Ungrounded Assessment ===\n")
     print("NO knowledge grounding — baseline only\n")
     
-    for i in range(1, 4):
+    for i in range(1, 11):
+
         assess_without_grounding(i)
     
     print("\n=== SYSTEM A COMPLETE ===")

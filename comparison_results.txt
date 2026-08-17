@@ -1,0 +1,32 @@
+SYSTEM A vs SYSTEM B COMPARISON
+============================================================
+
+SYSTEM A (No Grounding):
+Run 01 | PARTLY   | Student Heterogeneity: The simulation assumes a homogenous student population wi
+Run 02 | NO       | Simplistic Representation of AI-Assisted Plagiarism: AI-assisted plagiarism is o
+Run 03 | YES      | Simplification of AI-assisted plagiarism: In the simulation, AI-assisted plagiar
+Run 04 | YES      | Simplification of AI-assisted plagiarism: The simulation treats AI-assisted plag
+Run 05 | PARTLY   | Overly simplistic Q-learning model: Q-learning is a basic reinforcement learning
+Run 06 | NO       | Not found
+Run 07 | YES      | Lack of granular behavior models: The binary behavior model oversimplifies the c
+Run 08 | YES      | Simplistic Detection Probabilities:
+Run 09 | PARTLY   | Inaccurate representation of human decision-making: The use of Q-learning to mod
+Run 10 | PARTLY   | Overly simplified decision-making: The Q-learning algorithm used by agents assum
+
+Consistency: 40%
+
+SYSTEM B (KG-Grounded):
+Run 01 | NO       | Simplification of academic integrity policies: The simulation only considers two
+Run 02 | PARTLY   | Lack of academic integrity context: The simulation does not explicitly account f
+Run 03 | NO       | Simplification of Detection Probabilities: The fixed detection probabilities for
+Run 04 | NO       | Oversimplification of student decision-making: The simulation assumes that stude
+Run 05 | PARTLY   | Lack of consideration of academic integrity as a moral code or ethical policy: T
+Run 06 | NO       | Simplification of motivations and consequences: The simulation only considers re
+Run 07 | NO       | Simplification of Human Decision-Making: The simulation uses Q-learning to model
+Run 08 | NO       | Simplification of Plagiarism Detection and Penalties: The simulation assigns fix
+Run 09 | PARTLY   | Oversimplification of academic integrity: The simulation models academic plagiar
+Run 10 | NO       | Simplification of Detection Mechanisms: The simulation uses fixed detection prob
+
+Consistency: 70%
+
+FINDING: System B more consistent
