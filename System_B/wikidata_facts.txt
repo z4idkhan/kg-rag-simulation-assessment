@@ -1,0 +1,18 @@
+WIKIDATA FACTS RETRIEVED FOR SYSTEM B
+==================================================
+
+PLAGIARISM:
+using another author's work as if it was one's own original work
+
+ACADEMIC INTEGRITY:
+moral code or ethical policy of academia
+
+REINFORCEMENT LEARNING:
+type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+
+Q-LEARNING:
+model-free reinforcement learning algorithm
+
+AGENT-BASED MODEL:
+type of computational models
+
