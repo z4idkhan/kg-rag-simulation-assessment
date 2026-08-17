@@ -30,3 +30,6 @@ Run 10 | NO       | Simplification of Detection Mechanisms: The simulation uses 
 Consistency: 70%
 
 FINDING: System B more consistent
+
+
+

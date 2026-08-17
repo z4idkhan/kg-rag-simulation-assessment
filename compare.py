@@ -134,3 +134,4 @@ if __name__ == "__main__":
         f.write(f"FINDING: System {'B' if b_pct > a_pct else 'A'} more consistent\n")
     
     print("\nResults saved to comparison_results.txt")
+    
