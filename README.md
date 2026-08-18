@@ -21,18 +21,15 @@ LLM querying?
 ## Systems
 
 ### System A — Baseline (Ungrounded)
-- Sends simulation description directly to LLM
-- No external knowledge provided
-- Replicates original approach from 
-  Ibrahim et al. (2026)
-- Code: System_A/system_a.py
+Sends simulation description directly to LLM.
+No external knowledge provided.
+Replicates original approach from 
+Ibrahim et al. (2026).
 
 ### System B — Proposed (KG-Grounded)
-- Retrieves structured facts from Wikidata 
-  via SPARQL queries
-- Combines facts with simulation description
-- Sends grounded prompt to LLM
-- Code: System_B/system_b.py
+Retrieves structured facts from Wikidata 
+via SPARQL, combines with simulation 
+description, queries LLM with grounded context.
 
 ## SPARQL Facts Retrieved (Wikidata)
 - Plagiarism: using another author's work 
@@ -46,48 +43,58 @@ LLM querying?
   learning algorithm
 - Agent-Based Model: type of computational models
 
-## Preliminary Results (3 runs each)
+## Results (10 runs each system)
 
 | Metric | System A | System B |
 |--------|----------|----------|
-| Run 1 verdict | Yes | Partly |
-| Run 2 verdict | Yes | Partly |
-| Run 3 verdict | No | Partly |
-| Verdict consistency | LOW | HIGH |
-| Gap descriptions | Generic | Fact-grounded |
+| Verdict consistency | 40% | 70% |
+| Dominant verdict | Scattered | NO (7/10) |
+| Explicit "academic integrity" mentions | 0/10 | 4/10 |
 
 ### Key Finding
-System B produced a consistent "partly" 
-verdict across all 3 runs.
-System A varied between "yes" and "no".
-Knowledge grounding stabilizes overall 
-realism judgment.
+Knowledge graph grounding improved verdict 
+consistency by 30 percentage points (40% → 70%) 
+across 10 independent runs. 
+System B's assessments frequently referenced the specific 
+Wikidata facts provided, confirming the LLM 
+actively used the structured grounding rather 
+than ignoring it.
 
 ## Project Structure
 
                         KG_RAG_PROJECT/
                            ├── System_A/
                            │ ├── system_a.py
-                           │ ├── system_a_run01.txt
-                           │ ├── system_a_run02.txt
-                           │ └── system_a_run03.txt
+                           │ ├── system_a_run01-10.txt
                            ├── System_B/
                            │ ├── system_b.py
-                           │ ├── system_b_run01.txt
-                           │ ├── system_b_run02.txt
-                           │ └── system_b_run03.txt
+                           │ ├── system_b_run01-10.txt
+                           ├── compare.py
+                           ├── comparison_results.txt
                            ├── wikidata_facts.txt
                            └── README.md
 
-## Evaluation Measures
-- Consistency of verdicts across runs
-- Specificity of gap identification
-- Alignment with Wikidata structured facts
+## Methodology
+1. Retrieved 5 structured facts from Wikidata 
+   via SPARQL (plagiarism, academic integrity, 
+   reinforcement learning, Q-learning, 
+   agent-based model)
+2. Built System A (ungrounded) and System B 
+   (grounded with facts above)
+3. Ran both systems 10 times each using 
+   identical simulation description
+4. Compared verdict consistency and gap 
+   specificity across runs
+
+## LLM Used
+Llama3-8b via Groq API
 
 ## Next Steps
-- Run both systems 10 times each
-- Build full comparison table
-- Measure consistency statistically
+- Test with multiple LLM families 
+  (as Ibrahim et al. did with 5 models)
+- Test with additional simulation descriptions
+- Statistical significance testing
+- Expand knowledge grounding to more facts
 
 ## References
 - Ibrahim et al. (2026) — Base simulation paper
