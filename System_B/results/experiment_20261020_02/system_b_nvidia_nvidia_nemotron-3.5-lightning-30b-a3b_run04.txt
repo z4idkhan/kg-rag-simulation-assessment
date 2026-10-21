@@ -1,0 +1,44 @@
+=== SYSTEM B | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 04 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=420, prompt_tokens=906, total_tokens=1326, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+A. OVERALL REALISM
+PARTLY
+The simulation explicitly models student decision-making via Q-learning and incorporates distinct detection probabilities for direct copying and AI-assisted plagiarism, which adds mechanistic realism. However, it remains partly unrealistic because it lacks detail on how peer networks structure interactions and how the "active-intervention" condition mechanistically alters student behavior or detection systems.
+
+B. TOP 3 REALISM GAPS
+1. **Network interaction mechanics**: The description states students interact through "local peer networks" but does not specify network topology, tie strength, or how network structure influences plagiarism spread. This matters because network structure critically affects how interventions propagate. This is a hypothesis needing more information, not directly supported by the description.
+2. **Intervention mechanism**: The comparison between "no-intervention" and "active-intervention" conditions is reported, but the description does not explain what the intervention entails (e.g., honor contracts, honorific peers, detection feedback). This matters because the main finding that AI-assisted plagiarism remains prevalent under intervention depends entirely on the intervention's design. This is directly supported by the description as a gap but requires external information to resolve.
+3. **AI-assisted plagiarism definition and scope**: The simulation includes "AI-assisted plagiarism" as a choice type, but the description provides no definition of what constitutes AI-assisted plagiarism (e.g., using LLMs, paraphrasing tools) or how it differs substantively from direct copying beyond the detection probability. This matters because the distinction between plagiarism types affects the validity of the finding that AI-assisted plagiarism drives total dishonest behavior. This is a hypothesis needing more information.
+
+C. ONE MINIMUM REVISION
+Add a sentence specifying the active-intervention condition: e.g., "The active-intervention condition provides students with automated feedback on similarity scores after each submission." Evaluate whether this revision changes the prevalence of AI-assisted plagiarism by comparing outcomes between the original and revised intervention conditions over the 16-week run.

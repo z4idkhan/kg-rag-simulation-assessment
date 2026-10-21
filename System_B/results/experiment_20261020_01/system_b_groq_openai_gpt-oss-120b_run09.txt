@@ -1,0 +1,54 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 09 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=697, prompt_tokens=1004, total_tokens=1701, completion_time=1.444721221, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=151), prompt_time=0.039245889, prompt_tokens_details=None, queue_time=0.384959758, total_time=1.48396711)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY**  
+The simulation captures several core elements of academic‑integrity dynamics – multiple student agents, choice among honest, direct‑copying, and AI‑assisted plagiarism, and learning via a Q‑learning algorithm – which lends it a degree of realism. However, key aspects of real‑world plagiarism environments (e.g., heterogeneous student motivations, variable detection mechanisms, calibrated reward/penalty structures, and empirically grounded parameters) are unspecified, limiting the model’s fidelity.
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted)** | Real detection rates depend on instructor practices, plagiarism‑detection software, and the sophistication of the cheating method; static values can misrepresent the risk landscape and thus the agents’ learning dynamics. | Hypothesis – the description gives the numbers but does not justify them or allow them to vary. |
+| 2 | **Lack of heterogeneous student attributes (e.g., differing risk tolerance, ability, ethical orientation)** | In actual campuses, students differ in motivation, skill, and perception of consequences, which shapes the spread of dishonest behavior; a homogeneous agent pool may over‑ or under‑estimate prevalence. | Hypothesis – the description mentions “30 student agents” but provides no detail on individual differences. |
+| 3 | **Absence of empirical calibration of rewards/penalties and intervention effects** | Without linking the reward/penalty scheme to real academic policies (e.g., grade loss, disciplinary action) or to measured intervention efficacy, the Q‑learning updates may not reflect how students truly respond to sanctions or support programs. | Hypothesis – the description states that agents “update behavior based on rewards and penalties” but does not specify their magnitude or empirical basis. |
+
+**C. ONE MINIMUM REVISION**  
+**Add empirically calibrated detection probabilities**: replace the single static values (0.55, 0.25) with probability distributions derived from published studies of plagiarism detection rates for manual copying versus AI‑generated text. Implement a simple calibration step where the model’s overall detected‑plagiarism rate is matched to observed campus statistics.  
+
+*Evaluation*: Run the simulation with the calibrated distributions and compare the resulting prevalence of each cheating type to real‑world data (e.g., institutional reports of detected plagiarism). Improved alignment would indicate a more realistic representation of detection risk and its impact on agent learning.

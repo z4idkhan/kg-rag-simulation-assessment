@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 01 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=715, prompt_tokens=431, total_tokens=1146, completion_time=1.48056298, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=117), prompt_time=0.01761091, prompt_tokens_details=None, queue_time=0.396194018, total_time=1.49817389)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms that appear in real‑world academic‑integrity contexts (multiple agents, choice among honest, copying, and AI‑assisted cheating, Q‑learning updates, and stochastic detection). However, critical components such as the reward‑penalty structure, the composition of peer networks, and empirical grounding of detection probabilities are not described, limiting confidence that the model behaves like actual student populations.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unspecified reward/penalty schema** – The simulation says agents “update behavior based on rewards and penalties” but gives no values or how they differ across honest, copying, and AI‑assisted actions. | The magnitude of incentives drives learning; without realistic payoff values the Q‑learning dynamics may produce behavior patterns that diverge from real student decision‑making. | Hypothesis – the description lacks these details, so we cannot confirm realism. |
+| 2 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted)** – No justification or variability is provided. | In practice, detection rates depend on factors such as assignment type, instructor vigilance, and plagiarism‑detection tools; a single static probability may over‑ or underestimate true risk, affecting the emergence of dishonest strategies. | Directly supported by description (probabilities are given) but the lack of context makes it a realism concern. |
+| 3 | **Simplified peer‑network structure** – The model mentions “local peer networks” but gives no size, topology, or dynamics of information flow. | Social influence is a major driver of academic misconduct; network density, clustering, and homophily shape how cheating norms spread. An undefined network limits the ability to assess whether observed contagion effects are plausible. | Hypothesis – the description acknowledges networks but provides no specifics. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add empirically calibrated detection probabilities that vary with a simple contextual factor (e.g., assignment difficulty level).** Implement two levels: “low‑stakes” assignments with detection rates of 0.30 (copying) / 0.10 (AI‑assisted) and “high‑stakes” assignments with 0.70 / 0.40, assigning each week a random mix of the two.  
+
+*Evaluation:* Run the simulation under both conditions and compare the resulting overall cheating prevalence and the proportion of AI‑assisted plagiarism to published empirical rates (e.g., surveys reporting 10‑20 % AI‑assisted cheating in high‑stakes contexts). Convergence toward those benchmarks would indicate that the added variability improves realism without over‑complicating the model.

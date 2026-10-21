@@ -1,0 +1,43 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 10 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=829, prompt_tokens=892, total_tokens=1721, completion_time=0.905406516, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=404), prompt_time=0.069993861, prompt_tokens_details=None, queue_time=0.549336045, total_time=0.975400377)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY – The simulation captures key elements of academic‑integrity dynamics (agent‑based modeling, reinforcement learning, and intervention comparison), but it simplifies many real‑world factors (e.g., limited behavior options, static detection rates, and a narrow social network). These simplifications reduce its fidelity to actual student decision‑making and institutional enforcement processes.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Static detection probabilities** – The model assigns fixed detection rates (0.55 for direct copying, 0.25 for AI‑assisted plagiarism) without accounting for changes over time or learning by the detection system. *Why it matters*: In reality, detection effectiveness evolves as institutions improve tools and students adapt. *Evidence*: The description explicitly lists these fixed probabilities.  
+2. **Limited behavioral repertoire** – Students can only choose honest submission, direct copying, or AI‑assisted plagiarism. *Why it matters*: Real students exhibit a spectrum of behaviors (e.g., paraphrasing, collaboration, partial plagiarism) that influence outcomes. *Evidence*: The description lists only these three options.  
+3. **Restricted social network** – Interaction is confined to local peer networks, omitting broader institutional influences, faculty oversight, and peer pressure beyond the immediate circle. *Why it matters*: Academic integrity decisions are affected by institutional culture, peer norms, and authority signals. *Evidence*: The description states that students “interact through local peer networks” only.
+
+**C. ONE MINIMUM REVISION**  
+Add a time‑varying detection probability that updates each week based on the cumulative number of detected plagiarisms. Implement a simple rule: if more than 10% of agents are caught in a given week, increase the next‑week detection probability by 0.05 (capped at 0.9). Evaluate improvement by comparing the prevalence of plagiarism in the intervention versus no‑intervention conditions before and after the revision; a more realistic decline in plagiarism under intervention would indicate better realism.

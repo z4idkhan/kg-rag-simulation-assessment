@@ -1,0 +1,33 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 04 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=673, prompt_tokens=431, total_tokens=1104, completion_time=1.571357619, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=170), prompt_time=0.007356262, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.213772381, total_time=1.578713881)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures a few core mechanisms that appear in real academic‑integrity contexts (agents learning from rewards/penalties, local peer influence, and differing detection rates for copying vs. AI‑assisted plagiarism). However, the description omits many ecological details (e.g., variable sanctions, heterogeneous student motivations, evolving detection technologies) that limit its fidelity to actual campus environments.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality, detection likelihood changes with faculty vigilance, plagiarism‑detection tools, and the sophistication of the cheating method; a fixed rate can misrepresent how risk influences behavior. | Directly supported – the description explicitly gives fixed probabilities. |
+| 2 | **Uniform agent characteristics (all 30 students share the same reward/penalty structure and learning rate)** | Real students differ in risk tolerance, ethical values, and access to AI tools; ignoring heterogeneity can produce unrealistic convergence patterns. | Hypothesis – the description does not mention any variation, so the lack of heterogeneity is inferred. |
+| 3 | **Short temporal horizon (only 16 weeks) with no semester‑level consequences** | Academic‑integrity decisions are affected by long‑term outcomes (e.g., cumulative GPA impact, disciplinary records); a brief window may over‑emphasize short‑term learning and under‑represent lasting deterrence effects. | Directly supported – the simulation length is stated as 16 weeks. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add a dynamic detection probability that increases with the cumulative amount of cheating an agent has performed (or with the prevalence of cheating in its peer network).**  
+
+*Implementation*: after each dishonest act, raise that agent’s detection chance by a small increment (e.g., +0.05) up to a ceiling (e.g., 0.90).  
+
+*Evaluation*: run the simulation with and without the dynamic detection rule and compare the trajectory of dishonest behavior to empirical longitudinal studies of academic misconduct (e.g., reported rates across semesters). A closer match to observed decline in cheating after repeated sanctions would indicate improved realism.

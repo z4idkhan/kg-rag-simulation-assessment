@@ -1,0 +1,51 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 01 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=732, prompt_tokens=1004, total_tokens=1736, completion_time=1.5209623209999998, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=203), prompt_time=0.056735394, prompt_tokens_details=PromptTokensDetails(cached_tokens=768), queue_time=0.394423722, total_time=1.577697715)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of an academic‑integrity setting (student agents, choice of honest vs. plagiaristic actions, Q‑learning adaptation, and differing detection probabilities). However, key contextual and behavioral details that determine whether the model reflects real‑world dynamics are omitted or unspecified, limiting its overall realism.
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Empirical grounding of detection probabilities and reward/penalty values** – The model fixes detection at 0.55 for direct copying and 0.25 for AI‑assisted plagiarism, and uses unspecified rewards/penalties for Q‑learning. | Real‑world detection rates vary by institution, technology, and type of plagiarism; without calibration, the simulation may over‑ or under‑estimate dishonest behavior and the impact of interventions. | Hypothesis – the description provides the numbers but gives no source or validation, so the gap is an unanswered question. |
+| 2 | **Simplified action space (only three discrete choices)** – Agents can only “honest submission,” “direct copying,” or “AI‑assisted plagiarism.” | Academic misconduct exists on a continuum (e.g., paraphrasing without citation, partial copying, contract cheating). A coarse action set can miss nuanced strategies and their differential detection risks. | Directly supported – the description lists exactly these three options, showing the limited granularity. |
+| 3 | **Unspecified mechanism of peer‑network influence** – Students interact through “local peer networks,” but the model does not detail how peers affect learning or behavior. | Social contagion and normative pressure are central to integrity research; without a clear influence rule, the simulation cannot be judged on whether it realistically reproduces peer effects. | Hypothesis – the description mentions the network but provides no mechanistic detail, leaving the implementation unknown. |
+
+**C. ONE MINIMUM REVISION**  
+Add **empirically calibrated detection and reward/penalty parameters**: replace the fixed detection probabilities (0.55, 0.25) and abstract reward values with values drawn from published studies on plagiarism detection rates and sanction severity. Evaluate the revision by comparing the simulated proportion of detected cases and the trajectory of dishonest behavior against real‑world longitudinal data (e.g., institutional plagiarism reports) to see whether the model’s output aligns more closely with observed patterns.

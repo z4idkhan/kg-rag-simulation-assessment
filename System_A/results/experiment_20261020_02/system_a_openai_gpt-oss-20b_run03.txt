@@ -1,0 +1,19 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 03 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=431, total_tokens=1431, completion_time=1.02763395, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=842), prompt_time=0.023273167, prompt_tokens_details=None, queue_time=0.39705246, total_time=1.050907117)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation captures key elements of academic‑integrity dynamics—student choice among honest, direct copying, and AI‑assisted plagiarism, Q‑learning updates, detection probabilities, and peer‑network interactions over time. However, critical details that influence realism (e.g., reward/penalty magnitudes, network topology, heterogeneity among agents, and the exact form of interventions) are omitted or unspecified, limiting confidence that the model faithfully reproduces real‑world behavior.
+
+**B. TOP 3 REALISM GAPS**  
+
+1. **Missing explicit reward/penalty structure**  
+   *Why matters:* Q‑learning depends on the numerical values of rewards and penalties; without them

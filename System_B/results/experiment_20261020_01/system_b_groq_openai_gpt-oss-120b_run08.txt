@@ -1,0 +1,51 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 08 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=933, prompt_tokens=1004, total_tokens=1937, completion_time=1.924646012, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=410), prompt_time=0.152324944, prompt_tokens_details=None, queue_time=0.212715974, total_time=2.076970956)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of an academic‑integrity setting (student agents, choice set, learning via Q‑learning, and differing detection chances) which are plausible in principle (see the Wikidata definition of reinforcement learning Q830687 and Q‑learning Q2664563). However, critical components such as the concrete reward/penalty structure, the design of the “active‑intervention,” and the dynamics of peer influence are not described, leaving the model’s fidelity to real‑world academic behavior uncertain.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Reward and penalty values are unspecified** – the simulation says agents “update behavior based on rewards and penalties” but gives no numeric or contextual detail. | The magnitude and sign of rewards/penalties drive Q‑learning updates; without realistic values the agents may learn in ways that do not reflect actual academic consequences (e.g., grades, disciplinary action). | Hypothesis – the description does not provide this information. |
+| 2 | **Detection probabilities are fixed and unexplained (0.55 for copying, 0.25 for AI‑assisted plagiarism).** | Real detection rates vary by institution, tool, and type of misconduct; static rates may over‑ or underestimate the deterrent effect, affecting the realism of the reported increase in dishonest behavior. | Hypothesis – no source or justification is given. |
+| 3 | **Mechanics of the “active‑intervention” and peer‑network influence are omitted.** | Interventions (e.g., honor‑code reminders, plagiarism‑detector training) and local peer effects are central to academic‑integrity dynamics; without details we cannot assess whether the model realistically captures their impact. | Hypothesis – the description mentions an “active‑intervention condition” and “local peer networks” but gives no further implementation details. |
+
+**C. ONE MINIMUM REVISION**  
+Add a **calibrated reward/penalty scheme** tied to empirically observed consequences (e.g., grade loss, disciplinary sanction) and justify the detection probabilities with literature values. Implement these parameters, then evaluate realism by comparing the simulated prevalence of each misconduct type (direct copying vs. AI‑assisted) against published rates from real university studies; a closer match would indicate an improvement in realism.

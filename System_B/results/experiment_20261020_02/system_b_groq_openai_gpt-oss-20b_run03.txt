@@ -1,0 +1,39 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 03 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=892, total_tokens=1892, completion_time=1.116303291, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=892), prompt_time=0.059576116, prompt_tokens_details=None, queue_time=0.316177832, total_time=1.175879407)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation adopts a Q‑learning framework and assigns detection probabilities, which are plausible modeling choices. However, it limits student behavior to only three actions, offers no justification for the chosen detection rates, and omits key institutional enforcement dynamics. These simplifications reduce fidelity to real academic settings, so realism is only partial.
+
+**B. TOP 3 REALISM GAPS**  
+
+1. **Simplified behavior set** – The model allows only

@@ -1,0 +1,51 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 02 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=1004, total_tokens=2004, completion_time=2.093550362, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=514), prompt_time=0.050240155, prompt_tokens_details=None, queue_time=0.309344354, total_time=2.1437905170000002)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures core elements of academic‑integrity dynamics (agents, choice set, learning via Q‑learning, and an intervention comparison), which lends it moderate face validity. However, key mechanisms such as detection, agent heterogeneity, and the nature of AI‑assisted plagiarism are under‑specified, limiting its ability to reflect real‑world complexity.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static detection probabilities** (0.55 for copying, 0.25 for AI‑assisted) are fixed and not linked to any underlying detection model or to the level of dishonest behavior. | In reality, detection rates depend on institutional policies, evolving detection tools, and the prevalence of cheating; a static rate can misrepresent feedback loops that shape student behavior. | Hypothesis – the description gives the numbers but does not explain how they are generated or varied. |
+| 2 | **Absence of agent heterogeneity** (all 30 students are treated identically apart from learning updates). | Real student populations differ in risk tolerance, prior knowledge, and access to AI tools; such variation influences the spread and persistence of plagiarism. | Hypothesis – the description mentions “30 student agents” but provides no attributes or distribution of traits. |
+| 3 | **Oversimplified AI‑assisted plagiarism action** (treated as a single choice without modeling the AI tool, cost, learning curve, or varying detection difficulty). | AI‑generated text differs in quality and detectability; ignoring these nuances can over‑ or under‑estimate its impact on overall dishonest behavior. | Hypothesis – the description lists the option but gives no further detail on its implementation. |
+
+**C. ONE MINIMUM REVISION**  
+Add a **dynamic detection module** that adjusts the probability of catching each type of plagiarism based on the cumulative proportion of dishonest submissions and on whether the active‑intervention condition is applied (e.g., detection = base × (1 + α · share of cheating)). Evaluate the revision by comparing simulated detection trends and dishonest‑behavior trajectories against empirical data from published academic‑integrity

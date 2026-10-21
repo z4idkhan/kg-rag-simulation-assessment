@@ -1,0 +1,54 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 03 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=719, prompt_tokens=1004, total_tokens=1723, completion_time=1.48652179, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=157), prompt_time=0.043464056, prompt_tokens_details=None, queue_time=0.394828481, total_time=1.529985846)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY**  
+The simulation captures several core elements of academic‑integrity research – a population of student agents, choice among honest, direct‑copying, and AI‑assisted plagiarism, and learning via Q‑learning (a model‑free reinforcement‑learning algorithm). However, key contextual factors (e.g., how interventions are operationalised, how detection probabilities vary across contexts, and how penalties map onto real academic sanctions) are unspecified, limiting the model’s fidelity to real‑world academic‑integrity dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+
+| Rank | Gap | Why it matters | Evidence status |
+|------|-----|----------------|-----------------|
+| 1 | **Unspecified intervention mechanism** – the description only says “active‑intervention condition” without detailing what the intervention entails (e.g., education, monitoring tools, policy changes). | Without a concrete definition, the model cannot be judged whether the intervention realistically reduces dishonest behavior or merely serves as a label, making the reported finding about AI‑assisted plagiarism’s persistence ambiguous. | Hypothesis – the description does not provide this detail. |
+| 2 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** – the model treats detection as static and identical for all agents and weeks. | In reality, detection likelihood depends on factors such as plagiarism‑detection software quality, instructor vigilance, and evolving AI‑generation techniques; a static rate may over‑ or under‑estimate the true risk and thus distort learning dynamics. | Directly supported (the description states the probabilities) but the realism concern is a hypothesis about missing variability. |
+| 3 | **Absence of empirical calibration or validation** – no mention of aligning reward/penalty magnitudes, detection rates, or prevalence levels with observed campus data. | Calibration is essential for a model to produce quantitatively credible predictions; without it, the simulation’s outcomes cannot be trusted to reflect actual academic‑integrity environments. | Hypothesis – the description provides no evidence of calibration. |
+
+**C. ONE MINIMUM REVISION**  
+**Add a calibrated, variable detection function.** Replace the single static detection probabilities with a function that draws detection chances from empirically‑based distributions (e.g., higher for direct copying, lower but increasing over time for AI‑assisted plagiarism as detection tools improve).  
+
+*Evaluation:* Run the revised model and compare the simulated overall detection rates and the proportion of dishonest submissions against published campus‑wide plagiarism statistics. If the simulated rates fall within the observed confidence intervals, the revision can be considered an improvement in realism.

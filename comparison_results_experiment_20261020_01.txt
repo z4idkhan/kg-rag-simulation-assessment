@@ -1,0 +1,11 @@
+SYSTEM A vs SYSTEM B — SUMMARY
+Experiment ID: experiment_20261020_01
+
+Model | A consistency | B consistency | Change (percentage points) | A valid | B valid
+nvidia/nemotron-3.5-lightning-30b-a3b | 100% | 100% | +0 | 10/10 | 7/10
+openai/gpt-oss-120b | 100% | 100% | +0 | 10/10 | 9/10
+qwen/qwen3.8-27b | 100% | 100% | +0 | 9/10 | 9/10
+nvidia/nemotron-3-nano-omni-30b-a3b-reasoning | 80% | 50% | -30 | 10/10 | 8/10
+
+Interpretation: consistency measures repeatability, not correctness or realism.
+Review the actual outputs and manually verify whether gaps are evidence-supported.

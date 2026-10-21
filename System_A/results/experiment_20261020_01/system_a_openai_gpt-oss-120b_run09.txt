@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 09 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=652, prompt_tokens=431, total_tokens=1083, completion_time=1.379942203, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=121), prompt_time=0.010078827, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.050266373, total_time=1.39002103)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of academic‑integrity dynamics (agents, incentives, detection probabilities, peer networks, and an intervention contrast). However, the description lacks detail on many contextual and psychological factors that strongly shape cheating in real institutions, limiting its fidelity to actual campus environments.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static, uniform detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In real settings, detection likelihood varies by course, instructor vigilance, technology used, and student reputation. A single fixed value can misrepresent risk‑reward calculations and thus the evolution of dishonest behavior. | Hypothesis – the description only gives the two numbers; it does not indicate any variability or calibration to empirical data. |
+| 2 | **Homogeneous agent preferences and learning parameters** | Q‑learning updates depend on reward magnitude, discount factor, and exploration rate, which differ across students (e.g., risk tolerance, prior experience). Uniform parameters ignore individual heterogeneity that drives diverse cheating trajectories. | Hypothesis – the summary mentions “agents update behavior based on rewards and penalties” but gives no indication of varied learning rates or reward structures. |
+| 3 | **Simplified peer network (local only, unspecified topology)** | Real peer influence is shaped by class size, social clubs, online forums, and hierarchical relationships. An unspecified “local” network may either over‑ or under‑estimate diffusion of cheating norms. | Hypothesis – the description notes interaction through local peer networks but provides no details on network density, clustering, or directionality. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add calibrated, behavior‑type‑specific detection probabilities that vary across agents or contexts.**  
+*Implementation*: Replace the single 0.55 and 0.25 values with distributions (e.g., normal or beta) whose means are anchored to empirical detection rates from institutional reports, and assign each agent a detection probability drawn from the appropriate distribution at each episode.  
+*Evaluation*: Run the simulation under the original and revised detection schemes and compare the resulting prevalence of each cheating mode to published campus‑level cheating statistics (e.g., self‑report surveys, Turnitin detection rates). Improved alignment with external data would indicate a more realistic representation of risk and thus a better simulation of academic‑integrity dynamics.

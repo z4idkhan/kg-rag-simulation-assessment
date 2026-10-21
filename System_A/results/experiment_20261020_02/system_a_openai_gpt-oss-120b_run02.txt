@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 02 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=572, prompt_tokens=431, total_tokens=1003, completion_time=1.643989076, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=114), prompt_time=0.036061818, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.399085549, total_time=1.6800508939999999)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms of academic‑integrity research (agents, choice set, Q‑learning, detection probabilities, peer networks, and an intervention comparison). However, the description lacks detail on how key parameters (e.g., reward structure, network topology, intervention implementation) are grounded in empirical data, limiting confidence that the model faithfully reproduces real‑world dynamics.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static, uniform detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality detection rates vary by discipline, instructor vigilance, and technology used; fixed values can misrepresent the incentive structure that drives student choices. | Directly supported by the description (probabilities are given as single constants). |
+| 2 | **Underspecified peer‑network structure** | The shape of local networks (e.g., density, clustering) strongly influences social learning and the spread of dishonest norms; without this, the model cannot be judged for plausibility. | Mentioned only as “local peer networks”; the exact topology is unknown → hypothesis. |
+| 3 | **Lack of detail on the “active‑intervention” implementation** | Interventions (e.g., honor codes, detection tools, education) differ in effectiveness; a vague definition makes it impossible to assess whether the simulated impact matches observed outcomes. | Described only as “active‑intervention condition” with no further information → hypothesis. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add empirically calibrated, behavior‑dependent detection probabilities.** Replace the single constants with functions that adjust detection likelihood based on factors such as the proportion of dishonest submissions in a given week or the size of the peer network.  
+
+*Evaluation:* Run the revised model and compare the resulting dishonest‑behavior trajectories to published longitudinal studies of academic misconduct (e.g., rates before/after known policy changes). Improved alignment of simulated and observed trends would indicate that the revision enhances realism.

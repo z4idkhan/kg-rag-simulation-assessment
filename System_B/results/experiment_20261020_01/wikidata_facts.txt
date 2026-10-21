@@ -1,0 +1,32 @@
+WIKIDATA RETRIEVAL RECORDS
+============================================================
+
+TOPIC: plagiarism
+STATUS: OK_RELEVANCE_HEURISTIC
+RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+ENTITY: http://www.wikidata.org/entity/Q164666
+DESCRIPTION: using another author's work as if it was one's own original work
+
+TOPIC: academic integrity
+STATUS: OK_RELEVANCE_HEURISTIC
+RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+ENTITY: http://www.wikidata.org/entity/Q4671278
+DESCRIPTION: moral code or ethical policy of academia
+
+TOPIC: reinforcement learning
+STATUS: OK_RELEVANCE_HEURISTIC
+RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+ENTITY: http://www.wikidata.org/entity/Q830687
+DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+
+TOPIC: Q-learning
+STATUS: OK_RELEVANCE_HEURISTIC
+RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+ENTITY: http://www.wikidata.org/entity/Q2664563
+DESCRIPTION: model-free reinforcement learning algorithm
+
+TOPIC: agent-based model
+STATUS: RELEVANCE_UNCONFIRMED
+RELEVANCE: REVIEW_REQUIRED
+ENTITY: Unavailable
+DESCRIPTION: Unavailable

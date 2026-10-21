@@ -1,0 +1,51 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 10 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=930, prompt_tokens=1004, total_tokens=1934, completion_time=1.969523679, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=426), prompt_time=0.011060014, prompt_tokens_details=PromptTokensDetails(cached_tokens=768), queue_time=0.211844804, total_time=1.980583693)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures core mechanisms of academic‑integrity dynamics (agent‑based Q‑learning, distinct plagiarism modalities, and an intervention contrast), which are plausible. However, key contextual details (e.g., how rewards/penalties map to real academic consequences, heterogeneity among students, and empirical grounding of detection rates) are unspecified, limiting confidence that the model faithfully reproduces real‑world behavior.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unvalidated detection probabilities and penalty magnitudes** – the model fixes detection at 0.55 (direct copying) and 0.25 (AI‑assisted) and uses unspecified rewards/penalties. | Realistic outcomes depend on how likely plagiarism is caught and how severe the consequences are; without empirical calibration the model may over‑ or under‑estimate dishonest behavior. | Hypothesis – the description gives the numbers but does not provide sources or justification. |
+| 2 | **Absence of student heterogeneity** – all 30 agents are treated identically aside from network links. | In actual campuses, students differ in risk tolerance, prior cheating history, and access to AI tools; uniform agents can misrepresent the spread and persistence of plagiarism. | Hypothesis – the description mentions “30 student agents” but gives no traits or distributions. |
+| 3 | **No validation against real‑world prevalence data** – the study reports that AI‑assisted plagiarism remains prevalent under intervention, but provides no comparison to observed rates. | Without external validation, it is unclear whether the simulated prevalence aligns with empirical trends, limiting the model’s predictive credibility. | Hypothesis – the description reports a finding but does not cite empirical benchmarks. |
+
+**C. ONE MINIMUM REVISION**  
+*Add empirically grounded detection and penalty parameters.* Replace the fixed detection probabilities (0.55, 0.25) and abstract reward/penalty values with distributions derived from published studies on plagiarism detection rates and institutional sanction severity. Implement a sensitivity analysis to show how varying these parameters affects the proportion of dishonest behavior, and compare the resulting prevalence curves to real‑world statistics on AI‑assisted plagiarism. This single change provides a concrete link to reality and a measurable way to assess improvement.

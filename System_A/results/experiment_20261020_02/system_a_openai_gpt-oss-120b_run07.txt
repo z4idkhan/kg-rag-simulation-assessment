@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 07 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=637, prompt_tokens=431, total_tokens=1068, completion_time=1.354296302, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=83), prompt_time=0.997529328, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.212492874, total_time=2.35182563)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of academic‑integrity dynamics (multiple agents, choice among honest, direct copying, and AI‑assisted plagiarism; learning via Q‑learning; stochastic detection rates; peer‑network influence). However, the description lacks detail on how key contextual factors (e.g., heterogeneous student motivations, varying network structures, evolving detection technologies) are implemented, which limits confidence that the model faithfully reproduces real‑world cheating ecosystems.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted)** | In reality detection likelihood varies with instructor vigilance, plagiarism‑detection tools, and the sophistication of the AI‑generated text; a static rate can misrepresent the incentive structure that drives student choices. | Hypothesis – the description states the rates but gives no mechanism for variation or calibration. |
+| 2 | **Homogeneous agent attributes** (all 30 students share the same reward/penalty values, learning rate, etc.) | Real student populations differ in risk tolerance, ethical orientation, and access to AI tools; ignoring heterogeneity can produce unrealistic convergence patterns and mask subgroup dynamics. | Directly supported – the description lists “30 student agents” but does not mention any individual differences. |
+| 3 | **Simplified peer network** (no specification of network topology, strength of influence, or dynamic rewiring) | Academic‑integrity behavior spreads through complex social ties; a vague “local peer networks” provides no assurance that contagion, clustering, or network‑based interventions are captured. | Hypothesis – the description mentions interaction through local networks but gives no detail on structure or dynamics. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add calibrated, context‑dependent detection probabilities.** Replace the single static rates with detection functions that depend on (a) the proportion of recent cheating incidents (capturing increased instructor scrutiny) and (b) the sophistication level of the AI‑generated text (e.g., higher similarity → higher detection). Implement these functions using empirically‑derived parameters from published plagiarism‑detection studies.  
+
+**Evaluation:** Run the simulation under the original and revised detection schemes and compare (i) the distribution of cheating types over time and (ii) the sensitivity of total dishonest behavior to the intervention condition. Improved alignment with known empirical patterns (e.g., higher detection after spikes in cheating) would indicate that the revision enhances realism.

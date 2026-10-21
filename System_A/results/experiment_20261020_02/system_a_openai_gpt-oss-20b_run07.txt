@@ -1,0 +1,22 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 07 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=811, prompt_tokens=431, total_tokens=1242, completion_time=0.905886365, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=349), prompt_time=0.021618767, prompt_tokens_details=None, queue_time=0.211994498, total_time=0.927505132)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**PARTLY** – The model captures a few core features of an academic‑integrity setting (student agents, choice of honest or dishonest strategies, peer influence, and a learning mechanism). However, it abstracts away many complexities (e.g., nuanced motivations, varied forms of cheating, evolving detection methods, and institutional policies). These omissions limit the fidelity of the simulation to real‑world dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Simplified decision space** – Students are limited to only three discrete actions (honest, direct copying, AI‑assisted plagiarism). Real students face a spectrum of dishonest options (collaborative writing, paraphrasing, using past exams). This matters because it restricts the range of behaviors the model can generate and may bias results toward the observed AI‑plagiarism prevalence. *Hypothesis – needs more information.*  
+2. **Static detection probabilities** – The model assigns fixed probabilities (0.55 for direct copying, 0.25 for AI‑assisted plagiarism) that do not change with intervention or over time. In reality, detection technologies and institutional vigilance evolve, influencing risk calculations. This matters because a static risk may over‑ or under‑estimate the deterrent effect of interventions. *Hypothesis – needs more information.*  
+3. **Unspecified peer‑network structure** – The description notes “local peer networks” but provides no details on network topology, density, or influence weights. Network structure critically shapes information diffusion and conformity pressures. Without this, the model may misrepresent how peer effects amplify or mitigate dishonest behavior. *Hypothesis – needs more information.*
+
+**C. ONE MINIMUM REVISION**  
+Add a simple dynamic detection mechanism: let detection probabilities for each cheating strategy increase linearly over the 16‑week period (e.g., 0.55 → 0.75 for direct copying, 0.25 → 0.45 for AI‑assisted plagiarism). Evaluate improvement by running the same intervention vs. no‑intervention comparison and measuring whether the prevalence of AI‑plagiarism still dominates; a significant change in outcomes would indicate the revision captures a realistic deterrent effect.

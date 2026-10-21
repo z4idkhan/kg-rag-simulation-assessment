@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 02 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=892, total_tokens=1892, completion_time=2.277637823, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=579), prompt_time=0.046079875, prompt_tokens_details=None, queue_time=0.397945549, total_time=2.323717698)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of academic‑integrity dynamics (agent‑based learners, choice among honest, direct copying, and AI‑assisted plagiarism, and learning via Q‑learning). However, key contextual factors (reward structures, realistic detection rates, and concrete intervention mechanisms) are underspecified, limiting confidence that the model faithfully reproduces real‑world patterns.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Reward/penalty specification is missing** – the description only says agents “update behavior based on rewards and penalties” but gives no values or justification. | Q‑learning updates depend directly on the magnitude of rewards; without realistic incentives, agents may learn unrealistic strategies, undermining the validity of the reported increase in dishonest behavior. | Hypothesis – the description does not provide the needed details. |
+| 2 | **Detection probabilities are fixed and unexplained (0.55 for copying, 0.25 for AI‑assisted plagiarism).** | Real detection rates vary by institution, technology, and type of plagiarism; unrealistic or arbitrary rates can bias the learning process and the reported prevalence under intervention. | Hypothesis – no empirical basis is given in the description. |
+| 3 | **Active‑intervention condition is undefined** – the model compares “no‑intervention” with “active‑intervention” but does not state what the intervention entails (e.g., education, monitoring, sanctions). | The mechanism of intervention determines how rewards/penalties change; without a clear definition, the claim that AI‑assisted plagiarism remains prevalent under intervention cannot be judged realistic. | Hypothesis – the description lacks this information. |
+
+**C. ONE MINIMUM REVISION**  
+Add a **clearly defined, empirically grounded reward matrix** for each possible action (honest submission, direct copying

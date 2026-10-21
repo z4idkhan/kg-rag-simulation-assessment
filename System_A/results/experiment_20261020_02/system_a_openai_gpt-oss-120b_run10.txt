@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 10 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=553, prompt_tokens=431, total_tokens=984, completion_time=1.225915956, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=52), prompt_time=0.808815917, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.766584113, total_time=2.034731873)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY**  
+The simulation captures several core elements of academic‑integrity dynamics—multiple agents, choice among honest, direct‑copying, and AI‑assisted cheating, reinforcement learning, and differing detection probabilities. However, the description provides limited detail on critical contextual factors (e.g., variation in student motivation, institutional sanctions, network structure) that are known to shape cheating behavior, leaving the model’s ecological validity uncertain.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Uniform detection probabilities (0.55 for copying, 0.25 for AI‑assisted)** | Real‑world detection rates vary by course, instructor vigilance, and plagiarism‑checking tools; fixed rates may misrepresent the risk landscape and thus the incentives driving behavior. | Directly supported: the description states fixed probabilities; the gap is a hypothesis about realism. |
+| 2 | **Homogeneous agent attributes** (e.g., same reward/penalty values, identical learning rates) | Student populations differ in risk tolerance, ethical orientation, and access to AI tools; ignoring heterogeneity can flatten the dynamics and over‑ or under‑estimate the spread of dishonest strategies. | Directly supported: no mention of individual differences; the gap is inferred from the lack of detail. |
+| 3 | **Simplified peer network (local interactions only, unspecified topology)** | The structure of academic social networks (e.g., dense clusters, bridging ties) influences diffusion of cheating norms; without specifying topology, the model cannot be judged for realistic contagion patterns. | Directly supported: only “local peer networks” are noted; the gap is a hypothesis about missing detail. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add stochastic, context‑dependent detection rates**: replace the single fixed probabilities with distributions (e.g., draw detection probability for each cheating act from a beta distribution centered on the reported means).  
+**Evaluation:** Run parallel simulations comparing the original fixed‑rate model to the stochastic version and assess whether the variance in detection outcomes leads to different equilibrium levels of dishonest behavior (e.g., using mean‑square difference in dishonest‑action frequencies). A reduction in the discrepancy between simulated and empirically observed cheating prevalence would indicate improved realism.

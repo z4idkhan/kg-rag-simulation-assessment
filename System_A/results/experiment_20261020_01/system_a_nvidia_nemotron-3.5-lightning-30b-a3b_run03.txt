@@ -1,0 +1,23 @@
+=== SYSTEM A | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 03 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=454, prompt_tokens=398, total_tokens=852, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+GROUNDING: NONE
+
+============================================================
+
+A. OVERALL REALISM
+VERDICT: PARTLY
+The simulation explicitly models student agency, distinct plagiarism modes (direct vs. AI-assisted), and a detection system with differentiated probabilities, which creates a foundation for studying academic integrity dynamics. However, it lacks mechanisms for social influence, institutional agency, or longitudinal consequence accumulation beyond immediate detection, limiting its ability to fully represent the complexity of real-world academic environments.
+
+B. TOP 3 REALISM GAPS
+1. **Absence of peer-network influence mechanisms**: The description states students interact through local peer networks, but does not specify if network structure affects detection risk, reward sharing, or behavioral conformity. This matters because peer influence is a primary driver of academic dishonesty; without it, the model cannot test whether interventions work through social channels. This is a hypothesis needing more information.
+2. **Lack of differentiated penalties beyond detection probability**: The model applies a single detection probability (0.55 for direct, 0.25 for AI) but does not describe consequences such as grade penalties, formal sanctions, or reputational damage. These consequences are critical for shaping the cost-benefit calculus of dishonesty. The description does not support whether penalties are modeled or how they interact with the detection probabilities; this is a hypothesis needing more information.
+3. **No explicit learning update rules or reward structure**: While the model uses Q-learning, the description provides no details on the reward function (e.g., points for passing grades vs. penalties for detection) or how agents update their Q-values. This matters because the learning dynamics determine whether students adapt their behavior in response to detection rates or interventions. The description only names the method, not its parameters; this is a hypothesis needing more information.
+
+C. ONE MINIMUM REVISION
+Add a defined reward-penalty matrix specifying point values for honest submission, detection outcomes for each plagiarism type, and non-detection successes. To evaluate, run the simulation with and without the matrix and compare the prevalence of AI-assisted plagiarism over time; if the matrix produces stable, rational shifts in behavior that align with the reported finding that intervention fails to curb AI plagiarism, the revision improves ecological validity.

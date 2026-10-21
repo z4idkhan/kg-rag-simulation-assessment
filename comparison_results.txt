@@ -1,35 +1,150 @@
-SYSTEM A vs SYSTEM B COMPARISON
-============================================================
+=====================================================================================
+SYSTEM A vs SYSTEM B — FULL COMPARISON (ALL MODELS)
+=====================================================================================
 
-SYSTEM A (No Grounding):
-Run 01 | PARTLY   | Student Heterogeneity: The simulation assumes a homogenous student population wi
-Run 02 | NO       | Simplistic Representation of AI-Assisted Plagiarism: AI-assisted plagiarism is o
-Run 03 | YES      | Simplification of AI-assisted plagiarism: In the simulation, AI-assisted plagiar
-Run 04 | YES      | Simplification of AI-assisted plagiarism: The simulation treats AI-assisted plag
-Run 05 | PARTLY   | Overly simplistic Q-learning model: Q-learning is a basic reinforcement learning
-Run 06 | NO       | Not found
-Run 07 | YES      | Lack of granular behavior models: The binary behavior model oversimplifies the c
-Run 08 | YES      | Simplistic Detection Probabilities:
-Run 09 | PARTLY   | Inaccurate representation of human decision-making: The use of Q-learning to mod
-Run 10 | PARTLY   | Overly simplified decision-making: The Q-learning algorithm used by agents assum
+─────────────────────────────────────────────────────────────────────────────────────
+MODEL: nvidia/nemotron-3.5-lightning-30b-a3b (nvidia)
+─────────────────────────────────────────────────────────────────────────────────────
 
-Consistency: 40%
+  SYSTEM A (No Grounding):
+    Run 01 | PARTLY             | Binary behavioral choices: Students are limited to honest, d
+    Run 02 | PARTLY             | Absence of consequences beyond detection: The model only pen
+    Run 03 | PARTLY             | Absence of severe academic penalties. The simulation only mo
+    Run 04 | PARTLY             | Binary action space: Students are limited to "honest," "dire
+    Run 05 | PARTLY             | Absence of perceived consequences beyond detection: The mode
+    Run 06 | PARTLY             | Absence of motivation and context: Students plagiarize for r
+    Run 07 | PARTLY             | Absence of motivation and reward structures beyond detection
+    Run 08 | PARTLY             | Absence of motivation diversity: Students are modeled solely
+    Run 09 | PARTLY             | Intervention efficacy is binary and immediate: The simulatio
+    Run 10 | PARTLY             | Rational optimization ignores moral and emotional factors. B
 
-SYSTEM B (KG-Grounded):
-Run 01 | NO       | Simplification of academic integrity policies: The simulation only considers two
-Run 02 | PARTLY   | Lack of academic integrity context: The simulation does not explicitly account f
-Run 03 | NO       | Simplification of Detection Probabilities: The fixed detection probabilities for
-Run 04 | NO       | Oversimplification of student decision-making: The simulation assumes that stude
-Run 05 | PARTLY   | Lack of consideration of academic integrity as a moral code or ethical policy: T
-Run 06 | NO       | Simplification of motivations and consequences: The simulation only considers re
-Run 07 | NO       | Simplification of Human Decision-Making: The simulation uses Q-learning to model
-Run 08 | NO       | Simplification of Plagiarism Detection and Penalties: The simulation assigns fix
-Run 09 | PARTLY   | Oversimplification of academic integrity: The simulation models academic plagiar
-Run 10 | NO       | Simplification of Detection Mechanisms: The simulation uses fixed detection prob
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
 
-Consistency: 70%
+  SYSTEM B (KG-Grounded):
+    Run 01 | PARTLY             | Absence of intentionality and motive: The agents operate sol
+    Run 02 | PARTLY             | Oversimplified behavioral trilemma: The model limits student
+    Run 03 | PARTLY             | Binary action space: The model restricts student choices to 
+    Run 04 | PARTLY             | Oversimplified plagiarism types: The model limits choices to
+    Run 05 | PARTLY             | Binary detection model: The simulation assigns fixed detecti
+    Run 06 | PARTLY             | Rational Actor Assumption: The use of Q-learning assumes stu
+    Run 07 | PARTLY             | Oversimplified detection mechanisms: The fixed probabilities
+    Run 08 | PARTLY             | Oversimplified detection mechanics: The fixed detection prob
+    Run 09 | PARTLY             | Binary plagiarism classification – The model forces agents i
+    Run 10 | PARTLY             | Oversimplified detection mechanics: The fixed detection prob
 
-FINDING: System B more consistent
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
 
+    Finding: System B consistency UNCHANGED by 0 percentage points
 
+─────────────────────────────────────────────────────────────────────────────────────
+MODEL: openai/gpt-oss-120b (groq)
+─────────────────────────────────────────────────────────────────────────────────────
 
+  SYSTEM A (No Grounding):
+    Run 01 | PARTLY             | Static detection probabilities – Using fixed detection rates
+    Run 02 | PARTLY             | Uniform detection probabilities – Using fixed detection rate
+    Run 03 | PARTLY             | Fixed detection probabilities – Using a single static probab
+    Run 04 | PARTLY             | Static detection probabilities – Using fixed rates (0.55 for
+    Run 05 | PARTLY             | Static detection probabilities – Using fixed detection rates
+    Run 06 | PARTLY             | Uniform detection probabilities – Assigning fixed detection 
+    Run 07 | PARTLY             | Uniform detection probabilities – Assigning a single detecti
+    Run 08 | PARTLY             | Static detection probabilities – Using fixed detection rates
+    Run 09 | PARTLY             | Static detection probabilities – Using fixed rates (0.55 for
+    Run 10 | PARTLY             | Not found
+
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
+
+  SYSTEM B (KG-Grounded):
+    Run 01 | PARTLY             | Simplified detection probabilities – The model assigns fixed
+    Run 02 | PARTLY             | Not found
+    Run 03 | PARTLY             | Static detection probabilities – The simulation fixes the ch
+    Run 04 | PARTLY             | Not found
+    Run 05 | PARTLY             | Not found
+    Run 06 | PARTLY             | Not found
+    Run 07 | PARTLY             | Not found
+    Run 08 | PARTLY             | Not found
+    Run 09 | PARTLY             | Not found
+    Run 10 | PARTLY             | Not found
+
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
+
+    Finding: System B consistency UNCHANGED by 0 percentage points
+
+─────────────────────────────────────────────────────────────────────────────────────
+MODEL: qwen/qwen3.8-27b (groq)
+─────────────────────────────────────────────────────────────────────────────────────
+
+  SYSTEM A (No Grounding):
+    Run 01 | PARTLY             | Static Reward/Penalty Structure: Real academic penalties are
+    Run 02 | PARTLY             | Static Detection Probabilities
+    Run 03 | PARTLY             | Static Detection Probabilities: In reality, detection probab
+    Run 04 | PARTLY             | Static Detection Probabilities: Real-world detection systems
+    Run 05 | PARTLY             | Homogeneous Agent Motivation: Assuming all 30 agents have id
+    Run 06 | PARTLY             | Static Detection Probabilities:
+    Run 07 | PARTLY             | Absent Effort/Cost Asymmetry
+    Run 08 | PARTLY             | Static Detection Probabilities: The fixed detection rates (0
+    Run 09 | PARTLY             | Homogeneous Agent Capabilities and Motivation
+    Run 10 | PARTLY             | Static Peer Network Structure: The simulation uses "local pe
+
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
+
+  SYSTEM B (KG-Grounded):
+    Run 01 | PARTLY             | Static Detection Probabilities: The model assigns fixed dete
+    Run 02 | PARTLY             | Absence of Ethical Constraint: The model relies solely on ex
+    Run 03 | PARTLY             | Binary Intervention Mechanism: The description specifies "ac
+    Run 04 | PARTLY             | Static Detection Probabilities: The simulation assigns fixed
+    Run 05 | PARTLY             | Static Detection Probabilities: The simulation assigns fixed
+    Run 06 | PARTLY             | Static Detection Probabilities: The model assigns fixed prob
+    Run 07 | PARTLY             | Static Detection Probabilities: The simulation assigns fixed
+    Run 08 | PARTLY             | Static Detection Probabilities: The simulation assigns fixed
+    Run 09 | PARTLY             | Homogeneous Agent Capability: The model assumes all 30 agent
+    Run 10 | PARTLY             | Static Detection Probabilities: The simulation assigns fixed
+
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
+
+    Finding: System B consistency UNCHANGED by 0 percentage points
+
+─────────────────────────────────────────────────────────────────────────────────────
+MODEL: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning (nvidia)
+─────────────────────────────────────────────────────────────────────────────────────
+
+  SYSTEM A (No Grounding):
+    Run 01 | PARTLY             | No differentiation in student motivation or academic pressur
+    Run 02 | PARTLY             | No differentiation in student motivation or academic pressur
+    Run 03 | PARTLY             | Lack of cognitive/motivational differentiation – Students ma
+    Run 04 | PARTLY             | Unclear operationalization of peer influence — The simulatio
+    Run 05 | PARTLY             | No behavioral motivation models – The choices (honest, direc
+    Run 06 | PARTLY             | Lack of explicit social peer influence mechanism
+    Run 07 | PARTLY             | Oversimplified decision-making – Using only Q-learning with 
+    Run 08 | PARTLY             | Oversimplified behavior choices – Limiting choices to only t
+    Run 09 | PARTLY             | Lack of motivation and cognitive factors – Students may choo
+    Run 10 | PARTLY             | Unspecified reward structure – The simulation lacks clarity 
+
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
+
+  SYSTEM B (KG-Grounded):
+    Run 01 | PARTLY             | Absence of explicit academic incentives
+    Run 02 | PARTLY             | Unclear role of academic integrity as a moral constraint
+    Run 03 | PARTLY             | No modeling of individual motivation or intent
+    Run 04 | PARTLY             | Lack of explicit modeling of academic integrity norms
+    Run 05 | PARTLY             | Limited behavioral diversity in plagiarism types: Only three
+    Run 06 | PARTLY             | Limited behavioral motivations – The model assumes agents on
+    Run 07 | PARTLY             | Detection probability is uniform across copying types and ti
+    Run 08 | PARTLY             | Static peer influence networks – The description implies fix
+    Run 09 | PARTLY             | Motivation not modeled – The choice between honest, copied, 
+    Run 10 | PARTLY             | Unspecified reward structure – The description states agents
+
+    Consistency: 100% (10/10 agreed on PARTLY; 10/10 valid runs)
+
+    Finding: System B consistency UNCHANGED by 0 percentage points
+
+=====================================================================================
+SUMMARY TABLE
+=====================================================================================
+Model                                    |  Sys A |  Sys B |   Change | A Valid | B Valid
+-------------------------------------------------------------------------------------
+nvidia/nemotron-3.5-lightning-30b-a3b    |   100% |   100% |    +0 pp | 10/10    | 10/10
+openai/gpt-oss-120b                      |   100% |   100% |    +0 pp | 10/10    | 10/10
+qwen/qwen3.8-27b                         |   100% |   100% |    +0 pp | 10/10    | 10/10
+nvidia/nemotron-3-nano-omni-30b-a3b-reasoning |   100% |   100% |    +0 pp | 10/10    | 10/10
+=====================================================================================

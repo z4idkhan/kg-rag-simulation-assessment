@@ -1,0 +1,44 @@
+=== SYSTEM B | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 05 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=445, prompt_tokens=906, total_tokens=1351, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+A. OVERALL REALISM
+PARTLY
+The simulation explicitly models distinct plagiarism behaviors (honest, direct copying, AI-assisted) and uses Q-learning to update student decisions based on varying detection probabilities. However, the model reduces academic integrity to behavioral choice and reward optimization, omitting the cognitive, motivational, and social processes that drive plagiarism in real academic settings.
+
+B. TOP 3 REALISM GAPS
+1. **Plagiarism mechanisms are reduced to behavioral choices.** The simulation treats honest submission, direct copying, and AI-assisted plagiarism as discrete actions selected by Q-learning agents. This abstraction omits the cognitive processes, source-use norms, and intent that characterize real plagiarism, making it unclear whether the modeled behaviors map onto meaningful academic conduct. (Directly supported by the description; the description lists behaviors but not the underlying mechanisms.)
+2. **Detection probabilities are fixed and binary.** The model applies static detection probabilities (0.55 for direct copying, 0.25 for AI-assisted plagiarism) without modeling how detection varies across assignment types, instructor practices, or student strategies. In reality, detectability depends on context, formatting, and evaluation design, which may alter the learning dynamics the simulation intends to capture. (Hypothesis needing more information; the description specifies fixed values but does not justify their realism or variability.)
+3. **Peer network structure lacks pedagogical detail.** Students interact through "local peer networks," yet the description provides no information about network topology, tie strength, or whether interactions convey norms, feedback, or collaborative learning. Real academic integrity is shaped by social influence and institutional climate, so the absence of these details limits inference about intervention effects. (Hypothesis needing more information; the description mentions networks but does not specify their role or structure.)
+
+C. ONE MINIMUM REVISION
+Add a brief specification of how detection probability varies by assignment type or assessment format (e.g., essay vs. problem set). To evaluate, rerun the simulation with at least two distinct detection profiles and compare whether the relative prevalence of AI-assisted plagiarism shifts in a manner consistent with real-world variance in detectability.

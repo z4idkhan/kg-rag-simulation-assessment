@@ -1,0 +1,27 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 08 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=720, prompt_tokens=431, total_tokens=1151, completion_time=1.562935093, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=195), prompt_time=0.020682138, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.39683189, total_time=1.5836172309999998)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures core mechanisms (agents, learning, detection probabilities, and an intervention contrast) that are relevant to academic‑integrity dynamics. However, the description omits many contextual factors (e.g., heterogeneous incentives, evolving detection methods, richer behavioral options) that limit how faithfully it mirrors real‑world settings.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality detection rates vary with faculty vigilance, technology, assignment type, and student concealment effort; static rates can misrepresent the deterrent effect of enforcement. | The description states the probabilities are fixed; no indication they adapt, so this is a hypothesis about missing dynamism. |
+| 2 | **Only three possible actions (honest, direct copy, AI‑assisted plagiarism)** | Academic dishonesty includes partial copying, contract cheating, self‑plagiarism, and mixed strategies; limiting choices oversimplifies decision spaces and may bias learning outcomes. | The simulation’s action set is explicitly limited to those three, so the gap is directly supported. |
+| 3 | **Underspecified peer‑network structure** | The strength, topology, and information flow of local networks critically shape norm diffusion; without detail it is unclear whether social influence is realistic. | The description mentions “local peer networks” but provides no further parameters, so this is a hypothesis requiring more information. |
+
+**C. ONE MINIMUM REVISION**  
+*Add a context‑sensitive detection module*: replace the single static detection probabilities with functions that adjust the chance of being caught based on (a) the proportion of dishonest peers in an agent’s local network and (b) the cumulative number of prior offenses (e.g., detection = 0.4 + 0.2 × network‑dishonesty + 0.1 × past‑offenses, capped at 0.9).  
+
+*Evaluation*: Run the simulation under both conditions (no‑intervention vs. active‑intervention) before and after the change and compare the resulting dishonest‑behavior trajectories to published empirical patterns (e.g., higher detection after repeated offenses, peer‑influence effects). A closer alignment with those patterns would indicate an improvement in realism.

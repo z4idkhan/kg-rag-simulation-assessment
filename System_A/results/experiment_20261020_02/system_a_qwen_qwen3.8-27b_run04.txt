@@ -1,0 +1,13 @@
+=== SYSTEM A | qwen/qwen3.8-27b | RUN 04 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: FAILED
+FINISH REASON: error
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: Not available
+GROUNDING: NONE
+
+============================================================
+
+RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01kwsegw5jf468mzdxfmrb38sr` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 477, Requested 528. Please try again in 300ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}

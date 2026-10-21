@@ -1,0 +1,52 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 04 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=889, prompt_tokens=892, total_tokens=1781, completion_time=1.8386659239999998, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=342), prompt_time=0.240408622, prompt_tokens_details=None, queue_time=1.1129537, total_time=2.079074546)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of an academic‑integrity setting (multiple student agents, choice among honest work, direct copying, and AI‑assisted plagiarism, a learning mechanism, and differing detection probabilities). However, key aspects that affect realism—such as how rewards/penalties are quantified, how peer influence operates, and whether the fixed detection probabilities reflect real‑world detection rates—are unspecified.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unspecified reward/penalty structure** – the description only says agents “update behavior based on rewards and penalties” but gives no values or how they map to grades, sanctions, or reputational effects. | Without realistic incentives, the Q‑learning dynamics may diverge from how real students weigh benefits of cheating versus consequences, limiting the model’s predictive validity. | Hypothesis – the description does not provide this detail. |
+| 2 | **Static, possibly unrealistic detection probabilities** – 0.55 for direct copying and 0.25 for AI‑assisted plagiarism are fixed throughout the 16‑week run. | Real detection rates vary with institutional policies, technology improvements, and the visibility of AI‑generated text; a constant rate cannot capture adaptive enforcement or learning effects. | Hypothesis – the description gives the numbers but does not justify them or allow them to change. |
+| 3 | **Vague peer‑network influence** – agents “interact through local peer networks” but the mechanism (e.g., information sharing, norm diffusion) is not described. | Peer effects are a major driver of academic‑integrity behavior; without a clear model, the simulation cannot be judged whether it realistically reproduces contagion or deterrence effects. | Hypothesis – the description mentions the network but provides no operational detail. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add an empirically grounded, dynamic detection probability model.** Replace the fixed 0.55 and 0.25 rates with functions that adjust each week based on cumulative detected incidents (e.g., increasing detection probability as institutional monitoring intensifies). Calibrate these functions using published statistics on plagiarism detection success rates for human‑written vs. AI‑generated work.  
+
+*Evaluation:* Run parallel simulations with the original static rates and the new dynamic rates; compare the resulting prevalence of dishonest behavior against real‑world longitudinal studies of plagiarism trends. Improved alignment with empirical data would indicate a more realistic simulation.

@@ -1,0 +1,23 @@
+=== SYSTEM A | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 03 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=472, prompt_tokens=398, total_tokens=870, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+GROUNDING: NONE
+
+============================================================
+
+A. OVERALL REALISM
+VERDICT: PARTLY
+The simulation models student decision-making via Q-learning and incorporates distinct detection probabilities for different dishonesty types, which provides a structured framework for studying behavioral adaptation. However, it reduces academic integrity to a static choice between three behaviors within a fixed reward-penalty structure, omitting the iterative, reflective, and socially negotiated processes central to real academic misconduct.
+
+B. TOP 3 REALISM GAPS
+1. **Absence of consequences beyond detection**: The description specifies detection probabilities but does not state whether penalties (e.g., grade reduction, formal sanctions) are applied, how severe they are, or if they scale with repeat offenses. This matters because penalty severity directly shapes Q-learning updates and student cost-benefit calculations; without it, the model cannot capture why students might persist in dishonest behavior despite risk. This gap is directly supported by the text, which mentions rewards/penalties generally but provides no specifics on their nature or magnitude.
+2. **Static peer network structure**: The model describes local peer networks but does not specify whether ties are formed, broken, or weighted by observed behavior. In reality, academic integrity norms are reinforced or eroded through dynamic social influence. This matters because static networks may misrepresent how intervention spreads through a population. Whether dynamic network effects are modeled is a hypothesis needing more information.
+3. **Lack of motivation and context diversity**: The simulation assumes homogeneous students optimizing a fixed reward function, yet real academic integrity violations are driven by varied motivations (e.g., time pressure, perceived unfairness, lack of confidence) and course contexts. This matters because a single reward structure may fail to represent why certain students favor AI-assisted plagiarism or why interventions fail. Whether motivation is explicitly modeled is a hypothesis needing more information.
+
+C. ONE MINIMUM REVISION
+Add explicit penalty parameters (e.g., grade penalty magnitude and escalation rate for repeat offenses) to the Q-learning reward function and specify that detection triggers these penalties. To evaluate improvement, run the simulation with and without the penalties while holding detection probabilities constant; if the active-intervention condition more effectively reduces total dishonest behavior—particularly AI-assisted plagiarism—under the new penalty structure, this indicates the revision enhances behavioral realism and policy relevance.

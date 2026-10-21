@@ -1,0 +1,28 @@
+=== SYSTEM A | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 06 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=475, prompt_tokens=398, total_tokens=873, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+GROUNDING: NONE
+
+============================================================
+
+A. OVERALL REALISM
+VERDICT: PARTLY
+The simulation models a specific form of academic dishonesty with defined behavioral options, detection probabilities, and learning mechanisms. However, it lacks critical elements for a fully realistic academic integrity model, such as explicit assignment structures, grading stakes, and the full range of institutional responses.
+
+B. TOP 3 REALISM GAPS
+1. **Absence of assignment structure and stakes**: The description does not specify task types, grading weights, or deadlines. These factors heavily influence the cost-benefit analysis of cheating and are central to real-world academic integrity scenarios; without them, the incentive structure is undefined.
+   *Directly supported*: No. The text mentions "academic-integrity environment" but provides no details on assignments or evaluation, making this a hypothesis requiring more information.
+
+2. **Oversimplified detection probabilities**: Detection is given as fixed constants (0.55 for direct copying, 0.25 for AI-assisted plagiarism). In practice, detection rates vary by assignment format, instructor vigilance, and technology used. The model’s static rates may misrepresent how detection efficacy changes over time or with intervention.
+   *Directly supported*: No. The text provides specific probabilities but offers no context on variability, assignment types, or how detection is modeled, making this a hypothesis needing more information.
+
+3. **Limited intervention mechanisms**: The comparison of "no-intervention" versus "active-intervention" conditions is noted, but the description does not detail what the active intervention entails (e.g., honor pledges, honor code education, honor council processes). Without this, it is unclear whether the intervention targets behavior, perception, or detection likelihood.
+   *Directly supported*: No. The text references an intervention condition but provides no mechanistic details, making this a hypothesis requiring more information.
+
+C. ONE MINIMUM REVISION
+Add a single sentence defining the active-intervention condition (e.g., "The active-intervention condition includes a mandatory honor-code tutorial completed in week 4"). Evaluate improvement by comparing the prevalence and trajectory of AI-assisted plagiarism between the no-intervention and intervention conditions across the 16-week period; a meaningful reduction or shift in behavior patterns would indicate the revision enhances realism and policy relevance.

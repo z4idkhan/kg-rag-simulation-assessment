@@ -1,201 +1,280 @@
-# system_b.py
-# System B: Knowledge Graph-Grounded Assessment
-# This is YOUR research contribution
+"""
+System B: Wikidata-grounded assessment. Shared assessment instructions and settings
+must match System A; only the Wikidata knowledge block is added to the user prompt.
+"""
+import json, os, re, time
+from datetime import datetime, timezone
+from pathlib import Path
 
-import os
-from groq import Groq
 import requests
-import json
-import urllib.request
 from dotenv import load_dotenv
+from groq import Groq
+from openai import OpenAI
 
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = BASE_DIR.parent
+load_dotenv(PROJECT_DIR / ".env")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+NVIDIA_API_KEY = os.getenv("NVIDIA_NIM_API_KEY") or os.getenv("NVIDIA_API_KEY")
+if not GROQ_API_KEY:
+    raise RuntimeError(f"GROQ_API_KEY missing from {PROJECT_DIR / '.env'}")
+if not NVIDIA_API_KEY:
+    raise RuntimeError("NVIDIA_NIM_API_KEY (or NVIDIA_API_KEY) missing from .env")
 
-# ─────────────────────────────────────────
-# STEP 1: Get structured facts from Wikidata
-# ─────────────────────────────────────────
+groq_client = Groq(api_key=GROQ_API_KEY, timeout=120.0, max_retries=2)
+nvidia_client = OpenAI(base_url="https://integrate.api.nvidia.com/v1",
+    api_key=NVIDIA_API_KEY, timeout=120.0, max_retries=2)
 
-def get_wikidata_fact(label):
-    """Query Wikidata for a structured fact"""
-    
+MODELS = [
+    {"name": "allam-2-7b", "provider": "groq"},
+    {"name": "openai/gpt-oss-20b", "provider": "groq"},
+    {"name": "nvidia/nemotron-3.5-lightning-30b-a3b", "provider": "nvidia"},
+    {"name": "openai/gpt-oss-120b", "provider": "groq"},
+    {"name": "qwen/qwen3.8-27b", "provider": "groq"},
+    {"name": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning", "provider": "nvidia"},
+]
+MAX_OUTPUT_TOKENS = 1000
+RUNS_PER_MODEL = 10
+TEMPERATURE = 0.6
+REQUEST_DELAY_SECONDS = 5
+EXPERIMENT_ID = os.getenv("EXPERIMENT_ID", "experiment_20261020_01")
+OUTPUT_DIR = BASE_DIR / "results" / EXPERIMENT_ID
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+WIKIDATA_ENDPOINT = "https://query.wikidata.org/sparql"
+WIKIDATA_USER_AGENT = "KG-RAG-Simulation-Assessment/1.2 (academic research)"
+
+SIMULATION_DESCRIPTION = """
+A simulated academic-integrity environment contains 30 student agents over 16 weeks.
+Students can choose honest submission, direct copying, or AI-assisted plagiarism.
+The model uses Q-learning: agents update behavior based on rewards and penalties.
+The detection probability is 0.55 for direct copying and 0.25 for AI-assisted plagiarism.
+Students interact through local peer networks. The experiment compares a no-intervention
+condition with an active-intervention condition. The main reported finding is that
+AI-assisted plagiarism increases total dishonest behavior and remains prevalent under
+intervention.
+""".strip()
+
+# Keep this exact text synchronized with System A.
+ASSESSMENT_INSTRUCTIONS = """
+Assess the simulation described below. Use only the information explicitly provided
+for claims about what the simulation does. Do not assume a feature is absent merely
+because it is not mentioned. Separate evidence-backed concerns from hypotheses that
+would need more information. If you use a knowledge statement, explain how it is
+relevant and do not treat a short definition as proof that the simulation is valid
+or invalid. Be concise, specific, and balanced.
+
+Return exactly these three sections:
+
+A. OVERALL REALISM
+Choose exactly one verdict: YES, PARTLY, or NO.
+Explain the verdict in 2–4 sentences.
+
+B. TOP 3 REALISM GAPS
+List up to three gaps, ranked from most important to least important. For each, state
+(1) the gap, (2) why it matters, and (3) whether it is directly supported by the
+description or is a hypothesis needing more information. Do not invent details.
+
+C. ONE MINIMUM REVISION
+Recommend exactly one smallest practical revision. State what to change and how to
+evaluate whether that change improves the simulation. Do not list multiple alternatives.
+""".strip()
+
+# Manually verified Wikidata entity IDs (checked by hand on query.wikidata.org).
+TOPICS = {
+    "plagiarism": "Q164666",
+    "academic integrity": "Q4671278",
+    "reinforcement learning": "Q830687",
+    "Q-learning": "Q2664563",
+    "agent-based model": "Q392811",
+}
+
+def safe_filename(value):
+    return re.sub(r"[^A-Za-z0-9_.-]+", "_", value)
+
+def get_wikidata_fact(label, qid):
+    """Retrieve the English description of a manually verified Wikidata entity."""
     query = f"""
-    SELECT ?item ?itemLabel ?desc WHERE {{
-      ?item rdfs:label "{label}"@en.
-      OPTIONAL {{?item schema:description ?desc.
-      FILTER(LANG(?desc) = "en")}}
-      SERVICE wikibase:label {{ 
-        bd:serviceParam wikibase:language "en". 
-      }}
+    SELECT ?desc WHERE {{
+      wd:{qid} schema:description ?desc .
+      FILTER(LANG(?desc) = "en")
     }}
-    LIMIT 1
     """
-    
-    url = "https://query.wikidata.org/sparql"
-    headers = {"Accept": "application/json",
-               "User-Agent": "KG-RAG-Research/1.0"}
-    
-    params = {"query": query, "format": "json"}
-    
+    headers = {"Accept": "application/sparql-results+json", "User-Agent": WIKIDATA_USER_AGENT}
+    uri = f"http://www.wikidata.org/entity/{qid}"
     try:
-        response = requests.get(url, 
-                               params=params, 
-                               headers=headers,
-                               timeout=10)
-        data = response.json()
-        results = data["results"]["bindings"]
-        
-        if results and "desc" in results[0]:
-            return results[0]["desc"]["value"]
-        else:
-            return f"No description found for {label}"
-            
-    except Exception as e:
-        return f"Query failed: {str(e)}"
-
-# ─────────────────────────────────────────
-# STEP 2: Build grounding context from facts
-# ─────────────────────────────────────────
+        response = requests.get(WIKIDATA_ENDPOINT, params={"query": query, "format": "json"},
+                                headers=headers, timeout=25)
+        response.raise_for_status()
+        rows = response.json().get("results", {}).get("bindings", [])
+        if not rows:
+            return {"topic": label, "status": "NOT_FOUND", "entity_uri": uri,
+                    "description": "", "relevance": "VERIFIED_ENTITY_ID"}
+        return {"topic": label, "status": "OK", "entity_uri": uri,
+                "description": rows[0]["desc"]["value"], "relevance": "VERIFIED_ENTITY_ID"}
+    except requests.RequestException as exc:
+        return {"topic": label, "status": "RETRIEVAL_FAILED", "entity_uri": uri,
+                "description": f"{type(exc).__name__}: {exc}", "relevance": "NOT_CHECKED"}
+    except (ValueError, KeyError, TypeError) as exc:
+        return {"topic": label, "status": "PARSE_FAILED", "entity_uri": uri,
+                "description": f"{type(exc).__name__}: {exc}", "relevance": "NOT_CHECKED"}
 
 def build_knowledge_grounding():
-    """Retrieve all structured facts for grounding"""
-    
     print("Retrieving structured facts from Wikidata...")
-    
-    topics = [
-        "plagiarism",
-        "academic integrity", 
-        "reinforcement learning",
-        "Q-learning",
-        "agent-based model"
-    ]
-    
     facts = {}
-    for topic in topics:
-        fact = get_wikidata_fact(topic)
+    for topic, qid in TOPICS.items():
+        fact = get_wikidata_fact(topic, qid)
         facts[topic] = fact
-        print(f"  ✓ {topic}: {fact[:50]}...")
-    
+        preview = (fact.get("description") or fact["status"]).replace("\n", " ")[:90]
+        print(f"  {fact['status']}: {topic}: {preview}")
+        time.sleep(0.5)
     return facts
 
-# ─────────────────────────────────────────
-# STEP 3: Build grounded prompt
-# ─────────────────────────────────────────
+def render_knowledge_block(facts):
+    lines = [
+        "ADDITIONAL STRUCTURED KNOWLEDGE FROM WIKIDATA",
+        "These short descriptions do not prove that a simulation feature exists or is missing.",
+        "Entity IDs were manually verified. Do not use records with retrieval errors",
+        "as supporting evidence.", "",
+    ]
+    for topic, fact in facts.items():
+        lines.extend([f"Topic: {topic}", f"Retrieval status: {fact.get('status', 'UNKNOWN')}",
+            f"Entity URL: {fact.get('entity_uri') or 'Unavailable'}",
+            f"Description: {fact.get('description') or 'Unavailable'}", ""])
+    return "\n".join(lines).strip()
+
 
 def build_grounded_prompt(facts):
-    """Combine Wikidata facts with simulation description"""
-    
-    grounding_text = """
-STRUCTURED KNOWLEDGE FROM KNOWLEDGE BASE:
-The following definitions are retrieved from 
-a structured knowledge graph (Wikidata) to 
-ground your assessment:
+    evidence_rules = """
+EVIDENCE AND KNOWLEDGE-GROUNDING RULES
 
+1. Treat the simulation description as the source for claims about what
+   the simulation actually implements or reports.
+
+2. Treat Wikidata descriptions as background definitions only. A definition
+   does not prove that a simulation feature exists, is missing, or is realistic.
+
+3. Use a retrieved fact to support an assessment claim only when the fact
+   directly supports that claim. Do not infer implementation details from
+   a general concept definition.
+
+4. Ignore records with retrieval failures as supporting evidence.
+
+5. For each identified gap, distinguish:
+   - what the simulation description explicitly states;
+   - what information is missing or unspecified;
+   - whether Wikidata provides directly relevant supporting evidence.
+
+6. If no retrieved fact directly supports a claim, say so. Do not invent
+   evidence, citations, or relationships between Wikidata entities.
+
+7. Assess the simulation using the same criteria as System A. The additional
+   knowledge must not automatically make the assessment more positive
+   or negative.
 """
-    
+    return (
+        render_knowledge_block(facts)
+        + "\n\n"
+        + evidence_rules
+        + "\n\nSIMULATION DETAILS\n"
+        + SIMULATION_DESCRIPTION
+        + "\n\n"
+        + ASSESSMENT_INSTRUCTIONS
+    )
+
+
+def call_model(model, prompt):
+    messages = [
+        {"role": "system", "content": "Follow the assessment instructions exactly. Be concise and evidence-conscious."},
+        {"role": "user", "content": prompt},
+    ]
+    if model["provider"] == "groq":
+        response = groq_client.chat.completions.create(model=model["name"], messages=messages,
+            max_tokens=MAX_OUTPUT_TOKENS, temperature=TEMPERATURE)
+    elif model["provider"] == "nvidia":
+        response = nvidia_client.chat.completions.create(model=model["name"], messages=messages,
+            max_tokens=MAX_OUTPUT_TOKENS, temperature=TEMPERATURE,
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}})
+    else:
+        raise ValueError(f"Unsupported provider: {model['provider']}")
+    if not response.choices:
+        return "", "no_choices", "REVIEW", "No choices returned"
+    choice = response.choices[0]
+    content = choice.message.content or ""
+    reason = str(choice.finish_reason or "unknown")
+    lower_reason = reason.lower()
+    if "length" in lower_reason or "max_tokens" in lower_reason:
+        status = "INCOMPLETE"
+    elif content.strip() and ("stop" in lower_reason or "end_turn" in lower_reason):
+        status = "SUCCESS"
+    else:
+        status = "REVIEW"
+    usage = str(response.usage) if getattr(response, "usage", None) else "Not available"
+    return content, reason, status, usage
+
+def save_metadata(facts):
+    (OUTPUT_DIR / "wikidata_facts.json").write_text(
+        json.dumps(facts, indent=2, ensure_ascii=False), encoding="utf-8")
+    manifest = {
+        "system": "B", "experiment_id": EXPERIMENT_ID,
+        "created_utc": datetime.now(timezone.utc).isoformat(),
+        "models": MODELS, "runs_per_model": RUNS_PER_MODEL,
+        "temperature": TEMPERATURE, "max_output_tokens": MAX_OUTPUT_TOKENS,
+        "request_delay_seconds": REQUEST_DELAY_SECONDS, "grounding": True,
+        "topics": TOPICS, "retrieval_results": facts,
+        "simulation_description": SIMULATION_DESCRIPTION,
+        "assessment_instructions": ASSESSMENT_INSTRUCTIONS,
+    }
+    (OUTPUT_DIR / "run_manifest.json").write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
+    lines = ["WIKIDATA RETRIEVAL RECORDS", "=" * 60, ""]
     for topic, fact in facts.items():
-        grounding_text += f"- {topic.upper()}: {fact}\n"
-    
-    simulation_description = """
-SIMULATION TO EVALUATE:
-A multi-agent simulation of academic plagiarism 
-behavior in a classroom environment.
+        lines.extend([f"TOPIC: {topic}", f"STATUS: {fact.get('status')}",
+            f"RELEVANCE: {fact.get('relevance')}", f"ENTITY: {fact.get('entity_uri') or 'Unavailable'}",
+            f"DESCRIPTION: {fact.get('description') or 'Unavailable'}", ""])
+    (OUTPUT_DIR / "wikidata_facts.txt").write_text("\n".join(lines), encoding="utf-8")
 
-The simulation models:
-- 30 student agents over 16 weeks (one semester)
-- Each agent can choose: honest submission, 
-  direct copying, or AI-assisted plagiarism
-- Agents use Q-learning to adapt their behavior
-  based on rewards and penalties
-- Detection probability: direct copying = 0.55, 
-  AI-assisted plagiarism = 0.25
-- Social peer influence through local peer networks
-- Two intervention conditions: no intervention 
-  and active intervention
-
-Main finding: AI-assisted plagiarism increases 
-total dishonest behavior and remains prevalent 
-even under active intervention.
-"""
-    
-    assessment_request = """
-ASSESSMENT REQUEST:
-Using the structured knowledge provided above 
-as your factual grounding, please evaluate:
-
-A. Overall realism judgment (yes/partly/no + why)
-
-B. Top 3 most important realism gaps in this 
-   simulation based on the knowledge provided
-
-C. One minimum recommended revision
-"""
-    
-    return grounding_text + simulation_description + assessment_request
-
-# ─────────────────────────────────────────
-# STEP 4: Call LLM with grounded prompt
-# ─────────────────────────────────────────
-
-def assess_with_grounding(run_number, facts):
-    from groq import Groq
-    
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+def main():
+    print("=== SYSTEM B: Knowledge-Grounded Assessment ===")
+    print(f"Experiment ID: {EXPERIMENT_ID}")
+    print(f"Models: {len(MODELS)} | Runs/model: {RUNS_PER_MODEL}")
+    print(f"Planned assessments: {len(MODELS) * RUNS_PER_MODEL}")
+    print(f"Output directory: {OUTPUT_DIR}\n")
+    facts = build_knowledge_grounding()
+    failed = [t for t, f in facts.items() if f.get("status") != "OK"]
+    if failed:
+        raise SystemExit(f"Stopping: these facts were not retrieved: {failed}. Fix before running.")
+    save_metadata(facts)
     prompt = build_grounded_prompt(facts)
-    
-    try:
-        response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[{"role": "user", 
-                       "content": prompt}]
-        )
-        assessment = response.choices[0].message.content
-        
-    except Exception as e:
-        assessment = f"Error: {str(e)}"
-    
-    filename = f"system_b_run{run_number:02d}.txt"
-    with open(filename, "w") as f:
-        f.write(f"=== SYSTEM B RUN {run_number} ===\n")
-        f.write(f"=== WITH KNOWLEDGE GROUNDING ===\n\n")
-        f.write("FACTS USED:\n")
-        for topic, fact in facts.items():
-            f.write(f"- {topic}: {fact}\n")
-        f.write(f"\n{'='*50}\n\n")
-        f.write(assessment)
-    
-    print(f"Run {run_number} complete.")
-    return assessment
-
-# ─────────────────────────────────────────
-# MAIN: Run System B
-# ─────────────────────────────────────────
+    totals = {"SUCCESS": 0, "INCOMPLETE": 0, "FAILED": 0, "REVIEW": 0}
+    for model in MODELS:
+        print(f"\nModel: {model['name']} ({model['provider']})")
+        for run_number in range(1, RUNS_PER_MODEL + 1):
+            print(f"  Run {run_number:02d}/{RUNS_PER_MODEL}: ", end="", flush=True)
+            try:
+                content, reason, status, usage = call_model(model, prompt)
+            except Exception as exc:
+                content, reason, status, usage = f"{type(exc).__name__}: {exc}", "error", "FAILED", "Not available"
+            filename = OUTPUT_DIR / (
+                f"system_b_{safe_filename(model['provider'])}_{safe_filename(model['name'])}_run{run_number:02d}.txt")
+            with filename.open("w", encoding="utf-8") as f:
+                f.write(f"=== SYSTEM B | {model['name']} | RUN {run_number:02d} ===\n")
+                f.write(f"EXPERIMENT ID: {EXPERIMENT_ID}\nPROVIDER: {model['provider']}\n")
+                f.write(f"STATUS: {status}\nFINISH REASON: {reason}\n")
+                f.write(f"TEMPERATURE: {TEMPERATURE}\nMAX OUTPUT TOKENS: {MAX_OUTPUT_TOKENS}\nUSAGE: {usage}\n\n")
+                f.write("FACTS PROVIDED TO PROMPT:\n")
+                for topic, fact in facts.items():
+                    f.write(f"- {topic}\n  STATUS: {fact.get('status')}\n")
+                    f.write(f"  ENTITY: {fact.get('entity_uri') or 'Unavailable'}\n")
+                    f.write(f"  DESCRIPTION: {fact.get('description') or 'Unavailable'}\n")
+                f.write("\n" + "=" * 60 + "\n\n" + content.rstrip() + "\n")
+            totals[status] += 1
+            print(status)
+            time.sleep(REQUEST_DELAY_SECONDS)
+    print("\n=== SYSTEM B SUMMARY ===")
+    for status, count in totals.items():
+        print(f"{status}: {count}")
+    print(f"Total attempts: {sum(totals.values())}")
+    print(f"Results: {OUTPUT_DIR}")
 
 if __name__ == "__main__":
-    
-    print("=== SYSTEM B: Knowledge Graph-Grounded Assessment ===\n")
-    
-    # Step 1: Get facts from Wikidata
-    facts = build_knowledge_grounding()
-    
-    print(f"\nAll facts retrieved successfully.")
-    print(f"Facts will be used as grounding context.\n")
-    
-    # Step 2: Save facts to file for reference
-    with open("wikidata_facts.txt", "w") as f:
-        f.write("WIKIDATA FACTS RETRIEVED FOR SYSTEM B\n")
-        f.write("="*50 + "\n\n")
-        for topic, fact in facts.items():
-            f.write(f"{topic.upper()}:\n{fact}\n\n")
-    
-    print("Facts saved to wikidata_facts.txt")
-    print("\nNow running grounded assessment...\n")
-    
-    # Step 3: Run assessment 3 times
-    for i in range(1, 11):
-
-        assess_with_grounding(i, facts)
-    
-    print("\n=== SYSTEM B COMPLETE ===")
-    print("Check system_b_run01.txt through run03.txt")
-    print("Compare Section B with Ihsan's LLM review files")
-    
+    main()

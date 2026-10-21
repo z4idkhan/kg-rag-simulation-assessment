@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 02 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=605, prompt_tokens=431, total_tokens=1036, completion_time=1.307687853, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=116), prompt_time=0.008093304, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.053920119, total_time=1.315781157)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several key mechanisms (agent choice set, Q‑learning updates, stochastic detection rates, peer‑network influence, and an intervention manipulation), which are plausible for studying academic‑integrity dynamics. However, essential details (e.g., how rewards/penalties are quantified, the structure of the peer network, and the empirical basis for detection probabilities) are missing, limiting confidence that the model faithfully reproduces real‑world behavior.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unjustified detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | Detection rates strongly drive agents’ learning; unrealistic values can bias the emergence of dishonest strategies. | Hypothesis – the description gives the numbers but provides no empirical or theoretical justification. |
+| 2 | **Undefined peer‑network topology and interaction rules** | Local peer influence is a core driver of norm diffusion; without specifying network density, clustering, or update frequency, the model’s contagion dynamics are ambiguous. | Hypothesis – the simulation mentions “local peer networks” but gives no structural details. |
+| 3 | **Missing specification of reward/penalty magnitudes and Q‑learning parameters (learning rate, discount factor)** | These parameters determine how quickly agents adapt to detection outcomes; unrealistic settings can produce either overly volatile or inert behavior. | Directly supported – the description states that agents “update behavior based on rewards and penalties” but does not disclose the quantitative scheme. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add empirically‑derived detection rates**: Replace the fixed probabilities (0.55, 0.25) with values calibrated from real institutional data on plagiarism detection (e.g., plagiarism‑detection software false‑negative/false‑positive rates, faculty‑reported copying detection).  
+
+*Evaluation*: Run the simulation with the calibrated rates and compare the resulting prevalence of dishonest behavior to known campus‑level statistics (e.g., reported plagiarism incidence). If the model’s output aligns more closely with observed rates while preserving the reported pattern (AI‑assisted plagiarism remains prevalent under intervention), the revision improves realism.

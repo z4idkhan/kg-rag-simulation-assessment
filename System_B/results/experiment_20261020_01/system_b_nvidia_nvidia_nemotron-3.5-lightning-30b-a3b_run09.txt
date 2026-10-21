@@ -1,0 +1,49 @@
+=== SYSTEM B | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 09 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=509, prompt_tokens=1045, total_tokens=1554, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+A. OVERALL REALISM
+PARTLY
+The simulation explicitly models distinct plagiarism behaviors (direct copying vs. AI-assisted) with different detection probabilities and uses Q-learning for adaptive agent behavior, which creates a structured foundation for studying academic integrity dynamics. However, the model’s reliance on abstract reward mechanisms and local peer networks without detailing the specific utility functions or network topology limits its ability to realistically represent the decision-making processes and social dynamics driving plagiarism.
+
+B. TOP 3 REALISM GAPS
+1. **Reward function design**: The simulation states agents use Q-learning with rewards and penalties but does not specify the exact reward values for honest submission, direct copying, or AI-assisted plagiarism. This matters because the detection probabilities (0.55 and 0.25) alone do not determine behavior; the relative magnitude of rewards and penalties dictates agent choices. This is a hypothesis needing more information.
+2. **Network topology and peer influence**: The model mentions students interact through "local peer networks" in the active-intervention condition but does not describe the structure (e.g., random, scale-free, clustered) or how network ties influence copying decisions. This matters because the prevalence of AI-assisted plagiarism under intervention likely depends on how information and norms spread through the student population. This is a hypothesis needing more information.
+3. **AI-assisted plagiarism detection mechanism**: The detection probability for AI-assisted plagiarism (0.25) is reported, but the description does not explain how detection is triggered (e.g., software similarity checks, peer reporting, instructor review) or whether it differs by assignment type. This matters because the low detection rate is cited as a key factor in the prevalence of dishonest behavior; without a clear mechanism, the plausibility of the 0.25 rate as a realistic barrier is unverified. This is a hypothesis needing more information.
+
+C. ONE MINIMUM REVISION
+Specify the reward values for each action (honest submission, direct copying, AI-assisted plagiarism) in the Q-learning update rule. To evaluate improvement, run the simulation with at least two contrasting reward configurations (e.g., penalties heavily weighted against copying versus penalties weighted against AI-assisted plagiarism) and compare the resulting rates of total dishonest behavior. This clarifies how detection probabilities translate into agent behavior and tests whether the reported finding that AI-assisted plagiarism drives overall dishonesty is robust to the underlying incentive structure.

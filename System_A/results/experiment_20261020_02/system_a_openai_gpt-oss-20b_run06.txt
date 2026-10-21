@@ -1,0 +1,30 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 06 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=929, prompt_tokens=431, total_tokens=1360, completion_time=1.002960871, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=420), prompt_time=0.025810889, prompt_tokens_details=None, queue_time=0.208897659, total_time=1.02877176)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY – The simulation incorporates several realistic elements such as Q‑learning for adaptive behavior, explicit detection probabilities, and peer‑network interactions. However, it abstracts away many key aspects of academic‑integrity dynamics (e.g., varied motivations, task difficulty, institutional policies, and nuanced cheating strategies). These omissions limit its fidelity to real‑world student behavior.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Limited behavioral repertoire** – Students can only choose honest submission, direct copying, or AI‑assisted plagiarism.  
+   *Why it matters:* Real students employ a spectrum of strategies (e.g., partial copying, collaborative work, strategic use of AI, or deliberate avoidance).  
+   *Evidence status:* Directly supported by the description (only three options are listed).  
+
+2. **Static detection probabilities** – Detection rates are fixed at 0.55 for direct copying and 0.25 for AI‑assisted plagiarism, unchanged over time or context.  
+   *Why it matters:* In reality, detection likelihood varies with factors such as work quality, similarity‑check sophistication, and institutional vigilance.  
+   *Evidence status:* Hypothesis; the description does not explain how detection probabilities are derived or whether they vary.  
+
+3. **Simplified reward/penalty structure** – The model only references rewards and penalties but provides no detail on their magnitude, type, or how they influence future choices.  
+   *Why it matters:* Academic‑integrity consequences are heterogeneous (grades, suspensions, reputational damage) and influence decision‑making.  
+   *Evidence status:* Hypothesis; the description lacks specifics about the reward/penalty mapping.
+
+**C. ONE MINIMUM REVISION**  
+Add a simple, context‑dependent adjustment to detection probabilities: let the probability of detecting AI‑assisted plagiarism increase with the amount of effort an agent expends on the assignment (e.g., higher effort → higher detection). Implement this by scaling the base 0.25 probability by a factor \(1 + \alpha \times \text{effort}\), where \(\alpha\) is a small constant. Evaluate the improvement by comparing the distribution of detection rates across simulation runs to empirical data on plagiarism detection rates (e.g., from institutional reports), ensuring that the revised model produces a more realistic spread of detections. This single change keeps the model minimal while addressing a key realism gap.

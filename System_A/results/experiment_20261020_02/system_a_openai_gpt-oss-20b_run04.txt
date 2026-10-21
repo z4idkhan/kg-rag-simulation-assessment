@@ -1,0 +1,25 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 04 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=431, total_tokens=1431, completion_time=1.477505891, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=635), prompt_time=0.024991121, prompt_tokens_details=None, queue_time=0.348440007, total_time=1.502497012)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY – The simulation includes key elements of academic‑integrity dynamics (multiple dishonest strategies, learning via Q‑learning, detection probabilities, and peer influence), but it omits critical details that shape realistic student behavior, such as the specific reward/penalty system, the nature of the intervention, and the structure of peer networks. These omissions limit the fidelity of the model to real educational settings.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Undefined reward/penalty structure** | Q‑learning outcomes hinge on the numerical incentives students receive; without realistic grades, reputation, or sanctions, the learning dynamics may be artificial. | Hypothesis – not described. |
+| 2 | **Unspecified intervention design** | The study compares “no‑intervention” vs. “active‑intervention,” but the nature, intensity, and implementation of the intervention are unknown, making it impossible to assess its plausibility or effectiveness. | Hypothesis – not described. |
+| 3 | **Sparse peer‑network specification** | Local peer influence can drive the spread of dishonest behavior; without details on network topology, connection strength, or influence weights, the model may misrepresent contagion dynamics. | Hypothesis – not described. |
+
+**C. ONE MINIMUM REVISION**  
+Add a concrete, simple reward/penalty mapping (e.g., honest submission = +1, direct copying = +2 if undetected, penalty = –5 if detected, AI‑plagiarism = +1.5 if undetected, penalty = –3 if detected). Evaluate improvement by running

@@ -1,0 +1,45 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 04 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=913, prompt_tokens=892, total_tokens=1805, completion_time=1.132969764, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=511), prompt_time=0.044621597, prompt_tokens_details=None, queue_time=0.346257841, total_time=1.177591361)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY – The simulation adopts an agent‑based, Q‑learning framework that is a reasonable abstraction of student decision‑making, and it includes peer interactions and an intervention comparison. However, it lacks empirical grounding for key parameters (e.g., detection probabilities, reward/penalty magnitudes) and omits several realistic factors such as institutional policies, student heterogeneity, and a broader range of dishonest behaviors. These omissions limit the model’s fidelity to real academic‑integrity dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Empirical calibration of detection probabilities and reward/penalty structure** – The model specifies fixed probabilities (0.55 for direct copying, 0.25 for AI‑assisted plagiarism) but does not explain how these values were derived or whether they reflect real detection rates. *Hypothesis needing more information.*  
+2. **Limited behavioral repertoire** – Students are allowed only three actions (honest, direct copying, AI‑assisted plagiarism). Real students may employ a wider spectrum of strategies (e.g., collaborative cheating, paraphrasing, incremental plagiarism). *Hypothesis needing more information.*  
+3. **Absence of institutional and demographic context** – The simulation does not model institutional policies (e.g., honor codes, sanctions) or student heterogeneity (e.g., risk tolerance, academic background), which are known to influence cheating behavior. *Hypothesis needing more information.*
+
+**C. ONE MINIMUM REVISION**  
+Add a calibration step for detection probabilities and reward/penalty parameters:  
+- **Change**: Replace the fixed detection probabilities with values estimated from empirical data on plagiarism detection rates (e.g., from institutional plagiarism‑software logs).  
+- **Evaluation**: Run the simulation with both the original and calibrated parameters, then compare the distribution of detected cases to the real‑world distribution. A closer match indicates improved realism.

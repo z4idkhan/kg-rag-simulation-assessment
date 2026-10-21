@@ -1,0 +1,115 @@
+{
+  "plagiarism": {
+    "topic": "plagiarism",
+    "status": "OK_RELEVANCE_HEURISTIC",
+    "entity_uri": "http://www.wikidata.org/entity/Q164666",
+    "description": "using another author's work as if it was one's own original work",
+    "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+    "matching_terms": [
+      "author's work",
+      "original work",
+      "one's own"
+    ],
+    "candidates": [
+      {
+        "entity_uri": "http://www.wikidata.org/entity/Q164666",
+        "label": "plagiarism",
+        "description": "using another author's work as if it was one's own original work",
+        "matching_terms": [
+          "author's work",
+          "original work",
+          "one's own"
+        ]
+      }
+    ]
+  },
+  "academic integrity": {
+    "topic": "academic integrity",
+    "status": "OK_RELEVANCE_HEURISTIC",
+    "entity_uri": "http://www.wikidata.org/entity/Q4671278",
+    "description": "moral code or ethical policy of academia",
+    "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+    "matching_terms": [
+      "moral code",
+      "ethical policy",
+      "academia"
+    ],
+    "candidates": [
+      {
+        "entity_uri": "http://www.wikidata.org/entity/Q4671278",
+        "label": "academic integrity",
+        "description": "moral code or ethical policy of academia",
+        "matching_terms": [
+          "moral code",
+          "ethical policy",
+          "academia"
+        ]
+      }
+    ]
+  },
+  "reinforcement learning": {
+    "topic": "reinforcement learning",
+    "status": "OK_RELEVANCE_HEURISTIC",
+    "entity_uri": "http://www.wikidata.org/entity/Q830687",
+    "description": "type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time",
+    "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+    "matching_terms": [
+      "agent learns",
+      "rewards",
+      "cumulative reward"
+    ],
+    "candidates": [
+      {
+        "entity_uri": "http://www.wikidata.org/entity/Q830687",
+        "label": "reinforcement learning",
+        "description": "type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time",
+        "matching_terms": [
+          "agent learns",
+          "rewards",
+          "cumulative reward"
+        ]
+      }
+    ]
+  },
+  "Q-learning": {
+    "topic": "Q-learning",
+    "status": "OK_RELEVANCE_HEURISTIC",
+    "entity_uri": "http://www.wikidata.org/entity/Q2664563",
+    "description": "model-free reinforcement learning algorithm",
+    "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+    "matching_terms": [
+      "model-free",
+      "reinforcement learning",
+      "algorithm"
+    ],
+    "candidates": [
+      {
+        "entity_uri": "http://www.wikidata.org/entity/Q2664563",
+        "label": "Q-learning",
+        "description": "model-free reinforcement learning algorithm",
+        "matching_terms": [
+          "model-free",
+          "reinforcement learning",
+          "algorithm"
+        ]
+      }
+    ]
+  },
+  "agent-based model": {
+    "topic": "agent-based model",
+    "status": "RELEVANCE_UNCONFIRMED",
+    "entity_uri": "",
+    "description": "",
+    "relevance": "REVIEW_REQUIRED",
+    "candidates": [
+      {
+        "entity_uri": "http://www.wikidata.org/entity/Q392811",
+        "label": "agent-based model",
+        "description": "type of computational models",
+        "matching_terms": [
+          "computational models"
+        ]
+      }
+    ]
+  }
+}

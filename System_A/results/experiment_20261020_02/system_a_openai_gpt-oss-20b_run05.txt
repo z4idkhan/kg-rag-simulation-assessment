@@ -1,0 +1,27 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 05 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=840, prompt_tokens=431, total_tokens=1271, completion_time=1.071445169, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=372), prompt_time=0.026220348, prompt_tokens_details=None, queue_time=0.338086474, total_time=1.097665517)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**PARTLY** – The simulation captures some essential dynamics of academic‑integrity behavior (choice of honesty, copying, or AI‑assisted plagiarism; reinforcement learning; detection probabilities; peer influence; intervention comparison). However, it simplifies many critical aspects (e.g., only three behavior types, static detection rates, no modeling of grades or assignment difficulty, and an extremely small, homogenous student population). These omissions limit how faithfully the model reproduces real academic environments.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence in description / hypothesis |
+|---|-----|----------------|--------------------------------------|
+| 1 | **Limited behavior repertoire** – Only honest, direct copying, or AI‑assisted plagiarism are allowed. | Real academic misconduct includes a spectrum of behaviors (plagiarism, collusion, fabrication, etc.), each with distinct motivations and detection mechanisms. | Directly supported – the description lists only these three options. |
+| 2 | **Static detection probabilities** – 0.55 for direct copying, 0.25 for AI‑assisted plagiarism. | In reality, detection likelihood depends on assignment type, instructor vigilance, and evolving AI detection tools. Fixed probabilities ignore contextual variation. | Directly supported – the simulation explicitly sets these probabilities. |
+| 3 | **Absence of incentive/grade structure** – No modeling of how grades, course difficulty, or instructor rewards influence decisions. | Students’ choices are driven by potential academic payoff; without this, the reward signals in Q‑learning may not reflect real motivations. | Hypothesis needing more information – the description does not mention any grade or incentive modeling. |
+
+**C. ONE MINIMUM REVISION**  
+Add a simple “grade reward” parameter that assigns a higher reward to honest submissions relative to dishonest ones, scaled by assignment difficulty.  
+*Change:* Introduce a variable `grade_reward` that increases with assignment difficulty and is added to the Q‑learning reward for honest behavior.  
+*Evaluation:* Run the simulation with and without this parameter and compare the proportion of honest submissions over time. A statistically significant increase in honest behavior when the reward is present would indicate that the revision improves realism.

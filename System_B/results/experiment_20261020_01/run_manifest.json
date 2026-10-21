@@ -1,0 +1,152 @@
+{
+  "system": "B",
+  "experiment_id": "experiment_20261020_01",
+  "created_utc": "2026-10-20T04:55:22.721259+00:00",
+  "models": [
+    {
+      "name": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "provider": "nvidia"
+    },
+    {
+      "name": "openai/gpt-oss-120b",
+      "provider": "groq"
+    },
+    {
+      "name": "qwen/qwen3.8-27b",
+      "provider": "groq"
+    },
+    {
+      "name": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "provider": "nvidia"
+    }
+  ],
+  "runs_per_model": 10,
+  "temperature": 0.6,
+  "max_output_tokens": 1000,
+  "request_delay_seconds": 5,
+  "grounding": true,
+  "topics": [
+    "plagiarism",
+    "academic integrity",
+    "reinforcement learning",
+    "Q-learning",
+    "agent-based model"
+  ],
+  "retrieval_results": {
+    "plagiarism": {
+      "topic": "plagiarism",
+      "status": "OK_RELEVANCE_HEURISTIC",
+      "entity_uri": "http://www.wikidata.org/entity/Q164666",
+      "description": "using another author's work as if it was one's own original work",
+      "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+      "matching_terms": [
+        "author's work",
+        "original work",
+        "one's own"
+      ],
+      "candidates": [
+        {
+          "entity_uri": "http://www.wikidata.org/entity/Q164666",
+          "label": "plagiarism",
+          "description": "using another author's work as if it was one's own original work",
+          "matching_terms": [
+            "author's work",
+            "original work",
+            "one's own"
+          ]
+        }
+      ]
+    },
+    "academic integrity": {
+      "topic": "academic integrity",
+      "status": "OK_RELEVANCE_HEURISTIC",
+      "entity_uri": "http://www.wikidata.org/entity/Q4671278",
+      "description": "moral code or ethical policy of academia",
+      "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+      "matching_terms": [
+        "moral code",
+        "ethical policy",
+        "academia"
+      ],
+      "candidates": [
+        {
+          "entity_uri": "http://www.wikidata.org/entity/Q4671278",
+          "label": "academic integrity",
+          "description": "moral code or ethical policy of academia",
+          "matching_terms": [
+            "moral code",
+            "ethical policy",
+            "academia"
+          ]
+        }
+      ]
+    },
+    "reinforcement learning": {
+      "topic": "reinforcement learning",
+      "status": "OK_RELEVANCE_HEURISTIC",
+      "entity_uri": "http://www.wikidata.org/entity/Q830687",
+      "description": "type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time",
+      "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+      "matching_terms": [
+        "agent learns",
+        "rewards",
+        "cumulative reward"
+      ],
+      "candidates": [
+        {
+          "entity_uri": "http://www.wikidata.org/entity/Q830687",
+          "label": "reinforcement learning",
+          "description": "type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time",
+          "matching_terms": [
+            "agent learns",
+            "rewards",
+            "cumulative reward"
+          ]
+        }
+      ]
+    },
+    "Q-learning": {
+      "topic": "Q-learning",
+      "status": "OK_RELEVANCE_HEURISTIC",
+      "entity_uri": "http://www.wikidata.org/entity/Q2664563",
+      "description": "model-free reinforcement learning algorithm",
+      "relevance": "HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW",
+      "matching_terms": [
+        "model-free",
+        "reinforcement learning",
+        "algorithm"
+      ],
+      "candidates": [
+        {
+          "entity_uri": "http://www.wikidata.org/entity/Q2664563",
+          "label": "Q-learning",
+          "description": "model-free reinforcement learning algorithm",
+          "matching_terms": [
+            "model-free",
+            "reinforcement learning",
+            "algorithm"
+          ]
+        }
+      ]
+    },
+    "agent-based model": {
+      "topic": "agent-based model",
+      "status": "RELEVANCE_UNCONFIRMED",
+      "entity_uri": "",
+      "description": "",
+      "relevance": "REVIEW_REQUIRED",
+      "candidates": [
+        {
+          "entity_uri": "http://www.wikidata.org/entity/Q392811",
+          "label": "agent-based model",
+          "description": "type of computational models",
+          "matching_terms": [
+            "computational models"
+          ]
+        }
+      ]
+    }
+  },
+  "simulation_description": "A simulated academic-integrity environment contains 30 student agents over 16 weeks.\nStudents can choose honest submission, direct copying, or AI-assisted plagiarism.\nThe model uses Q-learning: agents update behavior based on rewards and penalties.\nThe detection probability is 0.55 for direct copying and 0.25 for AI-assisted plagiarism.\nStudents interact through local peer networks. The experiment compares a no-intervention\ncondition with an active-intervention condition. The main reported finding is that\nAI-assisted plagiarism increases total dishonest behavior and remains prevalent under\nintervention.",
+  "assessment_instructions": "Assess the simulation described below. Use only the information explicitly provided\nfor claims about what the simulation does. Do not assume a feature is absent merely\nbecause it is not mentioned. Separate evidence-backed concerns from hypotheses that\nwould need more information. If you use a knowledge statement, explain how it is\nrelevant and do not treat a short definition as proof that the simulation is valid\nor invalid. Be concise, specific, and balanced.\n\nReturn exactly these three sections:\n\nA. OVERALL REALISM\nChoose exactly one verdict: YES, PARTLY, or NO.\nExplain the verdict in 2–4 sentences.\n\nB. TOP 3 REALISM GAPS\nList up to three gaps, ranked from most important to least important. For each, state\n(1) the gap, (2) why it matters, and (3) whether it is directly supported by the\ndescription or is a hypothesis needing more information. Do not invent details.\n\nC. ONE MINIMUM REVISION\nRecommend exactly one smallest practical revision. State what to change and how to\nevaluate whether that change improves the simulation. Do not list multiple alternatives."
+}

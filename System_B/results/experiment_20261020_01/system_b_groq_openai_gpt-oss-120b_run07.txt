@@ -1,0 +1,51 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 07 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=877, prompt_tokens=1004, total_tokens=1881, completion_time=1.840833554, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=420), prompt_time=0.055853438, prompt_tokens_details=None, queue_time=0.34043793, total_time=1.896686992)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK_RELEVANCE_HEURISTIC
+  RELEVANCE: HEURISTIC_MATCH_REQUIRES_MANUAL_REVIEW
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: RELEVANCE_UNCONFIRMED
+  RELEVANCE: REVIEW_REQUIRED
+  ENTITY: Unavailable
+  DESCRIPTION: Unavailable
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures a plausible high‑level structure (student agents, choice set, learning via Q‑learning, and differing detection probabilities). However, key contextual details (e.g., how interventions are implemented, variability in detection, and heterogeneity of student motivations) are unspecified, limiting confidence that the model faithfully reproduces real academic‑integrity dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism) are not tied to empirical data** | Real‑world detection rates vary by institution, technology, and plagiarism type; using arbitrary constants can misrepresent the effectiveness of detection systems and thus the incentives for cheating. | Hypothesis – the description gives the numbers but does not cite any source; no Wikidata fact validates them. |
+| 2 | **Unspecified “active‑intervention” condition** | The impact of interventions (e.g., honor codes, plagiarism‑detection software, instructor feedback) depends on their design; without knowing what the intervention entails, we cannot judge whether the model’s response is realistic. | Hypothesis – the description mentions a comparison but gives no details. |
+| 3 | **Homogeneous agent preferences and reward structure** | Real students differ in risk tolerance, moral attitudes, and external pressures; a single reward/penalty scheme ignores this diversity and may over‑ or under‑estimate the spread of dishonest behavior. | Hypothesis – the description states agents choose among three actions and learn via Q‑learning, but it does not indicate any variation among agents. |
+
+**C. ONE MINIMUM REVISION**  
+Add **empirically calibrated detection probabilities** for each plagiarism type (e.g., based on published campus plagiarism‑detection statistics). Implement these as parameters that can be varied and report a sensitivity analysis showing how changes affect overall dishonest behavior. Evaluate improvement by comparing the simulated detection‑rate distribution to the empirical benchmark; a closer match indicates higher realism.

@@ -1,0 +1,43 @@
+=== SYSTEM B | qwen/qwen3.8-27b | RUN 08 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=430, prompt_tokens=891, total_tokens=1321, completion_time=0.843328733, completion_tokens_details=None, prompt_time=0.063692411, prompt_tokens_details=None, queue_time=0.057838338, total_time=0.907021144)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+A. OVERALL REALISM
+PARTLY. The simulation employs a standard reinforcement learning framework (Q-learning) to model behavioral adaptation, which is a valid computational approach for studying decision-making under uncertainty. However, the realism is limited by the oversimplified binary choice structure and fixed detection probabilities, which may not capture the nuanced, context-dependent nature of academic integrity violations in real-world settings.
+
+B. TOP 3 REALISM GAPS
+1. **Fixed Detection Probabilities**: The model uses static detection rates (0.55 for direct copying, 0.25 for AI-assisted). In reality, detection efficacy varies significantly based on institutional resources, detection tools, and the specific nature of the submission. *Status: Hypothesis needing more information; the description confirms the fixed rates but does not provide evidence that these specific values reflect current institutional realities.*
+2. **Binary Outcome Simplification**: The model restricts students to three discrete actions (honest, direct copy, AI-assisted) without accounting for partial plagiarism, paraphrasing, or the cognitive effort involved. This simplification may overstate the prevalence of "AI-assisted plagiarism" as a distinct, easily chosen category rather than a spectrum of assistance. *Status: Hypothesis needing more information; the description explicitly states the available actions, but the impact of this constraint on behavioral realism is an interpretive concern.*
+3. **Homogeneous Agent Population**: The simulation uses 30 identical student agents with no mention of varying risk tolerance, academic competence, or prior history. Real populations are heterogeneous, and individual differences significantly influence integrity decisions. *Status: Hypothesis needing more information; the description does not specify agent heterogeneity, leaving it unclear if this uniformity is an intentional simplification or an oversight.*
+
+C. ONE MINIMUM REVISION
+Introduce heterogeneity in agent risk tolerance by assigning each student a random risk parameter that modifies their sensitivity to penalties. Evaluate the improvement by comparing the distribution of dishonest behaviors in the heterogeneous model against a real-world survey dataset of student integrity violations to see if the variance in outcomes better matches empirical observations.

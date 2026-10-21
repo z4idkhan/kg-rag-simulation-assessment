@@ -1,0 +1,44 @@
+=== SYSTEM B | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 06 ===
+EXPERIMENT ID: experiment_20261020_02
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=507, prompt_tokens=906, total_tokens=1413, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+A. OVERALL REALISM
+Verdict: PARTLY
+The simulation explicitly models dishonest behaviors (direct copying and AI-assisted plagiarism) with distinct detection probabilities and uses Q-learning to update agent strategies, which provides a credible foundation for studying adaptive academic misconduct. However, the model's scope is limited to individual decision-making within peer networks; it does not address institutional policies, motivational factors, or the full lifecycle of academic work, which limits its realism as a comprehensive academic-integrity system.
+
+B. TOP 3 REALISM GAPS
+1. **Absence of institutional consequences beyond detection**: The description specifies detection probabilities but does not define penalties (e.g., grade penalties, formal sanctions) beyond the reward/punishment signals used in Q-learning. This matters because students' perceptions of consequences heavily influence plagiarism decisions. *This is a gap directly supported by the description; the simulation reports detection but not the nature or severity of downstream penalties.*
+2. **Lack of motivation and reward structures for honest work**: The simulation focuses on dishonest strategies (copying, AI-plagiarism) and their detection, but does not specify the rewards for honest submission or how academic grades/goals are modeled. This matters because the relative attractiveness of honest vs. dishonest paths determines student behavior. *This is a hypothesis needing more information; the description is silent on honest-reward mechanics.*
+3. **No explicit modeling of source attribution or AI-tool norms**: The model includes "AI-assisted plagiarism" as a behavior, but does not distinguish between authorized AI use, poor attribution, or unacknowledged generation. This matters because real-world plagiarism often involves nuanced source-handling rules that affect what counts as misconduct. *This is a gap directly supported by the description; the behavior is listed but the definition of "AI-assisted plagiarism" within the simulation is unspecified.*
+
+C. ONE MINIMUM REVISION
+Add a single sentence to the simulation description specifying the reward structure for honest submission (e.g., "Honest submissions receive a base grade reward of X, with penalties for detected dishonesty set at Y"). Evaluate the revision by running the model and comparing the frequency of honest vs. dishonest submissions under the no-intervention and active-intervention conditions; if the revision clarifies whether intervention effects stem from changed detection risks or changed cost-benefit calculations, the change improves the simulation's interpretability.

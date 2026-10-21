@@ -1,0 +1,29 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 10 ===
+EXPERIMENT ID: experiment_20261020_01
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.6
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=604, prompt_tokens=431, total_tokens=1035, completion_time=1.294144419, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=98), prompt_time=0.008117616, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.049665547, total_time=1.302262035)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms of academic‑integrity dynamics (multiple agents, choice set, Q‑learning, detection probabilities, peer networks, and an intervention contrast). However, the description omits key details that are needed to judge whether the model faithfully reproduces real‑world processes (e.g., how rewards/penalties are quantified, how the peer network is structured, how the intervention alters incentives, and whether detection probabilities reflect empirical evidence). Consequently the model is plausible but not fully realistic.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static, uniform detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality detection likelihood varies with course design, instructor vigilance, and the sophistication of the cheating method; a single fixed rate can misrepresent the feedback loop that drives learning. | Directly stated in the description; no indication that rates are calibrated or context‑dependent. |
+| 2 | **Lack of heterogeneity in student agents (identical reward/penalty structures, identical learning rates)** | Students differ in risk tolerance, moral beliefs, and access to AI tools; uniform agents can produce unrealistic convergence patterns and obscure subgroup effects that matter for policy. | Implied by the brief description (no mention of varied parameters); hypothesis that heterogeneity is absent. |
+| 3 | **Unspecified structure and influence of the local peer network** | The topology (e.g., dense clusters vs. random ties) determines how cheating norms spread; without a defined network, the model cannot be validated against social‑contagion evidence. | Mentioned only as “local peer networks” with no further detail; hypothesis requiring more information. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add calibrated, context‑sensitive detection probabilities.** Replace the single fixed values with probabilities that are functions of observable factors (e.g., assignment type, instructor monitoring level, AI‑tool sophistication). Implement a simple calibration step: run the simulation with a range of detection curves and compare the resulting overall dishonest‑behavior prevalence to published empirical rates of academic misconduct under similar conditions. If the calibrated model yields prevalence within the empirical confidence interval, the revision can be judged to improve realism.
