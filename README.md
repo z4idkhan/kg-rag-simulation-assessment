@@ -47,8 +47,17 @@ max 2500 output tokens (`experiment_20261022_t08_tok2500`).
 | qwen3.8-27b | 100% | 100% | PARTLY | PARTLY |
 | nemotron-3-nano-30b-reasoning | 67% | 100% | NO | NO |
 
-Robustness runs: `experiment_20261020_02` (temp 0.6, 1000 tokens) and
-`experiment_20261022_temp08` (temp 0.8, 1000 tokens).
+Consistency is computed over runs with a readable verdict; valid counts are in
+`comparison_results_experiment_20261022_t08_tok2500.txt`.
+
+### Experiment log
+| Run | Temperature | Max tokens | Why |
+|---|---|---|---|
+| `experiment_20261020_02` | 0.6 | 1000 | First controlled comparison across six models |
+| `experiment_20261022_temp08` | 0.8 | 1000 | Check whether results hold at a higher temperature |
+| `experiment_20261022_t08_tok2500` | 0.8 | 2500 | Some outputs (mainly gpt-oss-20b) were cut off at 1000 tokens; raising the limit let 119/120 assessments complete. Used as the main run. |
+
+All three runs used identical settings for System A and System B within each run.
 
 ### Findings
 - Larger models gave identical verdicts with and without grounding in every run.
