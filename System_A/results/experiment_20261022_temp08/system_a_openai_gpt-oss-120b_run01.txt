@@ -1,0 +1,30 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 01 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=622, prompt_tokens=431, total_tokens=1053, completion_time=1.313704, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=127), prompt_time=0.029488859, prompt_tokens_details=None, queue_time=0.444225325, total_time=1.343192859)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several key elements of academic‑integrity dynamics (multiple dishonest strategies, probabilistic detection, learning via Q‑learning, and peer‑network interaction). However, the description lacks detail on crucial aspects such as heterogeneity of agents, calibrated reward/penalty values, and realistic temporal scales, leaving open questions about how faithfully it mirrors real campus environments.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| Rank | Gap | Why it matters | Evidence status |
+|------|-----|----------------|-----------------|
+| 1 | **Uniform detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In real settings detection rates vary with context (e.g., assignment type, faculty vigilance, plagiarism‑detection tools). Fixed rates may over‑ or underestimate the deterrent effect, biasing the learning dynamics. | Directly stated in the description; no indication of variation or calibration. |
+| 2 | **Lack of student heterogeneity (e.g., differing risk tolerance, prior knowledge, motivation)** | Academic‑integrity behavior is strongly shaped by individual differences; a homogeneous agent pool can produce unrealistic convergence patterns and mask subgroup effects. | Implied by the description (30 identical agents); hypothesis that diversity is missing. |
+| 3 | **Sparse temporal scope (16 weeks) and small population (30 agents)** | Real academic terms often span longer periods with many more students, allowing for richer network diffusion and longer‑term learning. A short, small‑scale simulation may not capture emergent phenomena like norm cascades. | Directly reported numbers; the impact on realism is inferred. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add stochastic, context‑dependent detection probabilities** – replace the fixed 0.55 and 0.25 rates with values drawn from empirically grounded distributions (e.g., normal ± 0.1 around those means) that vary by week or by network exposure.  
+**Evaluation:** Run parallel simulations with the original fixed rates and with the stochastic rates; compare key outcomes (overall dishonest frequency, persistence of AI‑assisted plagiarism under intervention) using statistical tests (e.g., paired t‑tests). A significant shift toward more variable or realistic outcome patterns would indicate the revision improves ecological validity.

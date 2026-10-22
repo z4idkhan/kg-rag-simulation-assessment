@@ -1,0 +1,53 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 01 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=1209, prompt_tokens=892, total_tokens=2101, completion_time=1.552655533, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=732), prompt_time=0.054301135, prompt_tokens_details=None, queue_time=0.208914552, total_time=1.606956668)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY.  
+The simulation incorporates several realistic elements—student agents, a 16‑week timeline, three plausible submission strategies, and a reinforcement‑learning framework that updates behavior based on rewards and penalties. However, key components (e.g., the numerical detection probabilities, the peer‑network structure, and the nature of the interventions) are not empirically grounded or fully specified, limiting confidence that the model faithfully reproduces real academic‑integrity dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+
+1. **Lack of empirical grounding for detection probabilities and reward structure**  
+   *Why it matters*: Without evidence that the 0.55 and 0.25 detection rates, or the reward/penalty assignments, reflect real-world plagiarism detection and sanctioning practices, the model’s predictions may be unrealistic.  
+   *Status*: Hypothesis needing more information (the description lists the values but does not cite data).
+
+2. **Simplified behavior set (only honest, direct copying, AI‑assisted plagiarism)**  
+   *Why it matters*: Real academic settings involve a broader spectrum of behaviors (collaborative writing, accidental plagiarism, citation errors, etc.). Omitting these may bias the model’s assessment of intervention effectiveness.  
+   *Status*: Hypothesis needing more information (the description explicitly lists only three options).
+
+3. **Unspecified peer‑network structure and intervention design**  
+   *Why it matters*: The influence of local peer networks and the specifics of the active‑intervention condition (e.g., monitoring, education) critically shape agent behavior. Without defining these, the simulation cannot capture realistic social dynamics or evaluate intervention efficacy.  
+   *Status*: Hypothesis needing more information (the description mentions local networks and a comparison of conditions but provides no structural or procedural details).
+
+**C. ONE MINIMUM REVISION**  
+Add an empirical calibration step for the detection probabilities and reward scheme: collect real plagiarism‑detection statistics (e.g., from institutional reports) and adjust the 0.55 and 0.25 probabilities and corresponding penalty values to match observed rates. Evaluate improvement by running the simulation with the calibrated parameters and comparing the resulting prevalence of dishonest behavior to empirical data from comparable academic settings; a closer match would indicate increased realism.

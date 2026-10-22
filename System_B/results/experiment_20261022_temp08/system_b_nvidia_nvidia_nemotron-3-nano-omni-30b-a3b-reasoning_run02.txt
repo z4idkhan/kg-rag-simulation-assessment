@@ -1,0 +1,34 @@
+=== SYSTEM B | nvidia/nemotron-3-nano-omni-30b-a3b-reasoning | RUN 02 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: nvidia
+STATUS: FAILED
+FINISH REASON: error
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: Not available
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+InternalServerError: Error code: 503 - {'error': {'message': 'ResourceExhausted: Worker local total request limit reached (16/16)', 'type': 'Service Unavailable', 'code': 503}}

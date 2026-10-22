@@ -1,0 +1,27 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 09 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=626, prompt_tokens=431, total_tokens=1057, completion_time=1.3022829040000001, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=146), prompt_time=0.020341467, prompt_tokens_details=None, queue_time=0.348486198, total_time=1.322624371)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of academic‑integrity dynamics (multiple agents, choice set, learning via Q‑learning, detection probabilities, and peer influence). However, the description lacks detail on how sanctions, heterogeneous motivations, and realistic network structures are modeled, which limits its fidelity to real‑world settings.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality detection rates vary with faculty vigilance, technology, and policy; fixed rates can misrepresent how risk influences student decisions. | Directly stated in the description; no indication that rates adapt or are empirically calibrated. |
+| 2 | **Simplified peer network (“local peer networks”) without specification of size, density, or homophily** | Network topology strongly shapes norm diffusion and learning; an undefined structure may over‑ or under‑estimate peer influence on dishonest behavior. | Mentioned only as “local peer networks”; details are missing, so this is a hypothesis about insufficient realism. |
+| 3 | **Only three discrete actions (honest, direct copy, AI‑assisted) and a single learning algorithm (Q‑learning)** | Real students face a spectrum of cheating strategies, varying effort, and may use mixed motives; limiting the action set and learning rule can constrain emergent dynamics. | The action set and Q‑learning are explicitly described; the lack of additional actions or alternative learning mechanisms is an observed omission. |
+
+**C. ONE MINIMUM REVISION**  
+**Add adaptive detection probabilities**: Replace the fixed 0.55 and 0.25 rates with values that update each week based on the cumulative proportion of detected offenses (e.g., a Bayesian update or simple moving‑average).  
+
+**Evaluation**: Run the simulation under both the original and revised detection schemes and compare the resulting trajectories of dishonest behavior to empirical longitudinal data on plagiarism rates (if available) or to expected theoretical patterns (e.g., decreasing cheating as perceived risk rises). Improved alignment with observed trends would indicate a more realistic model.

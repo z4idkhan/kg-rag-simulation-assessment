@@ -1,0 +1,82 @@
+{
+  "system": "B",
+  "experiment_id": "experiment_20261022_t06_tok2500",
+  "created_utc": "2026-10-22T10:05:02.961004+00:00",
+  "models": [
+    {
+      "name": "allam-2-7b",
+      "provider": "groq"
+    },
+    {
+      "name": "openai/gpt-oss-20b",
+      "provider": "groq"
+    },
+    {
+      "name": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "provider": "nvidia"
+    },
+    {
+      "name": "openai/gpt-oss-120b",
+      "provider": "groq"
+    },
+    {
+      "name": "qwen/qwen3.8-27b",
+      "provider": "groq"
+    },
+    {
+      "name": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "provider": "nvidia"
+    }
+  ],
+  "runs_per_model": 10,
+  "temperature": 0.8,
+  "max_output_tokens": 2500,
+  "request_delay_seconds": 5,
+  "grounding": true,
+  "topics": {
+    "plagiarism": "Q164666",
+    "academic integrity": "Q4671278",
+    "reinforcement learning": "Q830687",
+    "Q-learning": "Q2664563",
+    "agent-based model": "Q392811"
+  },
+  "retrieval_results": {
+    "plagiarism": {
+      "topic": "plagiarism",
+      "status": "OK",
+      "entity_uri": "http://www.wikidata.org/entity/Q164666",
+      "description": "using another author's work as if it was one's own original work",
+      "relevance": "VERIFIED_ENTITY_ID"
+    },
+    "academic integrity": {
+      "topic": "academic integrity",
+      "status": "OK",
+      "entity_uri": "http://www.wikidata.org/entity/Q4671278",
+      "description": "moral code or ethical policy of academia",
+      "relevance": "VERIFIED_ENTITY_ID"
+    },
+    "reinforcement learning": {
+      "topic": "reinforcement learning",
+      "status": "OK",
+      "entity_uri": "http://www.wikidata.org/entity/Q830687",
+      "description": "type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time",
+      "relevance": "VERIFIED_ENTITY_ID"
+    },
+    "Q-learning": {
+      "topic": "Q-learning",
+      "status": "OK",
+      "entity_uri": "http://www.wikidata.org/entity/Q2664563",
+      "description": "model-free reinforcement learning algorithm",
+      "relevance": "VERIFIED_ENTITY_ID"
+    },
+    "agent-based model": {
+      "topic": "agent-based model",
+      "status": "OK",
+      "entity_uri": "http://www.wikidata.org/entity/Q392811",
+      "description": "type of computational models",
+      "relevance": "VERIFIED_ENTITY_ID"
+    }
+  },
+  "simulation_description": "A simulated academic-integrity environment contains 30 student agents over 16 weeks.\nStudents can choose honest submission, direct copying, or AI-assisted plagiarism.\nThe model uses Q-learning: agents update behavior based on rewards and penalties.\nThe detection probability is 0.55 for direct copying and 0.25 for AI-assisted plagiarism.\nStudents interact through local peer networks. The experiment compares a no-intervention\ncondition with an active-intervention condition. The main reported finding is that\nAI-assisted plagiarism increases total dishonest behavior and remains prevalent under\nintervention.",
+  "assessment_instructions": "Assess the simulation described below. Use only the information explicitly provided\nfor claims about what the simulation does. Do not assume a feature is absent merely\nbecause it is not mentioned. Separate evidence-backed concerns from hypotheses that\nwould need more information. If you use a knowledge statement, explain how it is\nrelevant and do not treat a short definition as proof that the simulation is valid\nor invalid. Be concise, specific, and balanced.\n\nReturn exactly these three sections:\n\nA. OVERALL REALISM\nChoose exactly one verdict: YES, PARTLY, or NO.\nExplain the verdict in 2–4 sentences.\n\nB. TOP 3 REALISM GAPS\nList up to three gaps, ranked from most important to least important. For each, state\n(1) the gap, (2) why it matters, and (3) whether it is directly supported by the\ndescription or is a hypothesis needing more information. Do not invent details.\n\nC. ONE MINIMUM REVISION\nRecommend exactly one smallest practical revision. State what to change and how to\nevaluate whether that change improves the simulation. Do not list multiple alternatives."
+}

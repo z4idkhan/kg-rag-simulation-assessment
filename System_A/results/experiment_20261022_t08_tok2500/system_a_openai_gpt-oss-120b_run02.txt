@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 02 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=670, prompt_tokens=431, total_tokens=1101, completion_time=1.400090407, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=153), prompt_time=0.025140675, prompt_tokens_details=None, queue_time=0.398972614, total_time=1.425231082)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of academic‑integrity dynamics (multiple agents, choice set, learning via Q‑learning, detection probabilities, peer networks, and an intervention contrast). However, the description lacks detail on how rewards, penalties, network structure, and intervention mechanisms are operationalised, which limits confidence that the model faithfully reproduces real‑world patterns.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality detection rates vary with faculty vigilance, tool sophistication, and context; static values can bias the learning dynamics and over‑/under‑estimate dishonest behavior. | Directly stated in the description; the lack of variability is a gap. |
+| 2 | **Underspecified reward‑penalty structure for Q‑learning** | The magnitude of rewards for honest work versus penalties for caught cheating determines policy convergence; without transparent values the agents’ learning may not reflect realistic cost–benefit calculations. | Mentioned only that agents “update behavior based on rewards and penalties”; details are missing → hypothesis. |
+| 3 | **Sparse definition of the “active‑intervention” condition** | Interventions (e.g., honor‑code reminders, detection‑tool training) can dramatically alter perceived risk and normative pressure; an unspecified intervention makes it impossible to judge whether the model captures the mechanisms that reduce cheating in practice. | The condition is noted but not described → hypothesis. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add stochastic, context‑dependent detection probabilities**: replace the single fixed values (0.55, 0.25) with probability distributions (e.g., Beta (α,β)) that can be sampled each episode and that are modulated by observable factors such as recent intervention exposure or network‑level cheating prevalence.  
+
+**Evaluation:** Run the simulation with the new stochastic detection and compare the resulting overall cheating rates and the sensitivity of those rates to the intervention against published empirical benchmarks (e.g., meta‑analyses of detection success for copy‑and‑paste vs. AI‑generated work). Improvement is indicated if the model’s pattern of cheating prevalence and its change under intervention more closely aligns with those real‑world data points.

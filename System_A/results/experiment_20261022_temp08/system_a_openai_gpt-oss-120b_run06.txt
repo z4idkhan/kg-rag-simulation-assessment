@@ -1,0 +1,29 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 06 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=540, prompt_tokens=431, total_tokens=971, completion_time=1.121153801, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=82), prompt_time=0.023056326, prompt_tokens_details=None, queue_time=0.21507741, total_time=1.144210127)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several key mechanisms (multiple agents, choice set, Q‑learning updates, stochastic detection rates, peer‑network interaction, and an intervention contrast). However, the description lacks detail on many parameters that determine ecological validity (e.g., reward structure, network topology, heterogeneity among students), so realism is limited.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Reward‑penalty specification** – The simulation does not state the magnitude of rewards for honest work versus penalties for being caught cheating. | The incentive balance drives Q‑learning updates; unrealistic values can make cheating either trivially optimal or impossible, distorting behavior patterns. | Hypothesis – the description mentions “rewards and penalties” but gives no numbers or functional form. |
+| 2 | **Peer‑network structure** – No information on how the 30 agents are linked (e.g., degree distribution, clustering, dynamic rewiring). | Network topology influences exposure to cheating norms and diffusion of strategies; a simplistic or unrealistic network could over‑ or under‑estimate peer effects. | Hypothesis – the text says “students interact through local peer networks” without further detail. |
+| 3 | **Intervention mechanics** – The nature of the “active‑intervention” (e.g., educational messages, increased detection, sanctions) is unspecified. | The efficacy of an intervention depends on its mechanism; without this, the comparison to the no‑intervention condition cannot be interpreted meaningfully. | Hypothesis – only the existence of an intervention condition is mentioned. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add a calibrated reward‑penalty matrix** that reflects empirically observed grade incentives and sanction severity (e.g., +10 points for honest submission, –15 points penalty if caught cheating, with detection probabilities as given). **Evaluation:** Run the simulation with the new matrix and compare the resulting proportion of dishonest actions to published field data on academic cheating rates; convergence toward realistic prevalence would indicate improved validity.

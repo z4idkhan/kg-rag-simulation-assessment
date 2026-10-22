@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 04 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=639, prompt_tokens=431, total_tokens=1070, completion_time=1.362817565, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=115), prompt_time=0.019439454, prompt_tokens_details=None, queue_time=0.399244915, total_time=1.3822570189999999)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of academic‑integrity dynamics (multiple agents, choice set, learning via Q‑learning, detection probabilities, peer networks, and an intervention contrast). However, the description omits key contextual and methodological details (e.g., how rewards/penalties are set, network structure, heterogeneity of agents), limiting confidence that the model faithfully reproduces real‑world cheating behavior.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static, uniform detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality, detection likelihood varies with course type, instructor vigilance, technology used, and student skill; a single fixed value may over‑ or under‑estimate the effectiveness of detection and thus skew learning dynamics. | Directly supported: the description explicitly gives fixed probabilities and no mention of variation. |
+| 2 | **Lack of agent heterogeneity (e.g., differences in risk tolerance, ability, prior knowledge)** | Real student populations are diverse; uniform agents can produce unrealistically homogeneous learning trajectories and may miss subgroup effects that interventions often target. | Hypothesis: the description lists “30 student agents” but gives no attributes; we cannot assume heterogeneity is present. |
+| 3 | **Unspecified peer‑network topology and interaction rules** | The shape of the local network (e.g., dense vs. sparse, clustered) strongly influences diffusion of dishonest norms; without clarity, the model’s spread of behavior may not reflect real campus social structures. | Directly supported: the description mentions “local peer networks” but provides no detail, so the gap is evident. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add stochastic, context‑sensitive detection probabilities** – replace the single fixed values with a distribution (e.g., draw detection chance each episode from a beta distribution centered on the reported means). This introduces realistic variability without overhauling the model.  
+
+**Evaluation:** Run the simulation under the original and revised detection schemes (keeping all else equal) and compare (a) the variance of dishonest‑behavior prevalence across runs and (b) the alignment of simulated detection rates with empirical estimates from campus integrity reports. A reduction in implausibly stable prevalence patterns and closer match to observed detection variability would indicate an improvement in realism.

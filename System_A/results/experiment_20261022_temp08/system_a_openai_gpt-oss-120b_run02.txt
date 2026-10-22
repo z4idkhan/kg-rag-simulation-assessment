@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 02 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=819, prompt_tokens=431, total_tokens=1250, completion_time=1.717927198, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=317), prompt_time=0.106016107, prompt_tokens_details=None, queue_time=0.32302352, total_time=1.823943305)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms (choice architecture, Q‑learning updates, and differing detection probabilities) that are plausible in an academic‑integrity context. However, key aspects of real‑world cheating dynamics (heterogeneous detection risk, richer behavior repertoires, and scale) are either oversimplified or omitted, limiting the model’s fidelity.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism).** | In practice, detection likelihood depends on factors such as instructor vigilance, plagiarism‑detection tools, and evolving AI‑generation quality; fixed rates can misrepresent how risk shapes student choices. | Directly supported – the description gives exact fixed values. |
+| 2 | **Only three discrete behavioral options (honest, direct copy, AI‑assisted).** | Real cheating spans partial copying, paraphrasing, contract cheating, and hybrid strategies; limiting options restricts the emergence of nuanced adaptation and may inflate the observed prevalence of AI‑assisted plagiarism. | Directly supported – the model’s choice set is explicitly listed. |
+| 3 | **Very small population (30 agents) and short horizon (16 weeks).** | Academic environments involve hundreds to thousands of students over multiple semesters, allowing richer peer‑influence cascades and long‑term learning; the limited scale may under‑ or over‑estimate network effects. | Directly supported – numbers are specified. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add context‑sensitive detection probabilities.** Replace the fixed 0.55 and 0.25 rates with functions that vary by (a) the proportion of peers already caught for the same offense and (b) the cumulative number of dishonest submissions the system has processed (e.g., detection = base × (1 + α·peer‑catch‑rate)).  
+
+**Evaluation:** Run paired simulations (original vs. revised) and compare the trajectory of dishonest behavior to empirical longitudinal studies of cheating prevalence; a reduction in the unrealistically rapid rise of AI‑assisted plagiarism and a more gradual response to intervention would indicate improved realism.

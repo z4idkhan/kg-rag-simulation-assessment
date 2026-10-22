@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 09 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=826, prompt_tokens=892, total_tokens=1718, completion_time=1.080119404, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=415), prompt_time=0.335638869, prompt_tokens_details=PromptTokensDetails(cached_tokens=768), queue_time=0.354088023, total_time=1.415758273)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation captures key elements of academic‑integrity dynamics—agent‑based decision making, reinforcement learning, and detection probabilities—but it simplifies many real‑world factors. It lacks heterogeneity among students, nuanced behavior options, and a detailed model of institutional interventions. These omissions limit its ability to fully represent the complexity of plagiarism phenomena.
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Source |
+|---|-----|----------------|--------|
+| 1 | **Limited behavioral repertoire** – agents can only choose honest submission, direct copying, or AI‑assisted plagiarism. | Real students exhibit a spectrum of behaviors (e.g., paraphrasing, collaborative writing, partial copying) that affect detection and intervention outcomes. | Described explicitly in the simulation. |
+| 2 | **Static, unvalidated detection probabilities** – 0.55 for direct copying and 0.25 for AI‑assisted plagiarism. | Detection rates in practice vary by discipline, institution, and technology; static values may misrepresent risk incentives. | Provided in the description; no empirical justification. |
+| 3 | **Unspecified intervention mechanics** – only a “no‑intervention” vs “active‑intervention” comparison is mentioned. | The effectiveness of interventions depends on their nature (e.g., honor codes, plagiarism software, education). Without detail, the model cannot assess realistic policy impacts. | Mentioned but not elaborated in the description. |
+
+**C. ONE MINIMUM REVISION**  
+Add a parameterized detection‑rate module that assigns detection probabilities based on agent attributes (e.g., risk tolerance, prior violations) and calibrates these probabilities against published empirical data on plagiarism detection rates. Evaluate the revision by running a sensitivity analysis: compare the distribution of dishonest behaviors before and after the module is activated and assess whether the simulation’s outcomes align more closely with observed real‑world statistics.

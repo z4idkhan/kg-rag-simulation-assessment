@@ -1,0 +1,51 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 02 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=847, prompt_tokens=892, total_tokens=1739, completion_time=1.038957901, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=444), prompt_time=0.045350914, prompt_tokens_details=None, queue_time=0.322406186, total_time=1.084308815)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The model incorporates key elements of an academic‑integrity setting—agent‑based learning, peer interaction, and detection probabilities—and uses a realistic reinforcement‑learning algorithm (Q‑learning). However, the description omits many factors that affect real‑world plagiarism dynamics, such as varied detection mechanisms, heterogeneous student characteristics, and empirical validation. These omissions limit the simulation’s ability to faithfully reproduce observed academic‑integrity patterns.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Scale and duration** – Only 30 students over 16 weeks are modeled.  
+   *Why matters:* Real institutions involve hundreds or thousands of students and longer academic terms, affecting network effects and learning dynamics.  
+   *Evidence:* Directly stated in the description.  
+
+2. **Simplified detection probabilities** – Fixed probabilities (0.55 for direct copying, 0.25 for AI‑assisted plagiarism).  
+   *Why matters:* Detection likelihood varies with context (e.g., assignment type, plagiarism detection software). Fixed values may misrepresent risk and influence behavior unrealistically.  
+   *Evidence:* Directly stated in the description.  
+
+3. **Lack of empirical calibration or validation** – No mention of grounding detection rates, reward structures, or intervention efficacy in real data.  
+   *Why matters:* Without calibration, it is unclear whether the model’s outputs correspond to actual academic‑integrity statistics.  
+   *Evidence:* Not provided; this is a hypothesis requiring further information.
+
+**C. ONE MINIMUM REVISION**  
+Add empirical calibration of detection probabilities: use published statistics on plagiarism detection rates for direct copying and AI‑assisted plagiarism to set the model’s detection parameters. Evaluate improvement by comparing the distribution of dishonest behavior in the calibrated simulation to observed rates from a real institution’s plagiarism reports. This will test whether the model’s predictions align more closely with empirical reality.

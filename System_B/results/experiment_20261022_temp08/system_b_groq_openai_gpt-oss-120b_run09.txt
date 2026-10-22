@@ -1,0 +1,50 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 09 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=681, prompt_tokens=892, total_tokens=1573, completion_time=1.415797404, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=238), prompt_time=0.042633903, prompt_tokens_details=None, queue_time=0.212690504, total_time=1.4584313070000001)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of an academic‑integrity setting (student agents, choice set, Q‑learning, and probabilistic detection). However, key contextual factors (e.g., calibrated detection rates, detailed incentive structures, broader institutional policies) are unspecified, limiting confidence that the model behaves like real campuses.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unvalidated detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | These rates drive the reward‑penalty learning; if they do not reflect actual detection likelihoods, the emergent cheating dynamics will be unrealistic. | The description *states* the probabilities, but provides no source or empirical grounding – hypothesis needing more information. |
+| 2 | **Underspecified reward/penalty scheme for honest vs. dishonest actions** | Q‑learning updates depend on the magnitude of rewards/penalties; without realistic values (e.g., grade impact, disciplinary sanctions), the agents’ learning may not mirror real student decision‑making. | The description mentions “rewards and penalties” but gives no quantitative detail – hypothesis. |
+| 3 | **Absence of broader institutional or cultural factors (e.g., honor codes, faculty enforcement, campus‑wide norms)** | Academic integrity is shaped by more than local peer networks; omitting these influences can over‑estimate the persistence of plagiarism under intervention. | The description limits interaction to “local peer networks” and does not mention other factors – hypothesis. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add empirically calibrated detection probabilities.** Replace the fixed values (0.55, 0.25) with rates derived from published studies on plagiarism detection (e.g., campus‑wide Turnitin audit data). Evaluate improvement by comparing the simulation’s aggregate cheating prevalence under both conditions to real‑world statistics; a closer match indicates enhanced realism.

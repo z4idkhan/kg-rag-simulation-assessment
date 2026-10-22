@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 04 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=729, prompt_tokens=892, total_tokens=1621, completion_time=0.796640172, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=266), prompt_time=0.052549428, prompt_tokens_details=None, queue_time=0.347665511, total_time=0.8491896)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation incorporates realistic components such as a finite population of student agents, a reinforcement‑learning (Q‑learning) framework, and distinct dishonest behaviors with probabilistic detection. However, it omits key details that influence realism, such as the exact reward/penalty structure, the nature of the active‑intervention, and empirical grounding for detection probabilities. Without these, the model’s behavior cannot be fully evaluated against real academic‑integrity dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unspecified reward/penalty structure** | Q‑learning convergence and behavior patterns depend critically on how rewards and penalties are quantified. Without this, the learning dynamics are ambiguous. | Hypothesis – the description only states “agents update behavior based on rewards and penalties” but gives no values. |
+| 2 | **Undefined active‑intervention design** | The effectiveness of intervention hinges on its specific mechanisms (e.g., monitoring, education, sanctions). Lack of detail prevents assessment of whether the intervention is realistic or comparable to real‑world policies. | Hypothesis – the text mentions “active‑intervention condition” but does not describe its components. |
+| 3 | **Detection probabilities not empirically calibrated** | Realistic detection rates are essential to model deterrence accurately. The stated probabilities (0.55 for direct copying, 0.25 for AI‑assisted plagiarism) are presented without justification or data source, limiting confidence in their plausibility. | Directly supported by description – the simulation claims these probabilities, but no evidence is provided. |
+
+**C. ONE MINIMUM REVISION**  
+Add an explicit reward/penalty table that assigns numerical values to each outcome (e.g., successful honest submission = +1, detected plagiarism = –5, undetected plagiarism = +2). Then run a short sensitivity analysis: compare the distribution of behaviors over 16 weeks before and after adding the table. If the revised model produces stable Q‑values and realistic shifts in behavior in response to interventions, the change can be considered an improvement.

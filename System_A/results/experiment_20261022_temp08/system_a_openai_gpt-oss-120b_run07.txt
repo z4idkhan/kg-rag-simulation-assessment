@@ -1,0 +1,27 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 07 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=898, prompt_tokens=431, total_tokens=1329, completion_time=1.86531043, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=400), prompt_time=0.026090943, prompt_tokens_details=None, queue_time=0.348398445, total_time=1.8914013729999999)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures core mechanisms (choice set, detection probabilities, peer influence, and a learning rule) that are relevant to academic‑integrity dynamics, but key aspects of real‑world contexts (population size, individual heterogeneity, adaptive enforcement) are either absent or underspecified, limiting ecological validity.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Very small agent population (30 students)** | A sample this small cannot reflect the diversity of motivations, risk tolerances, and network structures found in actual campuses; statistical fluctuations may drive results rather than systematic dynamics. | Hypothesis – the description states “30 student agents” but gives no justification that this size is sufficient for realistic inference. |
+| 2 | **Static detection probabilities (0.55 for copying, 0.25 for AI‑assisted)** | In reality detection likelihood varies with institutional resources, evolving detection tools, and the visibility of the misconduct; fixed rates ignore feedback loops that could alter behavior over 16 weeks. | Hypothesis – the probabilities are explicitly given, but no mechanism for change over time is described. |
+| 3 | **Simplistic behavioral learning (single‑parameter Q‑learning)** | Human cheating decisions are shaped by a range of factors (personal ethics, grade pressure, peer norms, perceived sanctions). A basic Q‑learning update omits such heterogeneity, potentially overstating the ease with which agents converge on dishonest strategies. | Hypothesis – the model mentions “Q‑learning” but provides no detail on state‑space richness or individual parameter variation. |
+
+**C. ONE MINIMUM REVISION**  
+**Add heterogeneity in detection risk:** Replace the single fixed detection probability for each misconduct type with a distribution (e.g., draw each agent’s detection risk from a Beta(α,β) centered on the reported mean).  
+
+*How to evaluate:* Run paired simulations (original vs revised) across multiple random seeds and compare (i) the variance in dishonest‑behavior prevalence and (ii) the sensitivity of the main finding (AI‑assisted plagiarism remaining prevalent under intervention) to the introduced risk variability. If the revised model yields consistent patterns while showing realistic dispersion, it indicates improved ecological plausibility.

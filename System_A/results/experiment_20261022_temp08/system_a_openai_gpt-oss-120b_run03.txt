@@ -1,0 +1,28 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 03 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=768, prompt_tokens=431, total_tokens=1199, completion_time=1.6018622580000001, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=264), prompt_time=0.020240202, prompt_tokens_details=None, queue_time=0.210325442, total_time=1.62210246)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms of academic‑integrity dynamics (agent choice, learning via Q‑learning, detection probabilities, and an intervention contrast). However, it abstracts away many contextual factors (e.g., varied sanctions, heterogeneous motivations, realistic network topology) that limit its fidelity to real‑world campus environments.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In actual institutions detection likelihood depends on factors such as plagiarism‑detection software sophistication, instructor vigilance, and the prevalence of a given cheating method; fixed rates may over‑ or underestimate risk and thus distort learning dynamics. | Directly stated in the description. |
+| 2 | **Oversimplified reward/penalty structure** | Academic‑integrity decisions are influenced by diverse incentives (grade pressure, career goals, moral beliefs) and a range of penalties (warnings, grade reductions, suspension). A simplistic payoff matrix can produce unrealistic convergence of behavior. | Mentioned only that agents “update behavior based on rewards and penalties”; the richness of those payoffs is not detailed, so this is a hypothesis requiring more information. |
+| 3 | **Limited population size and time horizon (30 students, 16 weeks)** | Real campuses involve hundreds to thousands of students over multiple semesters; small samples may amplify stochastic effects and miss long‑term adaptation to interventions. | The numbers are given, but their adequacy for representing institutional dynamics is not justified, making this a hypothesis. |
+
+**C. ONE MINIMUM REVISION**  
+
+*Add context‑sensitive detection probabilities*: replace the fixed 0.55/0.25 rates with functions that increase detection likelihood as a behavior becomes more common in an agent’s local peer network (e.g., P_detection = base + α × local prevalence).  
+
+*Evaluation*: Run parallel simulations with the original fixed rates and with the variable rates; compare the trajectory of dishonest behavior and the differential impact of the active intervention. Improved realism is indicated if the revised model yields patterns (e.g., diminishing returns of cheating as detection risk rises) that align better with empirical studies of academic misconduct.

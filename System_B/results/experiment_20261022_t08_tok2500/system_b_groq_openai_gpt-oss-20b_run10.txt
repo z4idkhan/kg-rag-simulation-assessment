@@ -1,0 +1,52 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 10 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=749, prompt_tokens=892, total_tokens=1641, completion_time=0.807264812, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=261), prompt_time=0.14522915, prompt_tokens_details=None, queue_time=0.513016113, total_time=0.952493962)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation incorporates key components of an academic‑integrity environment—student agents, multiple behavior options, Q‑learning, detection probabilities, and an intervention comparison—suggesting a credible framework. However, critical details such as the reward/penalty scheme, the mechanics of peer‑network interactions, and the exact nature of the intervention are omitted, limiting confidence that the model realistically captures student decision dynamics or institutional policy effects.
+
+**B. TOP 3 REALISM GAPS**  
+
+1. **Gap:** The simulation does not specify the reward or penalty values assigned to each action (honest submission, direct copying, AI‑assisted plagiarism).  
+   **Why it matters:** Q‑learning requires explicit reward signals to guide learning; without them, the agents’ learning dynamics are ambiguous, reducing the model’s explanatory power.  
+   **Evidence status:** Hypothesis needing more information (the description only mentions rewards and penalties generically, not their magnitudes or how they are applied).
+
+2. **Gap:** The mechanism by which detection probability translates into penalties or behavioral change is not described.  
+   **Why it matters:** Detection rates influence the perceived risk of cheating; if the model does not link detection to punishment, it cannot accurately simulate deterrence effects.  
+   **Evidence status:** Hypothesis needing more information (the description lists probabilities but not their consequences).
+
+3. **Gap:** The structure and influence of local peer networks, as well as the specific components of the active‑intervention condition, are not detailed.  
+   **Why it matters:** Peer influence and intervention design are central to realistic modeling of academic integrity; unclear dynamics undermine the model’s validity.  
+   **Evidence status:** Hypothesis needing more information (the description states interactions occur but gives no operational detail).
+
+**C. ONE MINIMUM REVISION**  
+Add a concise specification of the reward/penalty matrix used by the Q‑learning agents (e.g., +10 for honest submission, -5 for direct copying, -2 for AI‑assisted plagiarism, with detection leading to an additional -15 penalty). Evaluate the revision by running the simulation with and without the explicit matrix and comparing convergence of Q‑values and stability of behavior patterns; a realistic model should show consistent learning trajectories and plausible shifts in cheating rates in response to the defined rewards.

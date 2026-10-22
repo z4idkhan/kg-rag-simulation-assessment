@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 01 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=648, prompt_tokens=892, total_tokens=1540, completion_time=1.344040289, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=149), prompt_time=0.044412763, prompt_tokens_details=None, queue_time=0.213051925, total_time=1.388453052)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of an academic‑integrity setting (multiple student agents, choices between honest work, copying, and AI‑assisted plagiarism, and learning via Q‑learning). However, key contextual factors (e.g., variability in detection, diverse motivations, realistic intervention mechanisms, and empirical grounding) are absent or unspecified, limiting the model’s fidelity to real‑world academic environments.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static detection probabilities** (0.55 for copying, 0.25 for AI‑assisted plagiarism) | In reality detection rates depend on factors such as instructor vigilance, plagiarism‑detection tools, and the sophistication of the cheating method; fixed rates can misrepresent the dynamics of risk and deterrence. | Hypothesis – the description states the probabilities but provides no justification or variability, so the concern is inferred from missing detail. |
+| 2 | **Unspecified intervention design** (only “active‑intervention condition” mentioned) | The effectiveness of interventions (e.g., honor codes, training, monitoring) hinges on their content and intensity; without specifying what the intervention entails, we cannot assess whether the model realistically captures how policies affect behavior. | Directly supported – the description notes a comparison but gives no further information, indicating a gap. |
+| 3 | **Homogeneous student agents** (all agents share the same reward/penalty structure) | Real student populations differ in risk tolerance, ethical values, and prior experience with AI tools; ignoring heterogeneity may oversimplify the emergence of dishonest behavior and its response to interventions. | Hypothesis – the description lists “30 student agents” but does not mention individual differences, so the lack of heterogeneity is assumed. |
+
+**C. ONE MINIMUM REVISION**  
+Add **empirically calibrated, variable detection probabilities** that depend on the type of plagiarism and on an “institutional vigilance” parameter (e.g., higher vigilance → higher detection for AI‑assisted plagiarism). Evaluate the revision by comparing simulated overall detection rates and dishonest‑behavior prevalence against published empirical studies of plagiarism detection in higher‑education settings; improvement is indicated if the simulated rates fall within observed confidence intervals.

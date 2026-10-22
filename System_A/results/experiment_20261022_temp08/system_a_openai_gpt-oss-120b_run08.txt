@@ -1,0 +1,27 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 08 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=737, prompt_tokens=431, total_tokens=1168, completion_time=1.54004947, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=206), prompt_time=0.02030649, prompt_tokens_details=None, queue_time=0.348268548, total_time=1.5603559599999999)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**VERDICT: PARTLY** – The simulation captures some plausible mechanisms (agent learning, peer‑network influence, differing detection rates for copying vs. AI‑assisted plagiarism). However, critical aspects of academic‑integrity contexts (heterogeneous student motivations, dynamic detection processes, and a concretely defined intervention) are either missing or underspecified, limiting ecological validity.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|------|----------------|-----------------|
+| 1 | **Static, uniform detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism).** | In real institutions detection varies with faculty vigilance, software tools, and case complexity; a single probability cannot capture this variability and may misrepresent the incentive structure that drives student choices. | Directly supported: the description gives fixed probabilities and no further detail. |
+| 2 | **Lack of student heterogeneity (e.g., differing risk tolerance, academic ability, prior cheating history).** | Individual differences strongly influence cheating decisions; a homogeneous agent pool can produce unrealistic convergence patterns and over‑ or under‑estimate the spread of dishonest behavior. | Hypothesis: the description lists “30 student agents” but provides no attributes beyond the three action choices. |
+| 3 | **Unspecified nature of the “active‑intervention” condition.** | The effectiveness of interventions (e.g., honor codes, plagiarism education) depends on content, delivery, and timing; without a concrete model the comparison to the no‑intervention baseline cannot be interpreted. | Directly supported: the text mentions an “active‑intervention condition” but gives no mechanistic details. |
+
+**C. ONE MINIMUM REVISION**  
+**Add a calibrated, behavior‑specific detection model:** replace the single fixed probabilities with detection functions that depend on (a) the type of dishonest act (copying vs. AI‑assisted), (b) the student’s position in the peer network (e.g., more central students face higher scrutiny), and (c) a stochastic “faculty vigilance” parameter that varies each week.  
+
+**How to evaluate the improvement:** run parallel simulations with the original fixed probabilities and with the new detection functions; compare the resulting dishonest‑behavior trajectories to published empirical time‑series on academic misconduct (e.g., longitudinal surveys of cheating rates). Improved alignment (e.g., similar magnitude and temporal pattern of cheating spikes) would indicate the revision enhances realism.

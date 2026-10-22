@@ -1,0 +1,22 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 02 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=855, prompt_tokens=431, total_tokens=1286, completion_time=1.150811669, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=401), prompt_time=0.310616677, prompt_tokens_details=PromptTokensDetails(cached_tokens=256), queue_time=0.383136365, total_time=1.461428346)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**PARTLY** – The simulation captures several key mechanisms (choice of dishonest behavior, Q‑learning updates, detection probabilities, and peer network effects), which gives it a basic realistic scaffold. However, it omits several essential elements of real academic‑integrity systems, such as heterogeneous student characteristics, dynamic detection and sanction policies, and contextual factors that influence the payoff of dishonesty. Consequently, while the model offers useful insights, its realism is limited.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Missing reward/penalty specification** – The simulation states that agents update behavior via Q‑learning but does not describe the rewards earned for honest or dishonest actions or the penalties incurred when caught. Without these, the learning dynamics cannot reflect realistic incentives, undermining the validity of the results. *Hypothesis – needs more information.*  
+2. **Static detection probabilities** – Detection rates are fixed at 0.55 for direct copying and 0.25 for AI‑assisted plagiarism. In reality, detection likelihood depends on factors such as assignment complexity, monitoring intensity, and evolving technology. Fixed probabilities ignore this variability, potentially biasing the outcome that AI‑plagiarism remains prevalent. *Hypothesis – needs more information.*  
+3. **Simplified student population and network** – The model uses only 30 agents and a “local peer network” without specifying its structure or student heterogeneity (e.g., risk tolerance, academic motivation). Real classrooms have diverse students and more complex interaction patterns, which affect the spread and persistence of dishonest behavior. *Hypothesis – needs more information.*
+
+**C. ONE MINIMUM REVISION**  
+Add an explicit reward/penalty schema to the Q‑learning update: e.g., give a positive reward of +1 for honest submission, a reward of +0.5 for undetected dishonest behavior, and a penalty of –2 when a dishonest act is detected. Evaluate the impact by tracking the proportion of dishonest actions over the 16 weeks and comparing the convergence pattern to the baseline (no reward/penalty specification). This minimal change will clarify the incentive structure and improve the simulation’s realism.

@@ -1,0 +1,22 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 04 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=836, prompt_tokens=431, total_tokens=1267, completion_time=0.864810195, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=348), prompt_time=0.043755259, prompt_tokens_details=None, queue_time=0.396781815, total_time=0.908565454)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation captures some key elements of academic misconduct dynamics—such as multiple cheating strategies, peer influence, and a learning algorithm (Q‑learning). However, it simplifies many aspects of real student behavior (e.g., uniform detection probabilities, no variability in student skill or motivation, no explicit reward/penalty structure). These simplifications limit how accurately the model can reflect real-world academic‑integrity environments.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Uniform Detection Probabilities** – The model assigns fixed probabilities (0.55 for direct copying, 0.25 for AI‑assisted plagiarism) without grounding them in empirical data or allowing variation across contexts. *Why matters:* Detection likelihood in real institutions depends on many factors (e.g., assignment type, monitoring intensity). *Evidence:* The description explicitly states these probabilities, but no justification or source is provided.  
+2. **Simplified Reward/Penalty Structure** – The Q‑learning update is mentioned, but the simulation does not describe how rewards and penalties are quantified or whether they reflect actual academic consequences (grades, suspensions). *Why matters:* The incentive structure drives learning; unrealistic rewards may lead to implausible behavior patterns. *Evidence:* Only that agents "update behavior based on rewards and penalties" is stated; the specifics are omitted.  
+3. **Limited Scale and Heterogeneity** – The simulation uses 30 agents over 16 weeks, with no mention of student heterogeneity (e.g., risk tolerance, prior knowledge, access to AI tools). *Why matters:* Real student populations are larger and more diverse, influencing the spread and persistence of dishonest behaviors. *Evidence:* The description lists the number of agents and time span but does not discuss heterogeneity.
+
+**C. ONE MINIMUM REVISION**  
+Add an empirical calibration step for detection probabilities: replace the fixed 0.55 and 0.25 values with distributions derived from institutional plagiarism‑detection studies (e.g., 0.4–0.7 for direct copying, 0.1–0.4 for AI‑assisted). Evaluate improvement by comparing the simulation’s predicted prevalence of each cheating type against observed data from a pilot academic‑integrity audit. This single change grounds the model in reality without overhauling its structure.

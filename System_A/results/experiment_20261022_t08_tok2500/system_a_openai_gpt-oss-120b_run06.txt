@@ -1,0 +1,26 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 06 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=1004, prompt_tokens=431, total_tokens=1435, completion_time=2.09481593, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=499), prompt_time=0.02703517, prompt_tokens_details=None, queue_time=0.399210464, total_time=2.1218511)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms (choice among honesty, direct copying, AI‑assisted plagiarism; learning via Q‑learning; differing detection probabilities; peer‑network influence; comparison of intervention conditions). However, key aspects of real academic‑integrity contexts—such as variable detection processes, a richer set of dishonest strategies, and realistic population size/duration—are missing or oversimplified, limiting ecological validity.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality, detection likelihood depends on factors like the sophistication of the cheat, faculty vigilance, and the presence of detection tools; fixed rates ignore these dynamics and may misrepresent the impact of interventions. | Directly supported (the description explicitly gives fixed probabilities). |
+| 2 | **Only three discrete behavioral options** | Real students exhibit a spectrum of misconduct (partial copying, paraphrasing, citation manipulation, contract cheating, etc.) and can combine tactics; limiting options reduces the richness of strategy evolution and peer influence. | Hypothesis (the description lists the three options but does not state whether other behaviors are excluded). |
+| 3 | **Small agent pool (30 students) and short horizon (16 weeks)** | Academic integrity phenomena emerge over larger cohorts and longer academic terms; a tiny, brief simulation may not capture population‑level trends, cumulative reputational effects, or long‑term learning. | Directly supported (the numbers are given). |
+
+**C. ONE MINIMUM REVISION**  
+**Add a dynamic detection model:** replace the fixed detection probabilities with a function that updates based on recent cheating frequency in an agent’s local peer network (e.g., detection probability = base + α·(network‑wide recent cheating rate)).  
+**Evaluation:** Run the revised simulation under the same two conditions and compare (i) the sensitivity of dishonest‑behavior prevalence to the intervention and (ii) the emergence of “hot‑spot” clusters of cheating. Improved realism is indicated if the model shows variable detection outcomes that align with theoretical expectations that higher local cheating raises detection risk and that interventions can differentially suppress cheating in high‑risk clusters.

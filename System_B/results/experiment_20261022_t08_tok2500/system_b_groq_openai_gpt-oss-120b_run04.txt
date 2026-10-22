@@ -1,0 +1,53 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 04 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=689, prompt_tokens=892, total_tokens=1581, completion_time=2.30693086, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=153), prompt_time=0.063613854, prompt_tokens_details=PromptTokensDetails(cached_tokens=768), queue_time=0.348472291, total_time=2.370544714)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY**  
+The simulation captures several core elements of an academic‑integrity setting—multiple student agents, choice among honest, direct‑copy, and AI‑assisted plagiarism, and learning via a Q‑learning algorithm (Wikidata Q‑learning definition). However, key aspects of real‑world academic environments (e.g., heterogeneous student motivations, nuanced sanction structures, empirically grounded detection rates, and detailed intervention mechanisms) are either unspecified or oversimplified, limiting the model’s fidelity.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Static, uniform detection probabilities** (0.55 for copying, 0.25 for AI‑assisted) | Real detection rates vary by discipline, institution, and the sophistication of plagiarism tools; fixed probabilities ignore this variability and may misrepresent the incentive structure for agents. | Directly supported: the description explicitly states single fixed probabilities and gives no further detail. |
+| 2 | **Absence of heterogeneous student attributes** (e.g., risk tolerance, prior knowledge, ethical orientation) | Heterogeneity drives diverse cheating behaviors in empirical studies; without it the model cannot reproduce observed distributional patterns of dishonesty. | Directly supported: the description mentions “30 student agents” but provides no attributes or variation. |
+| 3 | **Unspecified nature of the “active‑intervention” condition** (what the intervention does, how it changes rewards/penalties) | The effectiveness of interventions (e.g., honor codes, detection tools) hinges on their specific mechanisms; an undefined intervention prevents assessment of its realism or policy relevance. | Hypothesis: the description notes an “active‑intervention condition” but gives no mechanistic detail, so the gap is inferred and needs further information. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add calibrated, context‑dependent detection probabilities**: replace the single fixed detection rates with probability functions that depend on factors such as the size of the peer network, the type of plagiarism, and a configurable “detection effort” parameter.  
+
+**How to evaluate improvement:** run parallel simulations with the original fixed rates and with the calibrated functions; compare the resulting distribution of dishonest behaviors against published empirical data on plagiarism prevalence (e.g., studies reporting detection rates for copy‑and‑paste vs. AI‑generated text). An alignment of simulated prevalence with empirical benchmarks would indicate a more realistic model.

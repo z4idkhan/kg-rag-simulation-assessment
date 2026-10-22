@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 02 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=938, prompt_tokens=892, total_tokens=1830, completion_time=1.039854289, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=493), prompt_time=0.066342084, prompt_tokens_details=None, queue_time=0.332416765, total_time=1.106196373)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation captures several realistic elements—student agents, a learning algorithm, and a comparison of intervention conditions—but it omits key details that are crucial for a credible representation of academic‑integrity dynamics. The use of Q‑learning and explicit detection probabilities provides a mechanistic framework, yet the lack of empirical grounding for those probabilities, the limited behavioral options, and the small, short‑run population reduce the model’s fidelity to real‑world settings.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unjustified detection probabilities** – The model assigns 0.55 for direct copying and 0.25 for AI‑assisted plagiarism without citing empirical studies or calibration data. | Detection rates drive the reinforcement signal; unrealistic values can distort learning dynamics and the reported prevalence of AI‑plagiarism. | Directly supported by the description (values are stated). |
+| 2 | **Over‑simplified agent action space** – Students choose only from honest submission, direct copying, or AI‑assisted plagiarism. | Real students exhibit a spectrum of dishonest strategies (e.g., paraphrasing, collaborative cheating) that influence peer dynamics and intervention effectiveness. | Directly supported by the description (three options listed). |
+| 3 | **Limited population size and time horizon** – 30 agents over 16 weeks. | Small groups may not capture network effects, policy diffusion, or long‑term behavioral shifts, limiting generalizability. | Directly supported by the description (agent count and duration stated). |
+
+**C. ONE MINIMUM REVISION**  
+Add an empirical calibration step for the detection probabilities: introduce a parameter‑fitting routine that adjusts the 0.55 and 0.25 values to match published plagiarism detection rates (e.g., from institutional data). Evaluate improvement by running the model with calibrated probabilities and comparing the simulated prevalence of AI‑assisted plagiarism to observed rates in comparable academic settings; a closer match indicates enhanced realism.

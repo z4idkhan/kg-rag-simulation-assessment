@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 07 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=789, prompt_tokens=892, total_tokens=1681, completion_time=1.244129692, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=355), prompt_time=0.61265155, prompt_tokens_details=PromptTokensDetails(cached_tokens=768), queue_time=0.347847139, total_time=1.856781242)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The model captures key elements of academic‑integrity dynamics—agent‑based decision making, reinforcement learning, and a comparison of intervention regimes—making it a useful conceptual framework. However, the simulation’s scope is narrow: it uses a single, small population, fixed detection probabilities, and no representation of student heterogeneity or institutional policy nuances. These omissions limit the model’s ability to reflect the complexity of real academic settings.
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why It Matters | Evidence‑Backed or Hypothesis |
+|---|-----|----------------|-------------------------------|
+| 1 | **No student heterogeneity** (e.g., risk preference, prior knowledge, motivation) | Real students differ in how they weigh rewards and penalties; homogeneous agents can produce unrealistic, uniform behavior patterns. | Hypothesis – the description does not mention any variation among agents. |
+| 2 | **Simplistic, static detection probabilities** (0.55 for copying, 0.25 for AI‑plagiarism) | Detection likelihood in real institutions varies with context, resources, and evolving tools; fixed probabilities ignore these dynamics and may bias outcomes. | Hypothesis – the description only lists the probabilities, with no mention of variation or context. |
+| 3 | **Limited intervention modeling** (only “no‑intervention” vs “active‑intervention” with no detail) | Effective academic‑integrity programs involve multifaceted measures (education, monitoring, sanctions); a binary condition oversimplifies intervention impact. | Hypothesis – the description does not detail what the active intervention entails. |
+
+**C. ONE MINIMUM REVISION**  
+Add a simple student‑type attribute (e.g., “risk tolerance” drawn from a normal distribution) and modify the Q‑learning reward function to incorporate this attribute when evaluating actions. After implementing, compare the distribution of dishonest behaviors between the original homogeneous model and the heterogeneous model; an increased variance in behavior would indicate that the revision captures a realistic dimension of student decision making.

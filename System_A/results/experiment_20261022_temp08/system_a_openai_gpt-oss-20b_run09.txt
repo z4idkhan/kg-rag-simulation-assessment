@@ -1,0 +1,21 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 09 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=431, total_tokens=1431, completion_time=1.21607481, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=759), prompt_time=0.057360012, prompt_tokens_details=None, queue_time=0.434599711, total_time=1.273434822)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation captures several plausible mechanisms—students choose between honest work, direct copying, or AI‑assisted plagiarism; Q‑learning is used to model adaptive behavior; detection probabilities differ by cheating type; and students interact via local peer networks. However, key components such as the specific reward/penalty schema, the nature of the active intervention, and the empirical justification for the detection rates are not described, limiting confidence that the model faithfully represents real academic‑integrity dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence‑backed or hypothesis |
+|---|-----|----------------|------------------------------|
+| 1 | **Empirical grounding of detection probabilities** | Detection rates directly influence the incentive structure for each cheating strategy; unrealistic probabilities can bias the model’s predictions about prevalence. | Hypothesis – the description supplies fixed values (0.55, 0.25) but no source or justification. |
+| 2 | **Specification of reward/penalty structure in Q‑learning** | The learning dynamics hinge on how rewards (

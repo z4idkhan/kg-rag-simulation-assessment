@@ -1,0 +1,31 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 08 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=845, prompt_tokens=431, total_tokens=1276, completion_time=1.74722208, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=301), prompt_time=0.017011319, prompt_tokens_details=None, queue_time=0.213568098, total_time=1.764233399)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of an academic‑integrity setting (multiple agents, choice of honest vs dishonest strategies, learning from outcomes, and peer influence). However, key aspects that determine real‑world dynamics—such as heterogeneous motivations, context‑dependent detection rates, and the design of the “active‑intervention”—are either unspecified or oversimplified, limiting ecological validity.
+
+---
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted plagiarism)** | In reality detection likelihood varies with factors like faculty vigilance, plagiarism‑checking tools, and the sophistication of the cheating method. A static probability can misrepresent how deterrence works and may artificially inflate the persistence of AI‑assisted plagiarism. | Directly supported: the description states the probabilities are fixed; the realism concern is a hypothesis based on external knowledge of variable detection. |
+| 2 | **Simplistic Q‑learning reward/penalty scheme** | Human students weigh complex incentives (grade pressure, moral beliefs, future career concerns). A basic reinforcement signal may not capture why some students persist in cheating even when penalized, potentially exaggerating learning speed or stability of dishonest norms. | Directly supported: the model “updates behavior based on rewards and penalties”; the gap is a hypothesis about missing nuance. |
+| 3 | **Small agent pool (30 students) and short horizon (16 weeks)** | Small, closed populations can produce stochastic fluctuations that do not generalize to larger campuses, and 16 weeks may be insufficient for long‑term cultural shifts in academic integrity to emerge. | Directly supported: the simulation size and duration are given; the concern about generalizability is a hypothesis. |
+
+---
+
+**C. ONE MINIMUM REVISION**  
+**Add variability to detection probabilities**: replace the single fixed values with probability distributions (e.g., β‑distributed draws) that depend on observable factors such as the proportion of recent detections in the local peer network or the intensity of the active‑intervention.  
+
+*Evaluation*: Run parallel simulations with the original fixed rates and with the variable rates; compare the resulting prevalence of AI‑assisted plagiarism and the sensitivity of dishonest behavior to the intervention. Convergence toward empirically reported detection rates (e.g., ≈ 30 % for AI‑generated text in institutional audits) would indicate improved realism.

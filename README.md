@@ -35,29 +35,31 @@ System A used an 8B model and System B a 70B model, so the difference cannot be
 attributed to grounding. Pilot files are kept for transparency.
 
 ### Controlled experiment (October 2026)
-Six models, 10 runs each per system, temperature 0.6, identical prompts.
+Six models, 10 runs each per system, identical prompts. Main run: temperature 0.8,
+max 2500 output tokens (`experiment_20261022_t08_tok2500`).
 
 | Model | A consistency | B consistency | A verdict | B verdict |
 |---|---|---|---|---|
-| allam-2-7b | 80% | 56% | YES | PARTLY |
+| allam-2-7b | 100% | 88% | YES | PARTLY |
 | gpt-oss-20b | 100% | 100% | PARTLY | PARTLY |
 | nemotron-3.5-lightning-30b | 100% | 100% | PARTLY | PARTLY |
 | gpt-oss-120b | 100% | 100% | PARTLY | PARTLY |
 | qwen3.8-27b | 100% | 100% | PARTLY | PARTLY |
-| nemotron-3-nano-30b-reasoning | 89% | 70% | NO | NO |
+| nemotron-3-nano-30b-reasoning | 67% | 100% | NO | NO |
 
-Consistency is computed over runs with a readable verdict; valid counts are in
-`comparison_results_experiment_20261020_02.txt`.
+Robustness runs: `experiment_20261020_02` (temp 0.6, 1000 tokens) and
+`experiment_20261022_temp08` (temp 0.8, 1000 tokens).
 
 ### Findings
-- Larger models gave identical verdicts with and without grounding.
-- The two weakest models became **less** consistent with grounding.
-- Grounding shifted allam-2-7b's verdict from YES to PARTLY, matching larger models.
-- Weak models occasionally reported "gaps" contradicted by the description
-  (about 2–3 of 168 flagged sentences, roughly equal in A and B).
+- Larger models gave identical verdicts with and without grounding in every run.
+- For the smallest models, grounding's effect on consistency was not reliable:
+  it rose in some runs and fell in others.
+- Grounding shifted allam-2-7b's verdict from YES to PARTLY, matching the larger
+  models, in all three runs.
+- Weak models occasionally reported "gaps" contradicted by the description.
 
-Short definitional knowledge did not improve consistency. Consistency also does not
-measure correctness.
+Short definitional knowledge did not improve consistency. Agreement with larger
+models is not the same as correctness.
 
 ## Next Steps
 - Test richer domain knowledge instead of one-line definitions

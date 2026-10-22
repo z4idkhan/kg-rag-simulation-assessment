@@ -1,0 +1,29 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 03 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=693, prompt_tokens=431, total_tokens=1124, completion_time=1.456619428, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=121), prompt_time=0.022594277, prompt_tokens_details=None, queue_time=0.348228389, total_time=1.479213705)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms of academic‑integrity research (agents, choice set, detection probabilities, learning via Q‑learning, and an intervention comparison). However, essential contextual details (e.g., distribution of rewards/penalties, heterogeneity among students, realistic network structure, and empirically grounded detection rates) are missing, limiting confidence that the model faithfully reproduces real‑world dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted) are not justified** | In reality, detection success varies with course design, technology, instructor vigilance, and the sophistication of the plagiarism method. Constant rates can misrepresent how risk influences student decisions, biasing the learning dynamics. | The description states the probabilities but gives no source or justification – hypothesis needing more information. |
+| 2 | **Homogeneous agents (all 30 students share the same reward/penalty structure, learning rate, and network size)** | Real student populations differ in risk tolerance, academic ability, and social influence. Ignoring heterogeneity can produce unrealistic convergence patterns and over‑ or under‑estimate the spread of dishonest behavior. | The description lists “30 student agents” with no mention of individual differences – hypothesis. |
+| 3 | **Sparse detail on the “local peer networks” (size, topology, information flow)** | Network topology strongly affects diffusion of norms and learning; e.g., a dense clique versus a sparse random graph yields different contagion dynamics. Without specifying this, the model’s peer influence mechanism cannot be judged for realism. | The description notes “students interact through local peer networks” but gives no further specification – hypothesis. |
+
+**C. ONE MINIMUM REVISION**  
+
+*Add empirically calibrated, variable detection probabilities.*  
+Replace the single fixed values with detection rates drawn from probability distributions (e.g., Beta(α,β)) whose parameters are set based on published studies of plagiarism detection success for copying and AI‑generated text. During each episode, an agent’s attempt is flagged according to a draw from the appropriate distribution, allowing the risk of being caught to fluctuate.  
+
+*Evaluation:* Run parallel simulation batches with the original fixed rates and with the variable rates; compare key outcomes (overall dishonest behavior, proportion of AI‑assisted plagiarism, and sensitivity to the intervention). If the variable‑rate version yields significantly different (and more plausible) patterns—e.g., higher variability across runs and a stronger response to the intervention—this indicates the revision improves realism.

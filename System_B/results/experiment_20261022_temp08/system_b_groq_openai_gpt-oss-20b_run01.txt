@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 01 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=892, total_tokens=1892, completion_time=1.125983305, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=556), prompt_time=0.0609574, prompt_tokens_details=None, queue_time=1.002399042, total_time=1.186940705)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY – The simulation incorporates a reinforcement‑learning framework (Q‑learning) and models a small cohort of students over a realistic time span, which gives it a structural basis for exploring academic‑integrity dynamics. However, key details that would determine whether the model’s outcomes mirror real-world behavior are absent (e.g., specific reward/penalty definitions, realistic detection mechanisms, and intervention design). Because these omissions limit the fidelity of the simulated decision process, realism is only partial.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence from description / Hypothesis |
+|---|-----|----------------|----------------------------------------|
+| 1 | **Undefined reward/penalty structure for agent learning** | Without clear payoffs, agents may learn arbitrary or unrealistic strategies, undermining the validity of the Q‑learning dynamics. | *Hypothesis* – the description only states “agents update behavior based on rewards and penalties” but does not specify what those rewards or penalties are. |
+| 2 | **Simplified detection probabilities (0.55 vs 0.25)** | Real detection rates depend on context, tool sophistication, and institutional policies; fixed probabilities may bias behavior in ways that do not reflect actual academic environments. | *Hypothesis* – the description lists two probabilities but offers no justification or source, so realism of detection is unsubstantiated. |
+| 3 | **Missing details on intervention design and peer‑network dynamics** | Interventions and social influence are central to academic‑integrity outcomes; vague or unspecified mechanisms reduce the model’s explanatory power. | *Hypothesis* – the experiment compares “no‑intervention” and “active‑intervention” but provides no description of what the intervention entails or how peer networks are structured. |
+
+**C. ONE MINIMUM REVISION**  
+Add a comprehensive, literature‑based reward/penalty schedule that assigns explicit numerical values to each action (honest submission, direct copying, AI‑assisted plagiarism) and to the corresponding detection outcomes. Document these values and the rationale behind them. Evaluate the

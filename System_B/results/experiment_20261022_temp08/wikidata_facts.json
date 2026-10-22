@@ -1,0 +1,37 @@
+{
+  "plagiarism": {
+    "topic": "plagiarism",
+    "status": "OK",
+    "entity_uri": "http://www.wikidata.org/entity/Q164666",
+    "description": "using another author's work as if it was one's own original work",
+    "relevance": "VERIFIED_ENTITY_ID"
+  },
+  "academic integrity": {
+    "topic": "academic integrity",
+    "status": "OK",
+    "entity_uri": "http://www.wikidata.org/entity/Q4671278",
+    "description": "moral code or ethical policy of academia",
+    "relevance": "VERIFIED_ENTITY_ID"
+  },
+  "reinforcement learning": {
+    "topic": "reinforcement learning",
+    "status": "OK",
+    "entity_uri": "http://www.wikidata.org/entity/Q830687",
+    "description": "type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time",
+    "relevance": "VERIFIED_ENTITY_ID"
+  },
+  "Q-learning": {
+    "topic": "Q-learning",
+    "status": "OK",
+    "entity_uri": "http://www.wikidata.org/entity/Q2664563",
+    "description": "model-free reinforcement learning algorithm",
+    "relevance": "VERIFIED_ENTITY_ID"
+  },
+  "agent-based model": {
+    "topic": "agent-based model",
+    "status": "OK",
+    "entity_uri": "http://www.wikidata.org/entity/Q392811",
+    "description": "type of computational models",
+    "relevance": "VERIFIED_ENTITY_ID"
+  }
+}

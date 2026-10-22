@@ -1,0 +1,13 @@
+SYSTEM A vs SYSTEM B — SUMMARY
+Experiment ID: experiment_20261022_t06_tok2500
+
+Model | A consistency | B consistency | Change (pp) | A valid | B valid | A verdict | B verdict
+allam-2-7b | 100% | 88% | -12 | 10/10 | 8/10 | YES | PARTLY
+openai/gpt-oss-20b | 100% | 100% | +0 | 9/10 | 8/10 | PARTLY | PARTLY
+nvidia/nemotron-3.5-lightning-30b-a3b | 100% | 100% | +0 | 10/10 | 9/10 | PARTLY | PARTLY
+openai/gpt-oss-120b | 100% | 100% | +0 | 10/10 | 10/10 | PARTLY | PARTLY
+qwen/qwen3.8-27b | 100% | 100% | +0 | 10/10 | 7/10 | PARTLY | PARTLY
+nvidia/nemotron-3-nano-omni-30b-a3b-reasoning | 67% | 100% | +33 | 9/10 | 8/10 | NO | NO
+
+Interpretation: consistency measures repeatability, not correctness or realism.
+Review the actual outputs and manually verify whether gaps are evidence-supported.

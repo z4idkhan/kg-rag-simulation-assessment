@@ -1,0 +1,22 @@
+=== SYSTEM A | openai/gpt-oss-20b | RUN 08 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: INCOMPLETE
+FINISH REASON: length
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=1000, prompt_tokens=431, total_tokens=1431, completion_time=1.147866419, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=572), prompt_time=0.034242042, prompt_tokens_details=None, queue_time=0.952774191, total_time=1.1821084609999999)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**PARTLY** – The model captures basic adaptive decision‑making (Q‑learning) and incorporates detection probabilities, which are realistic elements. However, it simplifies many aspects of student behavior, detection dynamics, and intervention mechanisms, limiting its face‑validity for real academic settings.
+
+**B. TOP 3 REALISM GAPS**  
+1. **Limited behavior space** – The simulation allows only three actions (honest, direct copying, AI‑assisted plagiarism). Real students exhibit a broader spectrum of dishonest strategies (e.g., contract cheating, group plagiarism). This matters because the restricted action set may bias learning dynamics and underestimate overall dishonesty. *Supported by description:* the model explicitly lists only these three options.  
+2. **Static, uniform detection probabilities** – Detection probabilities are fixed at 0.55 for direct copying and 0.25 for AI‑assisted plagiarism for all students and all weeks. In reality, detection likelihood varies with context, examiner skill, and evolving detection tools. This matters because constant probabilities can distort the relationship between risk and strategy choice. *Supported by description:* the probabilities are stated as constants.  
+3. **Unspecified intervention mechanics** – The “active‑intervention” condition is mentioned but its nature (e.g., increased penalties, monitoring, education) is not described. Without knowing how the intervention operates, it is unclear why AI‑assisted plagiarism remains prevalent. This matters because intervention design critically shapes learning outcomes. *Hypothesis needing more information:* the intervention’s content and implementation are not provided.
+
+**C. ONE MINIMUM REVISION**  
+Add a simple, time‑varying detection probability for AI‑assisted plagiarism that increases gradually (e.g., +0.05 each week after intervention starts). Evaluate improvement by running two parallel simulations (with and without the dynamic detection) and comparing the prevalence of AI‑assisted plagiarism in the intervention condition. A statistically significant reduction in AI‑assisted plagiarism when detection probability rises would indicate that the revision makes the model’s behavior

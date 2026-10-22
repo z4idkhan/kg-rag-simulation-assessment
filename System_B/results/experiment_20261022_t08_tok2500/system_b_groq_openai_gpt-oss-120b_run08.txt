@@ -1,0 +1,47 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 08 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=653, prompt_tokens=892, total_tokens=1545, completion_time=1.3736569969999999, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=98), prompt_time=0.050312206, prompt_tokens_details=None, queue_time=0.400220122, total_time=1.423969203)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY**  
+The simulation captures key elements of an academic‑integrity setting—multiple student agents, choices between honest work, direct copying, and AI‑assisted plagiarism, and learning via Q‑learning with reward/penalty feedback—matching the Wikidata definition of a *reinforcement‑learning* system (Q‑learning is a model‑free RL algorithm). However, essential aspects of real‑world plagiarism dynamics (e.g., nuanced detection mechanisms, varied penalty severity, heterogeneous student motivations, and institutional policies) are not specified, limiting the model’s fidelity.
+
+**B. TOP 3 REALISM GAPS**
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Simplified detection probabilities** (0.55 for copying, 0.25 for AI‑assisted) | Real plagiarism detection depends on many factors (e.g., text similarity thresholds, instructor review, software accuracy). Fixed probabilities ignore situational variation and may misrepresent the effectiveness of interventions. | Directly supported: the description states these fixed values; the gap is a hypothesis about missing complexity. |
+| 2 | **Uniform reward/penalty structure** (agents “update behavior based on rewards and penalties” without detail) | In actual academic settings, consequences differ by severity, repeat offenses, and institutional policy. A single reward/penalty scheme cannot capture the differential incentives that shape student behavior. | Directly supported: the description mentions rewards/penalties but provides no specifics; the gap is a hypothesis about omitted heterogeneity. |
+| 3 | **Lack of individual differences among agents** (all 30 students are treated identically) | Students vary in risk tolerance, moral development, and access to AI tools. Ignoring heterogeneity reduces ecological validity and may over‑ or under‑estimate the spread of dishonest behavior. | Directly supported: the description lists “30 student agents” but gives no attributes; the gap is a hypothesis about missing variability. |
+
+**C. ONE MINIMUM REVISION**  
+Add a **parameterized detection model** that varies detection probability based on a simple factor such as “plagiarism severity” (e.g., higher similarity → higher detection chance) and/or “intervention level” (e.g., active‑intervention reduces the AI‑assisted detection probability). Implement this by replacing the fixed 0.55/0.25 values with functions of these factors. Evaluate improvement by comparing the simulated prevalence of dishonest behavior against empirical data from published studies on plagiarism detection rates; a closer match would indicate enhanced realism.

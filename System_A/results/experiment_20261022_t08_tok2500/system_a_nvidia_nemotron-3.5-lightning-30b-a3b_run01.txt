@@ -1,0 +1,34 @@
+=== SYSTEM A | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 01 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=512, prompt_tokens=398, total_tokens=910, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+GROUNDING: NONE
+
+============================================================
+
+A. OVERALL REALISM
+
+PARTLY
+The simulation captures core mechanisms of strategic learning under detection risk and social influence, but it omits critical elements of academic integrity such as intentionality, varying severity of sanctions, and the full complexity of plagiarism typologies, limiting its ability to fully represent the stated real-world phenomenon.
+
+B. TOP 3 REALISM GAPS
+
+1. **Lack of intentionality and motivational diversity**
+   - *Why it matters*: Plagiarism is typically a deliberate choice influenced by values, pressure, and perceived benefits, whereas Q-learning agents optimize rewards without modeled "intent" or "ethical agency."
+   - *Directly supported or hypothesis*: This is a **hypothesis needing more information**. The description specifies Q-learning and reward-based updates but does not describe whether agents possess internal states representing moral cost or intentional decision-making frameworks.
+
+2. **Absence of differential consequences for plagiarism types**
+   - *Why it matters*: The simulation reports different detection probabilities (0.55 vs. 0.25) but does not specify if penalties (grade reduction, disciplinary action, reputational damage) differ between direct copying and AI-assisted plagiarism, which would strongly influence cost-benefit calculations.
+   - *Directly supported or hypothesis*: This is a **hypothesis needing more information**. The text provides detection probabilities but does not describe the penalty structure or whether consequences are calibrated differently for the two violation types.
+
+3. **No representation of source integrity or knowledge boundaries**
+   - *Why it matters*: Academic work involves engagement with source material, citation norms, and knowledge boundaries; the simulation reduces all submissions to "honest," "direct copying," or "AI-assisted" without modeling the learning process or source evaluation that precedes plagiarism decisions.
+   - *Directly supported or hypothesis*: This is a **directly supported gap**. The description explicitly limits student choices to three behavioral categories without any mention of source engagement, research processes, or the intellectual work that normally surrounds academic submissions.
+
+C. ONE MINIMUM REVISION
+
+Add a binary "perceived_severity" parameter to the reward function that differentiates penalty weight between direct copying and AI-assisted plagiarism (e.g., higher severity for direct copying given the 0.55 detection rate). Evaluate improvement by comparing the proportion of AI-assisted plagiarism episodes across the 16-week period between the original and revised models, controlling for baseline detection probabilities.

@@ -1,0 +1,27 @@
+=== SYSTEM A | openai/gpt-oss-120b | RUN 05 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=617, prompt_tokens=431, total_tokens=1048, completion_time=1.3176850789999999, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=126), prompt_time=0.02530946, prompt_tokens_details=None, queue_time=0.306441517, total_time=1.342994539)
+GROUNDING: NONE
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core mechanisms of academic‑integrity contexts (multiple agents, choice among honest, copying, and AI‑assisted cheating; reinforcement learning via Q‑learning; probabilistic detection; peer‑network interaction). However, the description lacks detail on how key parameters (e.g., reward structure, network topology, learning rates) are set, which limits confidence that the model reproduces real‑world dynamics.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|------|----------------|-----------------|
+| 1 | **Fixed detection probabilities (0.55 for copying, 0.25 for AI‑assisted)** | In reality detection rates vary with institutional policies, technology, and reviewer expertise; static rates can over‑ or under‑estimate the deterrent effect and thus distort the emergence of dishonest behavior. | Directly stated; hypothesis that variability is needed. |
+| 2 | **Unspecified peer‑network structure and influence mechanics** | The shape of local networks (e.g., density, clustering) strongly shapes norm diffusion; without specifying how peers affect each other’s Q‑values, the model may miss crucial social contagion effects. | Described only as “local peer networks”; hypothesis about missing detail. |
+| 3 | **Reward/penalty schema for Q‑learning not described** | The relative magnitude of rewards for honest work vs. penalties for caught cheating determines policy convergence; ambiguous payoff structures limit assessment of whether agents’ learning mirrors real student cost‑benefit calculations. | Mentioned only that agents “update behavior based on rewards and penalties”; hypothesis. |
+
+**C. ONE MINIMUM REVISION**  
+*Add empirically calibrated, variable detection probabilities.* Replace the single static values with detection functions that depend on factors such as the proportion of cheating in the population, institutional monitoring intensity, or time (e.g., detection = 0.4 + 0.2·(cheating‑share)).  
+
+*Evaluation:* Run the simulation under the original and revised detection functions and compare the resulting cheating prevalence curves to published longitudinal data on academic misconduct (e.g., meta‑analyses of plagiarism rates). Improved alignment of simulated and observed trends would indicate that the revision enhances realism.

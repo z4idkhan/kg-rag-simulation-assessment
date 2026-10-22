@@ -1,0 +1,44 @@
+=== SYSTEM B | nvidia/nemotron-3.5-lightning-30b-a3b | RUN 08 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: nvidia
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=445, prompt_tokens=906, total_tokens=1351, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=None, audio_tokens=None, reasoning_tokens=0, rejected_prediction_tokens=None, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+A. OVERALL REALISM
+Verdict: PARTLY
+The simulation explicitly models dishonest behaviors (direct copying and AI-assisted plagiarism) with distinct detection probabilities and employs Q-learning for agent adaptation. However, it reduces academic integrity to strategic choice and reward-maximization, omitting the moral, social, and institutional dimensions that define real-world academic integrity.
+
+B. TOP 3 REALISM GAPS
+1. **Absence of consequences beyond detection**: The description states detection probabilities but does not specify grading penalties, formal sanctions, or reputational consequences. This matters because detection alone rarely deters plagiarism; actual consequences are central to academic integrity enforcement. This is a gap directly supported by the description (detection is mentioned, consequences are not).
+2. **Reduction of plagiarism to individual choice**: The model frames plagiarism as a behavioral choice between honest, direct, and AI-assisted modes, but does not represent source attribution, citation norms, or the intellectual property concepts that underlie real plagiarism. This matters because real academic integrity involves understanding and adherence to disciplinary conventions, not merely cost-benefit calculations. This is a hypothesis needing more information, as the description provides no detail on how the model handles conceptual understanding of plagiarism.
+3. **Static peer network structure**: The simulation employs "local peer networks" but does not specify whether ties are formed based on academic relationships, change over time, or influence normative behavior. This matters because peer norms and network dynamics are key drivers of academic integrity. This is a gap directly supported by the description (networks are mentioned, their formation and dynamics are unspecified).
+
+C. ONE MINIMUM REVISION
+Add a single sentence to the description specifying the consequence for detected plagiarism (e.g., "Students detected for direct copying face a grade penalty of X%; AI-assisted plagiarism incurs a penalty of Y%"). Evaluate whether this revision changes the model's outcomes by comparing total dishonest behavior under the no-intervention and active-intervention conditions before and after the addition, specifically assessing if the relative prevalence of AI-assisted versus direct copying shifts in a direction consistent with the stated penalties.

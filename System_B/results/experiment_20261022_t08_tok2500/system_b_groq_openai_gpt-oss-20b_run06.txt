@@ -1,0 +1,43 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 06 ===
+EXPERIMENT ID: experiment_20261022_t06_tok2500
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 2500
+USAGE: CompletionUsage(completion_tokens=758, prompt_tokens=892, total_tokens=1650, completion_time=0.952832807, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=249), prompt_time=0.054907427, prompt_tokens_details=None, queue_time=0.317818319, total_time=1.007740234)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+PARTLY. The simulation explicitly models a small population of students, offers several modes of dishonest behavior (honest, direct copying, AI‑assisted plagiarism), and updates agents via a Q‑learning rule that rewards or penalises actions. However, it omits many contextual factors that influence real academic‑integrity dynamics (e.g., institutional policies, diverse detection mechanisms, and varying student motivations). Consequently, while the core mechanics are plausible, the model’s scope is too narrow to capture the full complexity of real‑world academic‑integrity environments.  
+
+**B. TOP 3 REALISM GAPS**  
+1. **Missing institutional and policy context** – The description provides no information about how institutional rules, sanctions, or educational interventions influence agent behaviour. This matters because real academic‑integrity outcomes depend heavily on formal and informal norms; without them the model may over‑ or under‑estimate dishonesty. The gap is a hypothesis needing more information, not directly supported by the description.  
+2. **Simplified detection probabilities** – The simulation assigns fixed probabilities (0.55 for direct copying, 0.25 for AI‑assisted plagiarism) without justification or variability. In reality, detection rates vary with technology, assignment type, and institutional resources; the fixed values may misrepresent the likelihood of being caught. This gap is directly supported by the description (the stated probabilities) and is a concern for realism.  
+3. **Limited behavioural repertoire and learning signals** – Agents can only choose among three discrete actions and learn solely from a binary reward/penalty signal. Real students face a broader spectrum of strategies and receive nuanced feedback (grades, peer feedback, self‑reflection). The lack of richer behavioural options reduces the model’s fidelity. This is a hypothesis requiring additional data, not explicitly stated in the description.  
+
+**C. ONE MINIMUM REVISION**  
+Add a parameter‑sensitivity analysis for the detection probabilities. Implement a simple routine that varies the detection rates within a realistic range (e.g., 0.3–0.8 for direct copying, 0.1–0.4 for AI‑assisted plagiarism) and records the resulting total dishonest behaviour. Evaluate improvement by comparing the stability of key outcomes (e.g., prevalence of AI‑assisted plagiarism) across the sensitivity sweep; a robust model should show consistent qualitative trends, indicating that specific probability values are not unduly driving the results.

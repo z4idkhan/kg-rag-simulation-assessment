@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-120b | RUN 05 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=754, prompt_tokens=892, total_tokens=1646, completion_time=1.5742527549999998, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=249), prompt_time=0.040138904, prompt_tokens_details=None, queue_time=0.349951711, total_time=1.614391659)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**Verdict: PARTLY** – The simulation captures several core elements of an academic‑integrity setting (student agents, choice of honest vs. plagiaristic behavior, Q‑learning adaptation, detection probabilities, and an intervention condition). However, key aspects that determine how faithfully the model reflects real‑world dynamics (e.g., empirically grounded detection rates, detailed peer‑network structure, and validation against observed plagiarism prevalence) are not specified, limiting its overall realism.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why it matters | Evidence status |
+|---|-----|----------------|-----------------|
+| 1 | **Unvalidated detection probabilities and reward/penalty values** – the model fixes detection at 0.55 for copying and 0.25 for AI‑assisted plagiarism without showing how these numbers relate to actual campus detection rates or to the consequences students experience. | Realistic detection and sanction levels strongly influence agents’ learning; unrealistic values can produce misleading patterns of dishonest behavior. | Hypothesis – the description states the probabilities but provides no empirical grounding. |
+| 2 | **Underspecified peer‑network influence** – students “interact through local peer networks,” yet the size, connectivity, and information‑sharing rules of these networks are not described. | Peer effects are a major driver of academic‑integrity norms; without clear network parameters the model cannot be judged to reflect realistic social dynamics. | Hypothesis – the description mentions local networks but gives no detail. |
+| 3 | **Lack of empirical validation of overall dishonest‑behavior prevalence** – the simulation reports that AI‑assisted plagiarism “increases total dishonest behavior,” but there is no comparison to real‑world rates or trends. | Validation against observed data is essential to confirm that the simulated dynamics are plausible; without it the findings may be artefacts of model design. | Hypothesis – the description provides results but no external benchmark. |
+
+**C. ONE MINIMUM REVISION**  
+Add an empirical calibration step: set the detection probabilities and the reward/penalty magnitudes for each behavior to values reported in institutional plagiarism‑detection studies, then run the model and compare the simulated proportion of dishonest submissions to published campus‑level plagiarism statistics. Improvement is demonstrated if the simulated prevalence falls within the observed empirical range while preserving the reported qualitative effect of AI‑assisted plagiarism.

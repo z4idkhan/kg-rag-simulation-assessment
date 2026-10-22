@@ -1,0 +1,46 @@
+=== SYSTEM B | openai/gpt-oss-20b | RUN 10 ===
+EXPERIMENT ID: experiment_20261022_temp08
+PROVIDER: groq
+STATUS: SUCCESS
+FINISH REASON: stop
+TEMPERATURE: 0.8
+MAX OUTPUT TOKENS: 1000
+USAGE: CompletionUsage(completion_tokens=914, prompt_tokens=892, total_tokens=1806, completion_time=1.185015005, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=448), prompt_time=0.045005486, prompt_tokens_details=None, queue_time=0.345140299, total_time=1.2300204909999999)
+
+FACTS PROVIDED TO PROMPT:
+- plagiarism
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q164666
+  DESCRIPTION: using another author's work as if it was one's own original work
+- academic integrity
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q4671278
+  DESCRIPTION: moral code or ethical policy of academia
+- reinforcement learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q830687
+  DESCRIPTION: type of machine learning where an agent learns how to behave in an environment by performing actions and receiving rewards or penalties in return, aiming to maximize the cumulative reward over time
+- Q-learning
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q2664563
+  DESCRIPTION: model-free reinforcement learning algorithm
+- agent-based model
+  STATUS: OK
+  ENTITY: http://www.wikidata.org/entity/Q392811
+  DESCRIPTION: type of computational models
+
+============================================================
+
+**A. OVERALL REALISM**  
+**PARTLY** – The model incorporates several core elements of an academic‑integrity setting (student agents, learning through Q‑learning, peer interaction, and a basic intervention comparison). However, key quantitative parameters (detection probabilities, intervention design) lack empirical grounding, and the behavioral repertoire is overly simplified, limiting the simulation’s ability to reflect real‑world complexity.
+
+**B. TOP 3 REALISM GAPS**  
+
+| # | Gap | Why It Matters | Evidence‑Based or Hypothesis |
+|---|-----|----------------|-----------------------------|
+| 1 | Detection probabilities (0.55 for direct copying, 0.25 for AI‑plagiarism) are stated without justification or reference to data. | Accurate detection rates are essential for realistic feedback loops; unrealistic rates distort learning dynamics and outcomes. | Directly supported by description (the values are given) but missing empirical backing – a hypothesis requiring further evidence. |
+| 2 | Active‑intervention mechanism is not described (how it is implemented, what policies it includes). | The effectiveness of interventions depends on their design; without detail, the intervention condition cannot be realistically evaluated. | Hypothesis – the description notes an “active‑intervention condition” but provides no specifics. |
+| 3 | Agent behavior is limited to three discrete choices (honest, direct copy, AI‑assisted plagiarism). | Real students exhibit a spectrum of dishonest strategies (e.g., partial plagiarism, collusion) and risk preferences, which influence learning and network effects. | Directly supported by description (only three options listed); the omission is a gap needing further elaboration. |
+
+**C. ONE MINIMUM REVISION**  
+Add a calibration step for the detection probabilities: after defining 0.55 and 0.25, perform a sensitivity analysis to show how varying these values within plausible ranges (e.g., ±0.10) affects key outcomes (total dishonest behavior, prevalence of AI‑plagiarism). Evaluate improvement by checking whether the qualitative trend (AI‑plagiarism increases dishonest behavior and persists under intervention) remains robust across the calibrated range, thereby strengthening confidence that the simulation’s dynamics are not artefacts of arbitrarily chosen probabilities.

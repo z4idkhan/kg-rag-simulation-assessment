@@ -41,9 +41,9 @@ MODELS = [
     {"name": "qwen/qwen3.8-27b", "provider": "groq"},
     {"name": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning", "provider": "nvidia"},
 ]
-MAX_OUTPUT_TOKENS = 1000
+MAX_OUTPUT_TOKENS = 2500
 RUNS_PER_MODEL = 10
-TEMPERATURE = 0.6
+TEMPERATURE = 0.8
 REQUEST_DELAY_SECONDS = 5
 EXPERIMENT_ID = os.getenv("EXPERIMENT_ID", "experiment_20261020_01")
 OUTPUT_DIR = BASE_DIR / "results" / EXPERIMENT_ID
